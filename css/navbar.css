@@ -1,0 +1,215 @@
+/* =========================================================================
+   ARDYA VEDA — NAVBAR & NAVIGATION STYLES
+   Updated: Background replaced with Herbal Green (#6C805F) from Photo 1
+   ========================================================================= */
+
+.navbar-fixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  height: 74px;
+  background: rgba(78, 96, 68, 0.65); /* Photo 1 Herbal Olive Glass */
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(245, 240, 232, 0.15);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.navbar-fixed.scrolled {
+  background: rgba(62, 78, 54, 0.96); /* Rich deep herbal green on scroll */
+  border-bottom: 1px solid rgba(196, 167, 125, 0.35);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+}
+
+.nav-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  height: 100%;
+  padding: 0 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+}
+
+.logo-mark {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-svg {
+  width: 100%;
+  height: 100%;
+  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.3));
+}
+
+.brand-text {
+  font-family: var(--font-playfair);
+  font-size: 22px;
+  color: #F6ECD6;
+  letter-spacing: -0.01em;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  font-weight: 500;
+}
+
+.nav-links-desktop {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-link {
+  font-family: var(--font-inter);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: rgba(245, 240, 232, 0.9);
+  text-decoration: none;
+  padding: 8px 14px;
+  transition: color 0.2s ease;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: #FFFFFF;
+}
+
+.nav-dot {
+  color: var(--accent-gold);
+  opacity: 0.7;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.lang-switch-pill {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(196, 167, 125, 0.5);
+  color: #F5F0E8;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.2s;
+}
+
+.lang-switch-pill:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.lang-code.active {
+  color: #F6ECD6;
+}
+
+.lang-sep {
+  opacity: 0.4;
+}
+
+.btn-ghost-nav {
+  background: transparent;
+  border: none;
+  color: rgba(245, 240, 232, 0.9);
+  font-size: 12px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  cursor: pointer;
+  padding: 8px 10px;
+  transition: color 0.2s;
+  text-decoration: none;
+}
+
+.btn-ghost-nav:hover {
+  color: #FFFFFF;
+}
+
+.mobile-hamburger-btn {
+  display: none;
+  background: transparent;
+  border: none;
+  color: #F5F0E8;
+  cursor: pointer;
+  padding: 6px;
+}
+
+.hamburger-icon {
+  width: 24px;
+  height: 24px;
+}
+
+/* Mobile Drawer */
+.mobile-drawer {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: var(--bg-herbal-deep); /* Photo 1 Herbal Green */
+  z-index: 1001;
+  padding: 24px;
+  flex-direction: column;
+}
+
+.mobile-drawer.open {
+  display: flex;
+}
+
+.drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(245, 240, 232, 0.15);
+}
+
+.drawer-brand {
+  font-size: 22px;
+  color: var(--accent-gold);
+}
+
+.close-icon-btn {
+  background: transparent;
+  border: none;
+  color: #F5F0E8;
+  cursor: pointer;
+}
+
+.drawer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  padding: 30px 0;
+}
+
+.drawer-link {
+  color: #F5F0E8;
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.drawer-footer {
+  margin-top: auto;
+}

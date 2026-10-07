@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>The Three Doshas — Vata, Pitta & Kapha | Ardya Veda</title>
+  <meta name="description" content="In-depth classical guide to the three biological principles: Vata, Pitta, and Kapha. Understand their elements, signs of imbalance, and balancing lifestyle." />
+  <meta name="theme-color" content="#F5F0E8" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Modular CSS -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-vastra text-kala antialiased grain-overlay">
+
+  <!-- ================= HEADER ================= -->
+  <header class="navbar-fixed scrolled">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-mark">
+          <svg viewBox="0 0 100 100" class="logo-svg">
+            <circle cx="50" cy="50" r="46" fill="none" stroke="#C4A77D" stroke-width="2" opacity="0.6"/>
+            <path d="M50 16 C35 34, 30 54, 50 84 C70 54, 65 34, 50 16 Z" fill="none" stroke="#C4A77D" stroke-width="2.2"/>
+            <circle cx="50" cy="46" r="6" fill="#C4A77D"/>
+          </svg>
+        </div>
+        <span class="brand-text">Ardya Veda</span>
+      </a>
+
+      <div class="nav-links-desktop">
+        <a href="index.html" class="nav-link">Home</a>
+        <span class="nav-dot">·</span>
+        <a href="assessment.html" class="nav-link">Assessment</a>
+        <span class="nav-dot">·</span>
+        <a href="consult.html" class="nav-link">Vaidyas</a>
+        <span class="nav-dot">·</span>
+        <a href="checkin.html" class="nav-link">Daily Pariksha</a>
+        <span class="nav-dot">·</span>
+        <a href="dosha.html" class="nav-link active">Doshas</a>
+      </div>
+
+      <div class="nav-actions">
+        <button id="lang-toggle-btn" class="lang-switch-pill" title="Toggle Language">
+          <span id="lang-en" class="lang-code active">EN</span>
+          <span class="lang-sep">/</span>
+          <span id="lang-hi" class="lang-code">HI</span>
+        </button>
+        <a href="assessment.html" class="btn-solid-gold">Find Your Dosha</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= HERO ================= -->
+  <main style="padding-top: 100px;">
+    <section class="section-container" style="text-align: center; max-width: 860px;">
+      <div class="eyebrow-wrapper justify-center">
+        <span class="eyebrow-devanagari">त्रिदोष विज्ञान</span>
+        <span class="eyebrow-sep">·</span>
+        <span class="eyebrow-text">Classical Biological Principles</span>
+      </div>
+      <h1 class="section-title font-display" style="font-size: 48px;">
+        Vata, Pitta & Kapha: The Sacred Triad
+      </h1>
+      <p class="section-subtitle">
+        Everything in the cosmos — from stars to human cells — is woven from five primal elements: Ether, Air, Fire, Water, and Earth. In the human physiology, these express themselves as three governing forces called <strong>Doshas</strong>.
+      </p>
+    </section>
+
+    <!-- In-Depth Dosha Profiles -->
+    <section class="section-container" style="padding-top: 0;">
+      <!-- VATA SECTION -->
+      <div id="vata" class="dosha-card vata-theme" style="margin-bottom: 40px; padding: 48px;">
+        <div class="dosha-header">
+          <div class="dosha-title-row">
+            <h2 class="dosha-name font-display" style="font-size: 38px;">1. Vata Dosha (वात)</h2>
+            <span class="dosha-devanagari" style="font-size: 24px;">वायु + आकाश</span>
+          </div>
+          <span class="dosha-elements" style="font-size: 14px;">Elements: Air + Ether (Space)</span>
+        </div>
+        <p class="dosha-motto" style="font-size: 20px;">"Movement, rhythm, and cellular inspiration. The force of kinetic energy."</p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin: 24px 0;">
+          <div class="detail-block">
+            <strong>Biological Governance:</strong>
+            <p>Nervous system impulse transmission, cardiac rhythm, peristalsis in intestines, breathing, creativity, and sensory perception.</p>
+          </div>
+          <div class="detail-block">
+            <strong>Signs of Aggravation (Vata Imbalance):</strong>
+            <p>Chronic constipation, dry rough skin, cracking joints, restless insomnia, anxiety, racing overthinking, cold sensitivity.</p>
+          </div>
+          <div class="detail-block">
+            <strong>Pacifying Pathya (Food & Herbs):</strong>
+            <p>Warm, soupy, oily dishes with pure A2 cow ghee. Sweet, sour, and salty tastes. Herbs: Ashwagandha, Bala, Shankhpushpi, warm sesame oil.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- PITTA SECTION -->
+      <div id="pitta" class="dosha-card pitta-theme" style="margin-bottom: 40px; padding: 48px;">
+        <div class="dosha-header">
+          <div class="dosha-title-row">
+            <h2 class="dosha-name font-display" style="font-size: 38px;">2. Pitta Dosha (पित्त)</h2>
+            <span class="dosha-devanagari" style="font-size: 24px;">अग्नि + जल</span>
+          </div>
+          <span class="dosha-elements" style="font-size: 14px;">Elements: Fire + Water</span>
+        </div>
+        <p class="dosha-motto" style="font-size: 20px;">"Transformation, intellect, and digestive combustion. The fire of Agni."</p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin: 24px 0;">
+          <div class="detail-block">
+            <strong>Biological Governance:</strong>
+            <p>Metabolic rate, enzymatic digestion, body temperature regulation, visual clarity, liver detoxification, and critical intellect.</p>
+          </div>
+          <div class="detail-block">
+            <strong>Signs of Aggravation (Pitta Imbalance):</strong>
+            <p>Hyperacidity, heartburn, inflammatory red skin rashes, premature graying, irritability, anger, overheating, loose stools.</p>
+          </div>
+          <div class="detail-block">
+            <strong>Pacifying Pathya (Food & Herbs):</strong>
+            <p>Cooling, sweet, bitter, and astringent foods. Basmati rice, coconut oil, cucumber, fennel, coriander. Herbs: Shatavari, Amalaki, Brahmi, Neem.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- KAPHA SECTION -->
+      <div id="kapha" class="dosha-card kapha-theme" style="margin-bottom: 40px; padding: 48px;">
+        <div class="dosha-header">
+          <div class="dosha-title-row">
+            <h2 class="dosha-name font-display" style="font-size: 38px;">3. Kapha Dosha (कफ)</h2>
+            <span class="dosha-devanagari" style="font-size: 24px;">पृथ्वी + जल</span>
+          </div>
+          <span class="dosha-elements" style="font-size: 14px;">Elements: Earth + Water</span>
+        </div>
+        <p class="dosha-motto" style="font-size: 20px;">"Structure, cohesion, and immune protection. The grounding reservoir of Ojas."</p>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin: 24px 0;">
+          <div class="detail-block">
+            <strong>Biological Governance:</strong>
+            <p>Joint lubrication (Shleshaka), structural musculature and bones, deep cellular immunity (Ojas), emotional endurance, and affection.</p>
+          </div>
+          <div class="detail-block">
+            <strong>Signs of Aggravation (Kapha Imbalance):</strong>
+            <p>Excessive weight gain, sluggish metabolism, chronic sinus mucus, morning fatigue, depression, hoarding, attachment.</p>
+          </div>
+          <div class="detail-block">
+            <strong>Pacifying Pathya (Food & Herbs):</strong>
+            <p>Light, warm, dry, pungent, and bitter foods. Mung bean soup, roasted veggies, ginger, black pepper, honey. Herbs: Trikatu, Guggulu, Tulsi.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Assessment CTA Box -->
+      <div class="quiz-teaser-box">
+        <div class="teaser-text">
+          <h3 class="font-display">Ready to find your unique ratio?</h3>
+          <p>You are likely a dual-dosha combination like Vata-Pitta or Pitta-Kapha. Take our free 5-minute diagnostic quiz to get your certified Prakriti Card.</p>
+        </div>
+        <a href="assessment.html" class="btn-solid-gold btn-lg">Take the Prakriti Quiz →</a>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-bottom-row">
+        <p class="copyright-text">© 2026 Akagai Labs. The science of life, in your hands.</p>
+        <div class="footer-badges">
+          <a href="index.html" class="f-badge text-gold">Home</a>
+          <a href="assessment.html" class="f-badge">Assessment</a>
+          <a href="consult.html" class="f-badge">Vaidyas</a>
+          <a href="checkin.html" class="f-badge">Check-in</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modular Scripts -->
+  <script src="js/i18n.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

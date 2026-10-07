@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Ardya Veda — Your Ayurvedic Lifestyle Companion</title>
+  <meta name="description" content="Your Ayurvedic Lifestyle Companion. Discover your Prakriti, consult verified Vaidyas, get AI-personalized meal plans & seasonal routines — 5,000 years of Ayurveda, personalized for you." />
+  <meta name="keywords" content="ardya veda, ardyaveda, ayurveda, ayurvedic lifestyle, prakriti, dosha, vata pitta kapha, vaidya, ayurvedic doctor, ritucharya, dinacharya, pariksha" />
+  <meta name="theme-color" content="#F5F0E8" />
+
+  <!-- Google Fonts: Playfair Display, Cormorant Garamond, Inter, Noto Sans Devanagari -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <!-- Modular Master CSS -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-vastra text-kala antialiased grain-overlay">
+
+  <!-- ================= NAVBAR ================= -->
+  <nav id="navbar" class="navbar-fixed">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo" id="brand-home-link">
+        <div class="logo-mark">
+          <svg viewBox="0 0 100 100" class="logo-svg">
+            <circle cx="50" cy="50" r="46" fill="none" stroke="#C4A77D" stroke-width="2" opacity="0.6"/>
+            <circle cx="50" cy="50" r="38" fill="none" stroke="#C4A77D" stroke-width="1" stroke-dasharray="2 3"/>
+            <path d="M50 16 C35 34, 30 54, 50 84 C70 54, 65 34, 50 16 Z" fill="none" stroke="#C4A77D" stroke-width="2.2"/>
+            <circle cx="50" cy="46" r="6" fill="#C4A77D"/>
+            <line x1="50" y1="52" x2="50" y2="76" stroke="#C4A77D" stroke-width="1.8"/>
+            <line x1="42" y1="62" x2="58" y2="62" stroke="#C4A77D" stroke-width="1.5"/>
+          </svg>
+        </div>
+        <span class="brand-text">Ardya Veda</span>
+      </a>
+
+      <!-- Desktop Nav Links -->
+      <div class="nav-links-desktop">
+        <a href="#science" class="nav-link" data-i18n="navPhilosophy">Philosophy</a>
+        <span class="nav-dot">·</span>
+        <a href="consult.html" class="nav-link" data-i18n="navConsult">Consult</a>
+        <span class="nav-dot">·</span>
+        <a href="#nourishment" class="nav-link" data-i18n="navNourishment">Nourishment</a>
+        <span class="nav-dot">·</span>
+        <a href="#how-it-works" class="nav-link" data-i18n="navHowItWorks">How It Works</a>
+        <span class="nav-dot">·</span>
+        <a href="blog.html" class="nav-link" data-i18n="navBlog">Patrika</a>
+      </div>
+
+      <!-- Action Buttons & Language Switcher -->
+      <div class="nav-actions">
+        <!-- Language Switcher Pill -->
+        <button id="lang-toggle-btn" class="lang-switch-pill" title="Toggle Language (EN / HI)">
+          <span id="lang-en" class="lang-code active">EN</span>
+          <span class="lang-sep">/</span>
+          <span id="lang-hi" class="lang-code">HI</span>
+        </button>
+
+        <a href="checkin.html" class="btn-ghost-nav" title="Daily 60-Second Health Log">
+          <i data-lucide="activity" class="icon-sm"></i>
+          <span class="hide-mobile" data-i18n="navCheckin">Daily Pariksha</span>
+        </a>
+
+        <a href="assessment.html" class="btn-outline-gold" data-i18n="navBegin">Begin</a>
+        <button id="login-modal-btn" class="btn-solid-gold" data-i18n="navLogin">Login</button>
+
+        <!-- Mobile Menu Toggle Button -->
+        <button id="mobile-menu-btn" class="mobile-hamburger-btn" aria-label="Toggle Navigation Menu">
+          <i data-lucide="menu" class="hamburger-icon"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Drawer Navigation -->
+    <div id="mobile-drawer" class="mobile-drawer">
+      <div class="drawer-header">
+        <span class="drawer-brand font-display">Ardya Veda</span>
+        <button id="close-drawer-btn" class="close-icon-btn"><i data-lucide="x"></i></button>
+      </div>
+      <div class="drawer-links">
+        <a href="#science" class="drawer-link"><span class="devanagari-sm">दर्शन</span> <span data-i18n="navPhilosophy">Philosophy</span></a>
+        <a href="consult.html" class="drawer-link"><span class="devanagari-sm">वैद्य</span> <span data-i18n="navConsult">Consult</span></a>
+        <a href="#nourishment" class="drawer-link"><span class="devanagari-sm">आहार</span> <span data-i18n="navNourishment">Nourishment</span></a>
+        <a href="#how-it-works" class="drawer-link"><span class="devanagari-sm">क्रम</span> <span data-i18n="navHowItWorks">How It Works</span></a>
+        <a href="blog.html" class="drawer-link"><span class="devanagari-sm">पत्रिका</span> <span data-i18n="navBlog">Patrika</span></a>
+        <a href="dosha.html" class="drawer-link"><span class="devanagari-sm">त्रिदोष</span> Doshas Guide</a>
+        <a href="#faq" class="drawer-link"><span class="devanagari-sm">प्रश्न</span> <span data-i18n="navFAQ">Questions</span></a>
+      </div>
+      <div class="drawer-footer">
+        <a href="assessment.html" class="btn-outline-gold w-full mb-3" data-i18n="heroCta">Begin Your Journey</a>
+        <a href="checkin.html" class="btn-solid-gold w-full" data-i18n="navCheckin">Daily Pariksha Check-in</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ================= HERO SECTION (100dvh) ================= -->
+  <section class="hero-section">
+    <div class="hero-bg-container">
+      <div class="hero-ambient-glow"></div>
+      <div class="hero-botanical-layer"></div>
+      <div class="hero-overlay-gradient"></div>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-devanagari-crest">
+        <span class="crest-line"></span>
+        <span class="crest-devanagari">आयुर्वेदः सर्वहिताय</span>
+        <span class="crest-line"></span>
+      </div>
+
+      <h1 class="hero-title font-display">Ardya Veda</h1>
+      
+      <p class="hero-tagline font-cormorant">
+        <span data-i18n="heroTagline1">Ayurveda that</span><br />
+        <span data-i18n="heroTagline2">moves with you.</span>
+      </p>
+
+      <p class="hero-subtext" data-i18n="heroSubtext">
+        5,000 years of classical Vedic wisdom — personalized for your unique Prakriti, biological rhythms, and modern life.
+      </p>
+
+      <div class="hero-actions">
+        <a href="assessment.html" class="hero-primary-btn">
+          <span data-i18n="heroCta">Begin Your Journey</span>
+          <i data-lucide="arrow-right" class="icon-inline"></i>
+        </a>
+        <a href="consult.html" class="hero-secondary-btn">
+          <span data-i18n="heroConsultCta">Meet Our Vaidyas</span>
+        </a>
+      </div>
+
+      <div class="hero-badges">
+        <div class="badge-item">
+          <i data-lucide="check-circle-2" class="badge-icon"></i>
+          <span data-i18n="badgeAssessment">Free 5-Min Prakriti Quiz</span>
+        </div>
+        <div class="badge-divider">·</div>
+        <div class="badge-item">
+          <i data-lucide="shield-check" class="badge-icon"></i>
+          <span data-i18n="badgeVaidyas">Verified MD Vaidyas</span>
+        </div>
+        <div class="badge-divider">·</div>
+        <div class="badge-item">
+          <i data-lucide="sparkles" class="badge-icon"></i>
+          <span data-i18n="badgeCustom">Classical Samhita Protocols</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-indicator">
+      <span class="scroll-text">EXPLORE</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ================= PANCHANGA & SEASONAL TICKER ================= -->
+  <div class="panchanga-bar">
+    <div class="panchanga-inner">
+      <div class="panchanga-tag">
+        <span class="pulse-dot"></span>
+        <strong data-i18n="panchangaLive">DAILY RITU & PANCHANGA</strong>
+      </div>
+      <div class="panchanga-text">
+        <span id="panchanga-season">Current Season: <strong>Sharad Ritu (Autumn)</strong></span>
+        <span class="panchanga-sep">|</span>
+        <span id="panchanga-dominant">Aggravated Dosha: <strong>Pitta Pacification Phase</strong></span>
+        <span class="panchanga-sep">|</span>
+        <span id="panchanga-herb">Herb of the Day: <strong>Shatavari & Amalaki (Amla)</strong></span>
+      </div>
+      <a href="checkin.html" class="panchanga-quick-btn" data-i18n="checkinToday">Log 60-Sec Pulse</a>
+    </div>
+  </div>
+
+  <!-- ================= DOSHA SECTION (#science) ================= -->
+  <section id="science" class="section-container">
+    <div class="section-header-centered">
+      <div class="eyebrow-wrapper">
+        <span class="eyebrow-devanagari">त्रिदोष</span>
+        <span class="eyebrow-sep">·</span>
+        <span class="eyebrow-text" data-i18n="doshaEyebrow">Your Constitution</span>
+      </div>
+      <h2 class="section-title font-display" data-i18n="doshaHeading">Know Your Nature. Heal Accordingly.</h2>
+      <p class="section-subtitle" data-i18n="doshaSub">
+        According to Ayurveda, you were born with a unique biological blueprint—your <strong>Prakriti</strong>. It is the precise ratio of Vata, Pitta, and Kapha that governs your cellular metabolism, digestion, and emotional temperament.
+      </p>
+    </div>
+
+    <!-- 3 Dosha Cards Grid -->
+    <div class="dosha-grid">
+      <!-- Vata Card -->
+      <div class="dosha-card vata-theme" data-dosha="vata">
+        <div class="dosha-header">
+          <div class="dosha-title-row">
+            <h3 class="dosha-name font-display">Vata</h3>
+            <span class="dosha-devanagari">वात</span>
+          </div>
+          <span class="dosha-elements">Air + Ether</span>
+        </div>
+        <p class="dosha-motto">"Movement & adaptability. The force of kinetic energy."</p>
+        <div class="dosha-traits">
+          <div class="trait-row">
+            <span class="trait-label">Qualities:</span>
+            <span class="trait-val">Light, dry, mobile, subtle, cold</span>
+          </div>
+          <div class="trait-row">
+            <span class="trait-label">Governs:</span>
+            <span class="trait-val">Nervous system, breathing, circulation</span>
+          </div>
+          <div class="trait-row">
+            <span class="trait-label">When Imbalanced:</span>
+            <span class="trait-val">Anxiety, insomnia, bloating, dry skin</span>
+          </div>
+        </div>
+        <a href="dosha.html#vata" class="dosha-explore-btn">
+          <span>Explore Vata Protocol</span>
+          <i data-lucide="chevron-right" class="icon-inline"></i>
+        </a>
+      </div>
+
+      <!-- Pitta Card -->
+      <div class="dosha-card pitta-theme" data-dosha="pitta">
+        <div class="dosha-header">
+          <div class="dosha-title-row">
+            <h3 class="dosha-name font-display">Pitta</h3>
+            <span class="dosha-devanagari">पित्त</span>
+          </div>
+          <span class="dosha-elements">Fire + Water</span>
+        </div>
+        <p class="dosha-motto">"Transformation & intellect. The fire of digestion & vision."</p>
+        <div class="dosha-traits">
+          <div class="trait-row">
+            <span class="trait-label">Qualities:</span>
+            <span class="trait-val">Hot, sharp, light, oily, penetrating</span>
+          </div>
+          <div class="trait-row">
+            <span class="trait-label">Governs:</span>
+            <span class="trait-val">Digestion (Agni), metabolism, sharp focus</span>
+          </div>
+          <div class="trait-row">
+            <span class="trait-label">When Imbalanced:</span>
+            <span class="trait-val">Acidity, skin inflammation, irritability</span>
+          </div>
+        </div>
+        <a href="dosha.html#pitta" class="dosha-explore-btn">
+          <span>Explore Pitta Protocol</span>
+          <i data-lucide="chevron-right" class="icon-inline"></i>
+        </a>
+      </div>
+
+      <!-- Kapha Card -->
+      <div class="dosha-card kapha-theme" data-dosha="kapha">
+        <div class="dosha-header">
+          <div class="dosha-title-row">
+            <h3 class="dosha-name font-display">Kapha</h3>
+            <span class="dosha-devanagari">कफ</span>
+          </div>
+          <span class="dosha-elements">Earth + Water</span>
+        </div>
+        <p class="dosha-motto">"Structure & stability. The grounding cohesive force."</p>
+        <div class="dosha-traits">
+          <div class="trait-row">
+            <span class="trait-label">Qualities:</span>
+            <span class="trait-val">Heavy, slow, steady, soft, cool, oily</span>
+          </div>
+          <div class="trait-row">
+            <span class="trait-label">Governs:</span>
+            <span class="trait-val">Immunity (Ojas), joint lubrication, calm mind</span>
+          </div>
+          <div class="trait-row">
+            <span class="trait-label">When Imbalanced:</span>
+            <span class="trait-val">Lethargy, congestion, slow metabolism</span>
+          </div>
+        </div>
+        <a href="dosha.html#kapha" class="dosha-explore-btn">
+          <span>Explore Kapha Protocol</span>
+          <i data-lucide="chevron-right" class="icon-inline"></i>
+        </a>
+      </div>
+    </div>
+
+    <!-- Take Quiz Teaser Banner -->
+    <div class="quiz-teaser-box">
+      <div class="teaser-text">
+        <h4 class="font-display">What combination are you?</h4>
+        <p>Most individuals possess a dual-dosha constitution (e.g., Vata-Pitta or Pitta-Kapha). Find your exact elemental breakdown.</p>
+      </div>
+      <a href="assessment.html" class="btn-solid-gold" data-i18n="heroCta">Take the 5-Minute Assessment →</a>
+    </div>
+  </section>
+
+  <!-- ================= EDITORIAL DAILY RITUAL ================= -->
+  <section class="section-container bg-sand-subtle">
+    <div class="editorial-split-grid">
+      <div class="editorial-art-card">
+        <div class="brass-vessel-art">
+          <div class="oil-stream"></div>
+          <div class="brass-bowl-glow"></div>
+          <div class="art-overlay-caption">
+            <span class="devanagari-sm">दिनचर्या</span>
+            <span class="art-caption-title font-cormorant">Abhyanga & Dinacharya</span>
+            <span class="art-caption-sub">Warm sesame oil poured from a classical brass vessel</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="editorial-text-col">
+        <div class="eyebrow-wrapper">
+          <span class="eyebrow-devanagari">दिनचर्या</span>
+          <span class="eyebrow-sep">·</span>
+          <span class="eyebrow-text">The Daily Rhythm</span>
+        </div>
+        <h2 class="section-title font-display">Modern life is fast.<br />Your biology is ancestral.</h2>
+        <div class="editorial-body">
+          <p>
+            We live in heated rooms under fluorescent lights, snacking at midnight and rushing through artificial deadlines. The modern nervous system is in chronic sympathetic overdrive — a state Ayurveda diagnoses as extreme Vata aggravation.
+          </p>
+          <p>
+            Healing is not another punishing regime. It is the gentle recalibration of your biological clock. When you eat with your digestive Agni, sleep with the lunar cycle, and anoint your senses with tailored herbs, natural cellular vitality returns effortlessly.
+          </p>
+        </div>
+        <div class="ritual-pillars">
+          <div class="pillar-item">
+            <div class="pillar-num font-display">I</div>
+            <div class="pillar-info">
+              <strong>Agni Calibration</strong>
+              <span>Eating when digestive fire peaks at solar noon.</span>
+            </div>
+          </div>
+          <div class="pillar-item">
+            <div class="pillar-num font-display">II</div>
+            <div class="pillar-info">
+              <strong>Ritucharya Shifts</strong>
+              <span>Adapting oils, herbs, and movement to each season.</span>
+            </div>
+          </div>
+          <div class="pillar-item">
+            <div class="pillar-num font-display">III</div>
+            <div class="pillar-info">
+              <strong>Nadi Pariksha Care</strong>
+              <span>Doctor-guided diagnosis rather than generic wellness trends.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= HOW IT WORKS ================= -->
+  <section id="how-it-works" class="section-container">
+    <div class="section-header-centered">
+      <div class="eyebrow-wrapper">
+        <span class="eyebrow-devanagari">क्रम</span>
+        <span class="eyebrow-sep">·</span>
+        <span class="eyebrow-text" data-i18n="howEyebrow">The Path</span>
+      </div>
+      <h2 class="section-title font-display" data-i18n="howHeading">Four Steps to Harmonious Balance</h2>
+      <p class="section-subtitle" data-i18n="howSub">
+        From ancient Sanskrit manuscripts to your daily routine in under five minutes.
+      </p>
+    </div>
+
+    <div class="steps-timeline-grid">
+      <div class="step-card">
+        <div class="step-badge font-display">①</div>
+        <h3 class="step-title font-display" data-i18n="step1Title">Discover</h3>
+        <p class="step-desc" data-i18n="step1Desc">
+          Complete your Prakriti assessment in under 5 minutes. Understand the unique elemental constitution you were born with.
+        </p>
+        <a href="assessment.html" class="step-tag">Prakriti Card →</a>
+      </div>
+
+      <div class="step-card">
+        <div class="step-badge font-display">②</div>
+        <h3 class="step-title font-display" data-i18n="step2Title">Connect</h3>
+        <p class="step-desc" data-i18n="step2Desc">
+          Speak with a verified Vaidya who understands your pulse, tongue, and constitution to design your tailored healing roadmap.
+        </p>
+        <a href="consult.html" class="step-tag">Verified Vaidyas →</a>
+      </div>
+
+      <div class="step-card">
+        <div class="step-badge font-display">③</div>
+        <h3 class="step-title font-display" data-i18n="step3Title">Track</h3>
+        <p class="step-desc" data-i18n="step3Desc">
+          Daily 60-second Pariksha check-ins reveal subtle internal patterns over time. Watch your body intelligence unfold.
+        </p>
+        <a href="checkin.html" class="step-tag">Daily Pariksha →</a>
+      </div>
+
+      <div class="step-card">
+        <div class="step-badge font-display">④</div>
+        <h3 class="step-title font-display" data-i18n="step4Title">Thrive</h3>
+        <p class="step-desc" data-i18n="step4Desc">
+          Personalized protocols, meals, and classical Rasayanas — all aligned to your biological nature and the current season.
+        </p>
+        <span class="step-tag">Lifelong Vitality</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= VAIDYA CONSULTATION HERO ================= -->
+  <section id="consult" class="vaidya-hero-banner">
+    <div class="vaidya-hero-backdrop"></div>
+    <div class="vaidya-hero-content">
+      <div class="eyebrow-wrapper justify-center">
+        <span class="eyebrow-devanagari">वैद्य</span>
+        <span class="eyebrow-sep">·</span>
+        <span class="eyebrow-text-gold" data-i18n="vaidyaEyebrow">Trusted Classical Practitioners</span>
+      </div>
+      <h2 class="vaidya-hero-title font-display">
+        <span data-i18n="vaidyaTitle1">Your Vaidya.</span> <span class="italic font-cormorant" data-i18n="vaidyaTitle2">Your Guide.</span>
+      </h2>
+      <p class="vaidya-hero-sub">
+        Every Vaidya on Ardya Veda is an identity-verified, classical physician (MD / BAMS Ayurveda). Before your call, your doctor reviews your Prakriti and recent health check-ins — starting from your living reality rather than a blank form.
+      </p>
+      <div class="vaidya-hero-cta-row">
+        <a href="consult.html" class="btn-solid-gold" data-i18n="vaidyaCta">Consult a Vaidya</a>
+        <a href="consult.html" class="btn-outline-gold">Join as a Vaidya</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FEATURED VAIDYAS CAROUSEL ================= -->
+  <section id="featured-vaidyas" class="section-container bg-vastra">
+    <div class="section-header-split">
+      <div>
+        <div class="eyebrow-wrapper">
+          <span class="eyebrow-devanagari">चिकित्सक</span>
+          <span class="eyebrow-sep">·</span>
+          <span class="eyebrow-text" data-i18n="featuredEyebrow">Our Vaidyas</span>
+        </div>
+        <h2 class="section-title font-display" data-i18n="featuredTitle">Meet the Doctors Behind Ardya</h2>
+      </div>
+      <div class="carousel-nav-arrows">
+        <button id="carousel-prev-btn" class="arrow-btn" aria-label="Previous Doctor"><i data-lucide="chevron-left"></i></button>
+        <button id="carousel-next-btn" class="arrow-btn" aria-label="Next Doctor"><i data-lucide="chevron-right"></i></button>
+      </div>
+    </div>
+
+    <!-- Doctor Carousel Track -->
+    <div id="vaidyas-carousel" class="vaidyas-carousel-track"></div>
+  </section>
+
+  <!-- ================= NOURISHMENT & SHAD RASA ================= -->
+  <section id="nourishment" class="section-container bg-sand-subtle">
+    <div class="section-header-centered">
+      <div class="eyebrow-wrapper">
+        <span class="eyebrow-devanagari">षड्रस</span>
+        <span class="eyebrow-sep">·</span>
+        <span class="eyebrow-text" data-i18n="nourishEyebrow">Clinical Precision & Food</span>
+      </div>
+      <h2 class="section-title font-display" data-i18n="shadRasa">Shad Rasa: The Harmony of Six Tastes</h2>
+      <p class="section-subtitle" data-i18n="shadRasaBody">
+        Ayurvedic dietetics is not about counting calories. It is about balancing the six tastes (Shad Rasa) to naturally regulate endocrine balance, digestive enzymes, and cellular hunger.
+      </p>
+    </div>
+
+    <div class="tastes-grid">
+      <div class="taste-card" onclick="selectTaste('sweet')">
+        <div class="taste-sanskrit">मधुर</div>
+        <h4 class="taste-name font-display">Madhura (Sweet)</h4>
+        <span class="taste-elements">Earth + Water</span>
+        <p class="taste-desc">Nourishes tissues, builds Ojas, grounds Vata & Pitta.</p>
+        <span class="taste-sample">Ghee, basmati rice, dates, wheat</span>
+      </div>
+
+      <div class="taste-card" onclick="selectTaste('sour')">
+        <div class="taste-sanskrit">अम्ल</div>
+        <h4 class="taste-name font-display">Amla (Sour)</h4>
+        <span class="taste-elements">Earth + Fire</span>
+        <p class="taste-desc">Ignites digestive Agni, enhances saliva, pacifies Vata.</p>
+        <span class="taste-sample">Amalaki, lime, pomegranate, yogurt</span>
+      </div>
+
+      <div class="taste-card" onclick="selectTaste('salty')">
+        <div class="taste-sanskrit">लवण</div>
+        <h4 class="taste-name font-display">Lavana (Salty)</h4>
+        <span class="taste-elements">Water + Fire</span>
+        <p class="taste-desc">Maintains electrolytes, softens tissues, stimulates hunger.</p>
+        <span class="taste-sample">Saindhava (rock salt), black salt</span>
+      </div>
+
+      <div class="taste-card" onclick="selectTaste('pungent')">
+        <div class="taste-sanskrit">कटु</div>
+        <h4 class="taste-name font-display">Katu (Pungent)</h4>
+        <span class="taste-elements">Fire + Air</span>
+        <p class="taste-desc">Clears mucus, stimulates sluggish Kapha, burns Ama toxins.</p>
+        <span class="taste-sample">Ginger, black pepper, pippali, mustard</span>
+      </div>
+
+      <div class="taste-card" onclick="selectTaste('bitter')">
+        <div class="taste-sanskrit">तिक्त</div>
+        <h4 class="taste-name font-display">Tikta (Bitter)</h4>
+        <span class="taste-elements">Air + Ether</span>
+        <p class="taste-desc">Cooling detoxifier, cleanses liver, cleanses blood, clears heat.</p>
+        <span class="taste-sample">Neem, turmeric, bitter gourd, fenugreek</span>
+      </div>
+
+      <div class="taste-card" onclick="selectTaste('astringent')">
+        <div class="taste-sanskrit">कषाय</div>
+        <h4 class="taste-name font-display">Kashaya (Astringent)</h4>
+        <span class="taste-elements">Earth + Air</span>
+        <p class="taste-desc">Tightens tissues, stops excess secretions, pacifies Pitta/Kapha.</p>
+        <span class="taste-sample">Triphala, green tea, pomegranate peel</span>
+      </div>
+    </div>
+
+    <div id="taste-detail-box" class="taste-detail-box">
+      <div class="taste-detail-inner">
+        <i data-lucide="utensils" class="icon-md text-gold"></i>
+        <div id="taste-detail-text">
+          <strong>Daily Guidance:</strong> Include all 6 tastes in your main midday meal to prevent cravings and keep your metabolic fire (Agni) completely steady.
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SANGHA COMMUNITY ================= -->
+  <section class="section-container">
+    <div class="section-header-centered">
+      <div class="eyebrow-wrapper">
+        <span class="eyebrow-devanagari">सङ्घ</span>
+        <span class="eyebrow-sep">·</span>
+        <span class="eyebrow-text" data-i18n="sanghaEyebrow">The Sangha</span>
+      </div>
+      <h2 class="section-title font-display">
+        <span data-i18n="sanghaTitle1">Nobody heals</span> <span class="italic font-cormorant" data-i18n="sanghaTitle2">alone.</span>
+      </h2>
+      <p class="section-subtitle" data-i18n="sanghaBody">
+        Somewhere between what the doctor told you and what your grandmother told you, there is a room full of people asking the same questions you are.
+      </p>
+    </div>
+
+    <div class="sangha-interactive-container">
+      <div class="sangha-questions-column">
+        <h4 class="sangha-col-title font-display" data-i18n="sanghaAsked">What people are asking in the circles:</h4>
+        <div class="questions-list">
+          <div class="q-bubble active">
+            <i data-lucide="message-circle" class="q-icon"></i>
+            <span data-i18n="sanghaQ1">"What did your grandmother give you when you were unwell?"</span>
+          </div>
+          <div class="q-bubble">
+            <i data-lucide="message-circle" class="q-icon"></i>
+            <span data-i18n="sanghaQ2">"What remedy do you swear by that no doctor ever prescribed?"</span>
+          </div>
+          <div class="q-bubble">
+            <i data-lucide="message-circle" class="q-icon"></i>
+            <span data-i18n="sanghaQ3">"Why does your body give up in the same season, every single year?"</span>
+          </div>
+          <div class="q-bubble">
+            <i data-lucide="message-circle" class="q-icon"></i>
+            <span data-i18n="sanghaQ4">"Which food have you quietly stopped eating — and never told anyone why?"</span>
+          </div>
+          <div class="q-bubble">
+            <i data-lucide="message-circle" class="q-icon"></i>
+            <span data-i18n="sanghaQ5">"Where does it show up first for you — the gut, the jaw, or the sleep?"</span>
+          </div>
+          <div class="q-bubble">
+            <i data-lucide="message-circle" class="q-icon"></i>
+            <span data-i18n="sanghaQ6">"What has your body been telling you that you keep deciding to ignore?"</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="sangha-pillars-column">
+        <h4 class="sangha-col-title font-display" data-i18n="sanghaInsideLabel">What is inside the Sangha:</h4>
+        <div class="sangha-cards-stack">
+          <div class="sangha-feature-card">
+            <div class="card-top">
+              <span class="feature-tag font-display" style="color:#7B8FA1">दोष</span>
+              <h5 class="font-display" data-i18n="sanghaF1">Your Dosha Circle</h5>
+            </div>
+            <p data-i18n="sanghaF1Note">Vata, Pitta or Kapha — you are grouped with members built exactly like you to exchange real experiences.</p>
+          </div>
+
+          <div class="sangha-feature-card">
+            <div class="card-top">
+              <span class="feature-tag font-display" style="color:#B8703F">पञ्चाङ्ग</span>
+              <h5 class="font-display" data-i18n="sanghaF2">Today's Panchanga</h5>
+            </div>
+            <p data-i18n="sanghaF2Note">The astrological and biological season, the herb of the day, and one reflective question to answer.</p>
+          </div>
+
+          <div class="sangha-feature-card">
+            <div class="card-top">
+              <span class="feature-tag font-display" style="color:#6B7F5E">विद्या</span>
+              <h5 class="font-display" data-i18n="sanghaF3">Reels That Teach</h5>
+            </div>
+            <p data-i18n="sanghaF3Note">Vaidya explainers, authentic nuskhe from elder practitioners, and documented case reflections.</p>
+          </div>
+        </div>
+
+        <div class="sangha-cta-wrapper">
+          <button class="btn-solid-gold w-full" onclick="openSanghaModal()" data-i18n="sanghaCta">Step Into the Sangha →</button>
+          <span class="sangha-footnote" data-i18n="sanghaFootnote">Free to join · Someone in there has already been where you are.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SAMHITA QUOTE & ARCHED PORTRAIT ================= -->
+  <section class="section-container bg-sand-subtle">
+    <div class="quote-editorial-wrapper">
+      <div class="arched-portrait-card">
+        <div class="serene-illustration">
+          <div class="sacred-aura"></div>
+          <div class="scripture-badge font-display">चरक संहिता</div>
+        </div>
+      </div>
+
+      <div class="quote-text-container">
+        <div class="sanskrit-verse font-display">
+          "समदोषः समाग्निश्च समधातुमलक्रियः।<br />
+          प्रसन्नात्मेन्द्रियमनाः स्वस्थ इत्यभिधीयते॥"
+        </div>
+        <p class="quote-translation font-cormorant">
+          "He whose doshas are in balance, whose digestive fire is balanced, whose tissues and excretions are functioning properly, and whose soul, senses, and mind are serene and joyful — is called a healthy person."
+        </p>
+        <div class="quote-author">
+          <span class="author-name">— Charaka Samhita, Sutrasthana</span>
+          <span class="author-sub">Classical Ayurvedic Medical Canon (c. 300 BCE)</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PATRIKA / JOURNAL ================= -->
+  <section id="journal" class="section-container">
+    <div class="section-header-split">
+      <div>
+        <div class="eyebrow-wrapper">
+          <span class="eyebrow-devanagari">पत्रिका</span>
+          <span class="eyebrow-sep">·</span>
+          <span class="eyebrow-text">Patrika Journal</span>
+        </div>
+        <h2 class="section-title font-display" data-i18n="journalHeadline">Ayurveda, Written Plainly</h2>
+      </div>
+      <a href="blog.html" class="editorial-read-link" data-i18n="journalCta">Explore all articles →</a>
+    </div>
+
+    <div class="journal-articles-grid">
+      <article class="journal-card" onclick="openArticleModal(1)">
+        <div class="journal-card-top">
+          <span class="article-category">CHRONOBIOLOGY</span>
+          <span class="article-read-time">5 min read</span>
+        </div>
+        <h3 class="journal-title font-display">The Circadian Body: How Ayurveda Predicted Modern Chronobiology by 3,000 Years</h3>
+        <p class="journal-excerpt">The four-hour dosha clock explains why afternoon brain fog occurs, why cortisol spikes at 6 AM, and how to harness your biological peak.</p>
+        <span class="journal-more">Read article →</span>
+      </article>
+
+      <article class="journal-card" onclick="openArticleModal(2)">
+        <div class="journal-card-top">
+          <span class="article-category">RITUCHARYA</span>
+          <span class="article-read-time">7 min read</span>
+        </div>
+        <h3 class="journal-title font-display">Transitioning Your Digestive Agni: The Autumn Ritual of Sharad Ritu</h3>
+        <p class="journal-excerpt">Why skin flare-ups and sudden acidity spike as summer transitions into autumn, and how Tikta (bitter) herbs purge accumulated Pitta heat.</p>
+        <span class="journal-more">Read article →</span>
+      </article>
+
+      <article class="journal-card" onclick="openArticleModal(3)">
+        <div class="journal-card-top">
+          <span class="article-category">PHARMACOLOGY</span>
+          <span class="article-read-time">4 min read</span>
+        </div>
+        <h3 class="journal-title font-display">Ashwagandha vs Brahmi: Classical Distinction for Modern Anxiety</h3>
+        <p class="journal-excerpt">Not all adaptogens are created equal. Discover whether your restless mind requires deep adrenal rejuvenation or cooling cerebral clarity.</p>
+        <span class="journal-more">Read article →</span>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================= FINAL CTA SECTION ================= -->
+  <section class="final-cta-section">
+    <div class="cta-inner-card">
+      <span class="cta-crest-devanagari">आरम्भ</span>
+      <h2 class="cta-title font-display" data-i18n="ctaTitle">Begin your journey.</h2>
+      <p class="cta-body" data-i18n="ctaBody">
+        Your constitution was decided at conception. Understanding it is the first step to lifelong balance.
+      </p>
+
+      <div class="cta-btn-group">
+        <a href="assessment.html" class="btn-solid-gold btn-lg" data-i18n="ctaAssessment">
+          Take the 5-Minute Prakriti Assessment →
+        </a>
+        <a href="checkin.html" class="btn-outline-gold btn-lg" data-i18n="navCheckin">
+          Daily Pariksha Check-in
+        </a>
+      </div>
+
+      <div class="cta-trust-badge">
+        <span>Free forever</span>
+        <span class="dot">·</span>
+        <span>No card required</span>
+        <span class="dot">·</span>
+        <span>Takes 5 minutes</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ SECTION ================= -->
+  <section id="faq" class="section-container bg-sand-subtle">
+    <div class="section-header-centered">
+      <div class="eyebrow-wrapper">
+        <span class="eyebrow-devanagari">प्रश्न</span>
+        <span class="eyebrow-sep">·</span>
+        <span class="eyebrow-text">Questions</span>
+      </div>
+      <h2 class="section-title font-display">The five things people ask first</h2>
+      <p class="section-subtitle">
+        What Ardya Veda is, what the doshas actually mean, who you are talking to when you consult a Vaidya, and what any of it costs. Answered plainly, once.
+      </p>
+    </div>
+
+    <div class="faq-accordion-list">
+      <div class="faq-item" id="faq-1">
+        <button class="faq-question-btn" onclick="toggleFaq('faq-1')">
+          <div class="faq-num-col">
+            <span class="faq-num font-display">01</span>
+            <span class="faq-devanagari">आर्ध्यवेद</span>
+          </div>
+          <span class="faq-question-text font-display">What is Ardya Veda?</span>
+          <i data-lucide="plus" class="faq-icon"></i>
+        </button>
+        <div class="faq-answer-panel">
+          <p>
+            Ardya Veda is an Ayurvedic lifestyle companion. It identifies your <strong>Prakriti</strong> — your constitutional makeup of Vata, Pitta, and Kapha — in a free five-minute assessment, then personalises everything that follows: dosha-specific meal plans, seasonal Ritucharya routines, movement prescribed at half strength, daily Pariksha check-ins, and consultations with verified Vaidyas by chat, voice, or video.
+          </p>
+          <a href="assessment.html" class="faq-inline-link">Take the free assessment →</a>
+        </div>
+      </div>
+
+      <div class="faq-item" id="faq-2">
+        <button class="faq-question-btn" onclick="toggleFaq('faq-2')">
+          <div class="faq-num-col">
+            <span class="faq-num font-display">02</span>
+            <span class="faq-devanagari">त्रिदोष</span>
+          </div>
+          <span class="faq-question-text font-display">What are Vata, Pitta and Kapha — and how do I know which one I am?</span>
+          <i data-lucide="plus" class="faq-icon"></i>
+        </button>
+        <div class="faq-answer-panel">
+          <p>
+            They are the three doshas: the functional biological principles Ayurveda uses to describe a human body. <strong>Vata</strong> (air and space) governs movement and nervous energy; <strong>Pitta</strong> (fire and water) governs digestion and metabolism; <strong>Kapha</strong> (earth and water) governs structure and immunity. Most people are a dual combination that remains theirs for life.
+          </p>
+          <a href="dosha.html" class="faq-inline-link">Read about the three doshas →</a>
+        </div>
+      </div>
+
+      <div class="faq-item" id="faq-3">
+        <button class="faq-question-btn" onclick="toggleFaq('faq-3')">
+          <div class="faq-num-col">
+            <span class="faq-num font-display">03</span>
+            <span class="faq-devanagari">वैद्य</span>
+          </div>
+          <span class="faq-question-text font-display">Can I consult a real Ayurvedic doctor on Ardya Veda?</span>
+          <i data-lucide="plus" class="faq-icon"></i>
+        </button>
+        <div class="faq-answer-panel">
+          <p>
+            Yes. Every doctor on Ardya Veda is an identity-verified, classical physician (MD / BAMS Ayurveda). Consult via live text chat, voice call, or high-definition video. The Vaidya sees your Prakriti profile and recent check-ins before the session begins.
+          </p>
+          <a href="consult.html" class="faq-inline-link">See our featured Vaidyas →</a>
+        </div>
+      </div>
+
+      <div class="faq-item" id="faq-4">
+        <button class="faq-question-btn" onclick="toggleFaq('faq-4')">
+          <div class="faq-num-col">
+            <span class="faq-num font-display">04</span>
+            <span class="faq-devanagari">प्रकृति</span>
+          </div>
+          <span class="faq-question-text font-display">What is free on Ardya Veda, and what costs money?</span>
+          <i data-lucide="plus" class="faq-icon"></i>
+        </button>
+        <div class="faq-answer-panel">
+          <p>
+            The Prakriti assessment is 100% free with no credit card required. So are your personal Prakriti Card, daily Pariksha check-ins, the Ask Ardya companion, and the Sangha community. What costs money is 1-on-1 consultations with a verified Vaidya and herbal formulations ordered from the Apothecary.
+          </p>
+          <a href="assessment.html" class="faq-inline-link">Start free assessment →</a>
+        </div>
+      </div>
+
+      <div class="faq-item" id="faq-5">
+        <button class="faq-question-btn" onclick="toggleFaq('faq-5')">
+          <div class="faq-num-col">
+            <span class="faq-num font-display">05</span>
+            <span class="faq-devanagari">पथ्य</span>
+          </div>
+          <span class="faq-question-text font-display">Is Ardya Veda a replacement for modern medical treatment?</span>
+          <i data-lucide="plus" class="faq-icon"></i>
+        </button>
+        <div class="faq-answer-panel">
+          <p>
+            No, and it is not designed to be. Ardya Veda offers supportive Ayurvedic lifestyle guidance — diet, daily circadian routines, movement, sleep, and botanical nourishment — that sits alongside modern medical care rather than in place of it.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-top-row">
+        <div class="footer-brand-col">
+          <a href="index.html" class="brand-logo footer-logo">
+            <span class="brand-text font-display" style="color:#C4A77D">Ardya Veda</span>
+          </a>
+          <p class="footer-slogan font-cormorant">"Ayurveda that moves with you."</p>
+          <p class="footer-bio">5,000 years of classical Vedic wisdom, personalized for your daily living.</p>
+        </div>
+
+        <div class="footer-links-group">
+          <div class="footer-links-col">
+            <span class="col-title">PRACTICE</span>
+            <a href="assessment.html" class="footer-link">Prakriti Quiz</a>
+            <a href="consult.html" class="footer-link">Consult a Vaidya</a>
+            <a href="checkin.html" class="footer-link">Daily Pariksha</a>
+            <a href="dosha.html" class="footer-link">Dosha Science</a>
+          </div>
+
+          <div class="footer-links-col">
+            <span class="col-title">CLINICIANS</span>
+            <a href="consult.html" class="footer-link font-semibold" style="color:#C4A77D">Join as a Vaidya</a>
+            <a href="#science" class="footer-link">Clinical Philosophy</a>
+            <a href="blog.html" class="footer-link">Patrika Journal</a>
+          </div>
+
+          <div class="footer-links-col">
+            <span class="col-title">COMPANY</span>
+            <a href="#" class="footer-link" onclick="openSanghaModal(); return false;">Sangha Community</a>
+            <a href="#" class="footer-link" onclick="alert('Contact: support@ardyaveda.com'); return false;">Contact</a>
+            <a href="#" class="footer-link" onclick="alert('Privacy Policy: All biological check-in data is strictly encrypted.'); return false;">Privacy</a>
+            <a href="#" class="footer-link" onclick="alert('Terms: Classical health recommendations are supportive wellness guidance.'); return false;">Terms</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom-row">
+        <p class="copyright-text">
+          © 2026 Akagai Labs. The science of life, in your hands.
+        </p>
+        <div class="footer-badges">
+          <span class="f-badge">Charaka Samhita</span>
+          <span class="f-badge">Ashtanga Hridayam</span>
+          <span class="f-badge">Sushruta Samhita</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ================= MODALS ON HOMEPAGE ================= -->
+  <!-- Booking Modal -->
+  <div id="consult-modal" class="modal-backdrop">
+    <div class="modal-card modal-medium">
+      <button class="modal-close-btn" onclick="closeConsultModal()"><i data-lucide="x"></i></button>
+      <div class="consult-modal-header">
+        <span class="crest-devanagari">वैद्य परामर्श</span>
+        <h2 id="modal-vaidya-name" class="font-display modal-title">Dr. Sumit Raina</h2>
+        <span id="modal-vaidya-qual" class="vaidya-tag-inline">MD Ayurveda · 3 Years in Practice</span>
+      </div>
+      <div class="consult-mode-selector">
+        <span class="mode-label">Choose Consultation Format:</span>
+        <div class="mode-tabs">
+          <button class="mode-tab active" data-mode="video" onclick="selectConsultMode('video')">
+            <i data-lucide="video" class="mode-icon"></i>
+            <span>Video Call</span>
+            <small>HD Consultation</small>
+          </button>
+          <button class="mode-tab" data-mode="voice" onclick="selectConsultMode('voice')">
+            <i data-lucide="phone" class="mode-icon"></i>
+            <span>Audio Call</span>
+            <small>Direct Voice</small>
+          </button>
+          <button class="mode-tab" data-mode="chat" onclick="selectConsultMode('chat')">
+            <i data-lucide="message-square" class="mode-icon"></i>
+            <span>Instant Chat</span>
+            <small>Async + Live</small>
+          </button>
+        </div>
+      </div>
+      <div class="consult-form-fields">
+        <div class="field-item">
+          <label>Select Date & Time Slot:</label>
+          <select id="consult-slot-select" class="custom-select">
+            <option>Today — 06:30 PM (Immediate / Next Available)</option>
+            <option>Today — 08:00 PM</option>
+            <option>Tomorrow — 10:00 AM</option>
+            <option>Tomorrow — 04:00 PM</option>
+            <option>Saturday — 11:30 AM</option>
+          </select>
+        </div>
+        <div class="field-item">
+          <label>Primary Health Goal or Imbalance:</label>
+          <input type="text" id="consult-reason-input" class="custom-input" placeholder="e.g. Digestive bloating, sleep insomnia, joint stiffness, stress" />
+        </div>
+      </div>
+      <div class="consult-fee-summary">
+        <div class="fee-row">
+          <span>Consultation Fee:</span>
+          <strong>₹499 <span class="fee-sub">(Free initial 10-min for first-time members)</span></strong>
+        </div>
+      </div>
+      <button id="confirm-booking-btn" class="btn-solid-gold w-full btn-lg" onclick="confirmDoctorBooking()">
+        Confirm Consultation & Connect →
+      </button>
+    </div>
+  </div>
+
+  <!-- Article Modal -->
+  <div id="article-modal" class="modal-backdrop">
+    <div class="modal-card modal-medium">
+      <button class="modal-close-btn" onclick="closeArticleModal()"><i data-lucide="x"></i></button>
+      <div class="article-reader-container">
+        <span id="article-modal-cat" class="article-category">CHRONOBIOLOGY</span>
+        <h2 id="article-modal-title" class="font-display modal-title mt-2">Article Title</h2>
+        <div class="article-meta-row">
+          <span>By Dr. Shilpa V. Rajan (MD Ayurveda)</span>
+          <span>·</span>
+          <span>5 min read</span>
+        </div>
+        <div id="article-modal-body" class="article-full-body font-body"></div>
+        <button class="btn-outline-gold w-full mt-6" onclick="closeArticleModal()">Close Reading</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MODULAR JS ARCHITECTURE ================= -->
+  <script src="js/i18n.js"></script>
+  <script src="js/vaidyas.js"></script>
+  <script src="js/assessment.js"></script>
+  <script src="js/checkin.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

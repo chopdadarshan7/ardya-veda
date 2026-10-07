@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Prakriti Assessment — Discover Your Dosha | Ardya Veda</title>
+  <meta name="description" content="Discover your Prakriti (Vata, Pitta, Kapha) in a free five-minute classical assessment. Receive your personal Prakriti Card and tailored lifestyle guidance." />
+  <meta name="theme-color" content="#F5F0E8" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <!-- Icons & Confetti -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <!-- Modular CSS -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-vastra text-kala antialiased grain-overlay">
+
+  <!-- ================= HEADER ================= -->
+  <header class="navbar-fixed scrolled">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-mark">
+          <svg viewBox="0 0 100 100" class="logo-svg">
+            <circle cx="50" cy="50" r="46" fill="none" stroke="#C4A77D" stroke-width="2" opacity="0.6"/>
+            <path d="M50 16 C35 34, 30 54, 50 84 C70 54, 65 34, 50 16 Z" fill="none" stroke="#C4A77D" stroke-width="2.2"/>
+            <circle cx="50" cy="46" r="6" fill="#C4A77D"/>
+          </svg>
+        </div>
+        <span class="brand-text">Ardya Veda</span>
+      </a>
+
+      <div class="nav-links-desktop">
+        <a href="index.html" class="nav-link">Home</a>
+        <span class="nav-dot">·</span>
+        <a href="assessment.html" class="nav-link active">Assessment</a>
+        <span class="nav-dot">·</span>
+        <a href="consult.html" class="nav-link">Vaidyas</a>
+        <span class="nav-dot">·</span>
+        <a href="checkin.html" class="nav-link">Daily Pariksha</a>
+        <span class="nav-dot">·</span>
+        <a href="dosha.html" class="nav-link">Doshas</a>
+      </div>
+
+      <div class="nav-actions">
+        <button id="lang-toggle-btn" class="lang-switch-pill" title="Toggle Language">
+          <span id="lang-en" class="lang-code active">EN</span>
+          <span class="lang-sep">/</span>
+          <span id="lang-hi" class="lang-code">HI</span>
+        </button>
+        <a href="consult.html" class="btn-solid-gold">Consult Vaidya</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= ASSESSMENT PAGE MAIN ================= -->
+  <main style="padding-top: 120px; min-height: 80vh;" class="section-container">
+    <div class="modal-card modal-large" style="margin: 0 auto; box-shadow: var(--shadow-lg);">
+
+      <!-- Welcome Stage -->
+      <div id="quiz-stage-welcome" class="quiz-stage-content active">
+        <div class="quiz-crest-badge font-display">प्रकृति परीक्षा</div>
+        <h1 class="font-display modal-title" style="font-size: 36px;">Namaste, dear seeker.</h1>
+        <p class="modal-subtitle font-cormorant italic" style="font-size: 20px;">
+          "Your constitution is not who you wish to be — it is who you naturally are."
+        </p>
+        <p class="modal-text" style="font-size: 16px;">
+          Your unique blend of the five cosmic elements — your <strong>Prakriti</strong> — was formed at the exact moment of your conception. It is as distinct and indelible as your fingerprint.
+        </p>
+
+        <div class="quiz-features-pills">
+          <div class="q-pill"><i data-lucide="check" class="icon-inline text-gold"></i> Dosha-matched food guidance (Pathya)</div>
+          <div class="q-pill"><i data-lucide="check" class="icon-inline text-gold"></i> Optimal circadian daily timing (Dinacharya)</div>
+          <div class="q-pill"><i data-lucide="check" class="icon-inline text-gold"></i> Classical Rasayana herbs tailored to your Agni</div>
+        </div>
+
+        <div class="quiz-start-footer">
+          <span class="quiz-time-tag"><i data-lucide="clock" class="icon-inline"></i> Takes only 3–5 minutes · 10 Questions</span>
+          <button class="btn-solid-gold btn-lg" onclick="startAssessmentFlow()">Discover My Constitution →</button>
+        </div>
+      </div>
+
+      <!-- Question Flow Stage -->
+      <div id="quiz-stage-questions" class="quiz-stage-content">
+        <!-- Progress Bar -->
+        <div class="quiz-progress-bar-container">
+          <div class="quiz-progress-labels">
+            <span id="quiz-category-tag" class="quiz-cat-tag">PHYSICAL FRAME</span>
+            <span id="quiz-step-count" class="quiz-step-text">Question 1 of 10</span>
+          </div>
+          <div class="progress-track">
+            <div id="quiz-progress-fill" class="progress-fill" style="width: 10%"></div>
+          </div>
+        </div>
+
+        <!-- Dynamic Question Area -->
+        <div class="quiz-question-box">
+          <h2 id="quiz-question-title" class="font-display quiz-q-title">What best describes your natural body frame throughout your life?</h2>
+          <p id="quiz-question-help" class="quiz-q-help">Choose the option that reflects your lifetime baseline, not recent temporary changes.</p>
+          
+          <div id="quiz-options-container" class="quiz-options-grid">
+            <!-- Dynamically populated options -->
+          </div>
+        </div>
+
+        <div class="quiz-nav-row">
+          <button id="quiz-prev-btn" class="btn-ghost" onclick="prevQuizQuestion()"><i data-lucide="arrow-left" class="icon-inline"></i> Previous</button>
+          <span class="quiz-nav-hint">Select one answer to continue</span>
+        </div>
+      </div>
+
+      <!-- Result Stage: Generated Prakriti Card -->
+      <div id="quiz-stage-result" class="quiz-stage-content">
+        <div class="result-celebration" style="text-align: center; margin-bottom: 24px;">
+          <span class="crest-devanagari" style="font-size: 24px; color: var(--accent-gold);">सिद्धम्</span>
+          <h2 class="font-display modal-title" style="font-size: 34px;">Your Prakriti Blueprint</h2>
+          <p class="modal-subtitle font-cormorant italic">Here is the constitutional balance you were born with.</p>
+        </div>
+
+        <!-- The Downloadable Prakriti Card -->
+        <div id="prakriti-card" class="prakriti-card-container">
+          <div class="prakriti-card-header">
+            <div>
+              <span class="card-brand">ARDYA VEDA</span>
+              <h3 id="result-dominant-dosha" class="card-dominant-title font-display">Vata - Pitta</h3>
+              <span id="result-dominant-subtitle" class="card-dominant-sub">Dynamic Motion & Sharp Intellect</span>
+            </div>
+            <div id="result-card-badge" class="dosha-emblem">VP</div>
+          </div>
+
+          <!-- Dosha Percentage Breakdown Bars -->
+          <div class="breakdown-bars-group">
+            <!-- Vata Bar -->
+            <div class="dosha-meter-item">
+              <div class="meter-label-row">
+                <span class="dosha-name-label" style="color:#7B8FA1">Vata (Air + Ether)</span>
+                <span id="vata-percentage-text" class="dosha-percent-label">50%</span>
+              </div>
+              <div class="meter-bar-track">
+                <div id="vata-meter-fill" class="meter-bar-fill" style="width: 50%; background:#7B8FA1"></div>
+              </div>
+            </div>
+
+            <!-- Pitta Bar -->
+            <div class="dosha-meter-item">
+              <div class="meter-label-row">
+                <span class="dosha-name-label" style="color:#B8703F">Pitta (Fire + Water)</span>
+                <span id="pitta-percentage-text" class="dosha-percent-label">35%</span>
+              </div>
+              <div class="meter-bar-track">
+                <div id="pitta-meter-fill" class="meter-bar-fill" style="width: 35%; background:#B8703F"></div>
+              </div>
+            </div>
+
+            <!-- Kapha Bar -->
+            <div class="dosha-meter-item">
+              <div class="meter-label-row">
+                <span class="dosha-name-label" style="color:#6B7F5E">Kapha (Earth + Water)</span>
+                <span id="kapha-percentage-text" class="dosha-percent-label">15%</span>
+              </div>
+              <div class="meter-bar-track">
+                <div id="kapha-meter-fill" class="meter-bar-fill" style="width: 15%; background:#6B7F5E"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Personalized Prescriptions -->
+          <div class="prakriti-protocols-grid">
+            <div class="proto-col">
+              <strong class="proto-title"><i data-lucide="utensils" class="icon-inline"></i> Ideal Diet (Pathya)</strong>
+              <p id="proto-diet-text">Favor warm, unctuous, grounding meals with pure A2 ghee and gentle digestive spices like cumin, ginger, and cardamom.</p>
+            </div>
+            <div class="proto-col">
+              <strong class="proto-title"><i data-lucide="sun" class="icon-inline"></i> Optimal Routine (Dinacharya)</strong>
+              <p id="proto-routine-text">Warm sesame oil massage (Abhyanga), gentle yoga, and strict sleep before 10 PM to protect the nervous system.</p>
+            </div>
+          </div>
+
+          <!-- Vikriti Status Check -->
+          <div class="vikriti-note-box">
+            <i data-lucide="info" class="icon-inline text-gold"></i>
+            <span id="proto-vikriti-text">Your lifetime constitutional profile is consistent. Connect with a Vaidya for pulse verification (Nadi Pariksha).</span>
+          </div>
+        </div>
+
+        <!-- Result Action Buttons -->
+        <div class="result-actions-row">
+          <a href="consult.html" class="btn-solid-gold">
+            <i data-lucide="stethoscope" class="icon-inline"></i> Review with a Vaidya
+          </a>
+          <button class="btn-outline-gold" onclick="savePrakritiCard()">
+            <i data-lucide="download" class="icon-inline"></i> Save My Prakriti Card
+          </button>
+          <button class="btn-ghost" onclick="retakeAssessment()">Retake Quiz</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-bottom-row">
+        <p class="copyright-text">© 2026 Akagai Labs. The science of life, in your hands.</p>
+        <div class="footer-badges">
+          <a href="index.html" class="f-badge text-gold">Home</a>
+          <a href="consult.html" class="f-badge">Vaidyas</a>
+          <a href="checkin.html" class="f-badge">Check-in</a>
+          <a href="dosha.html" class="f-badge">Doshas</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modular Scripts -->
+  <script src="js/i18n.js"></script>
+  <script src="js/assessment.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

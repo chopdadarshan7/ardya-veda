@@ -1,0 +1,822 @@
+/* =========================================================================
+   ARDYA VEDA — INTERACTIVE COMPONENTS & MODALS STYLES
+   Updated: Dark charcoal (#24201D) replaced with Herbal Green (#6C805F / #4E6044)
+   ========================================================================= */
+
+/* ================= FEATURED VAIDYAS CAROUSEL ================= */
+.vaidya-hero-banner {
+  position: relative;
+  background: var(--bg-herbal-deep); /* Photo 1 Herbal Green */
+  color: #F5F0E8;
+  padding: 110px 24px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.vaidya-hero-backdrop {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(108, 128, 95, 0.4) 0%, rgba(62, 78, 54, 0.98) 75%);
+}
+
+.vaidya-hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 780px;
+  margin: 0 auto;
+}
+
+.vaidya-hero-title {
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  line-height: 1.1;
+  margin: 12px 0 20px;
+  color: #F5F0E8;
+}
+
+.vaidya-hero-sub {
+  color: rgba(245, 240, 232, 0.9);
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 36px;
+}
+
+.vaidya-hero-cta-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.carousel-nav-arrows {
+  display: flex;
+  gap: 10px;
+}
+
+.arrow-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--border-subtle);
+  background: #FFFFFF;
+  color: var(--text-kala);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.arrow-btn:hover {
+  background: var(--text-kala);
+  color: #FFFFFF;
+  border-color: var(--text-kala);
+}
+
+.vaidyas-carousel-track {
+  display: flex;
+  gap: 24px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-bottom: 24px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-gold) transparent;
+}
+
+.vaidyas-carousel-track::-webkit-scrollbar {
+  height: 6px;
+}
+.vaidyas-carousel-track::-webkit-scrollbar-thumb {
+  background: var(--accent-gold);
+  border-radius: 3px;
+}
+
+.vaidya-card-item {
+  flex: 0 0 310px;
+  scroll-snap-align: start;
+  background: #FFFFFF;
+  border: 1px solid var(--border-subtle);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s;
+}
+
+.vaidya-card-item:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(196, 167, 125, 0.5);
+}
+
+.vaidya-avatar-wrap {
+  position: relative;
+  height: 220px;
+  background: var(--bg-herbal-deep); /* Photo 1 Herbal tone */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vaidya-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.vaidya-initials-fallback {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #6C805F, #4E6044);
+  color: #F5F0E8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  font-family: var(--font-playfair);
+  border: 2px solid var(--accent-gold);
+}
+
+.vaidya-verified-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: rgba(62, 78, 54, 0.9);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #F5F0E8;
+  font-size: 11px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.vaidya-card-body {
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.vaidya-card-name {
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--text-kala);
+  margin-bottom: 2px;
+}
+
+.vaidya-card-exp {
+  font-size: 12px;
+  color: #8C8272;
+  margin-bottom: 14px;
+}
+
+.vaidya-specs-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.spec-badge {
+  background: var(--bg-vastra);
+  color: #4A4237;
+  font-size: 11px;
+  padding: 4px 9px;
+  border-radius: 12px;
+  border: 1px solid var(--border-subtle);
+}
+
+.vaidya-langs-row {
+  font-size: 12px;
+  color: #6C6355;
+  margin-bottom: 20px;
+}
+
+.vaidya-book-btn {
+  margin-top: auto;
+  width: 100%;
+  background: var(--accent-gold);
+  border: none;
+  color: var(--text-kala);
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.vaidya-book-btn:hover {
+  background: #d4b88d;
+}
+
+/* ================= MODALS & POPUPS ================= */
+.modal-backdrop {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(45, 58, 38, 0.88); /* Herbal Dark Backdrop */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.modal-backdrop.open {
+  display: flex;
+}
+
+.modal-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-gold-subtle);
+  border-radius: 12px;
+  padding: 40px;
+  position: relative;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  box-shadow: var(--shadow-lg);
+  animation: modalPop 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalPop {
+  from { opacity: 0; transform: scale(0.96) translateY(12px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.modal-large { max-width: 820px; }
+.modal-medium { max-width: 580px; }
+
+.modal-close-btn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(44, 40, 37, 0.06);
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-kala);
+  transition: all 0.2s;
+}
+
+.modal-close-btn:hover {
+  background: var(--text-kala);
+  color: #FFFFFF;
+}
+
+.modal-title {
+  font-size: 28px;
+  color: var(--text-kala);
+  margin-top: 6px;
+  margin-bottom: 6px;
+}
+
+.modal-subtitle {
+  font-size: 17px;
+  color: #7D7365;
+  margin-bottom: 16px;
+}
+
+.modal-text {
+  font-size: 14.5px;
+  color: #554D40;
+  line-height: 1.7;
+}
+
+/* ================= ASSESSMENT QUIZ COMPONENTS ================= */
+.quiz-crest-badge {
+  font-size: 18px;
+  color: var(--accent-gold);
+  letter-spacing: 0.1em;
+}
+
+.quiz-features-pills {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 24px 0;
+  background: var(--bg-vastra);
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.q-pill {
+  font-size: 14px;
+  color: #4A4237;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.quiz-start-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 32px;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.quiz-time-tag {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: #8C8272;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.quiz-stage-content {
+  display: none;
+}
+
+.quiz-stage-content.active {
+  display: block;
+}
+
+.quiz-progress-bar-container {
+  margin-bottom: 28px;
+}
+
+.quiz-progress-labels {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.quiz-cat-tag { color: var(--accent-gold-hover); }
+.quiz-step-text { color: #8C8272; }
+
+.progress-track {
+  height: 4px;
+  background: var(--border-subtle);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: var(--accent-gold);
+  transition: width 0.3s ease;
+}
+
+.quiz-q-title {
+  font-size: 22px;
+  color: var(--text-kala);
+  margin-bottom: 6px;
+}
+
+.quiz-q-help {
+  font-size: 13px;
+  color: #8C8272;
+  margin-bottom: 24px;
+}
+
+.quiz-options-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.quiz-option-btn {
+  background: #FFFFFF;
+  border: 1.5px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 16px 20px;
+  text-align: left;
+  font-size: 14.5px;
+  color: var(--text-kala);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  transition: all 0.2s;
+}
+
+.quiz-option-btn:hover {
+  border-color: var(--accent-gold);
+  background: #FAF7F2;
+  transform: translateX(4px);
+}
+
+.option-letter-badge {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid var(--accent-gold);
+  color: var(--accent-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.quiz-nav-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 28px;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 18px;
+}
+
+.quiz-nav-hint {
+  font-size: 11.5px;
+  color: #948A7B;
+}
+
+/* Prakriti Card Replaced with Photo 1 Herbal Green */
+.prakriti-card-container {
+  background: var(--bg-herbal-deep); /* #4E6044 */
+  color: #F5F0E8;
+  border: 1px solid rgba(196, 167, 125, 0.45);
+  border-radius: 12px;
+  padding: 36px 32px;
+  margin: 24px 0;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 12px 40px rgba(78, 96, 68, 0.35);
+}
+
+.prakriti-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.card-brand {
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  color: var(--accent-gold);
+  font-weight: 600;
+}
+
+.card-dominant-title {
+  font-size: 32px;
+  color: #F5F0E8;
+  margin-top: 2px;
+}
+
+.card-dominant-sub {
+  font-size: 13px;
+  color: rgba(245, 240, 232, 0.85);
+}
+
+.dosha-emblem {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1.5px solid var(--accent-gold);
+  color: var(--accent-gold);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-playfair);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.breakdown-bars-group {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 28px;
+}
+
+.meter-label-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12.5px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.meter-bar-track {
+  height: 6px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.meter-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.prakriti-protocols-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  background: rgba(255, 255, 255, 0.08);
+  padding: 18px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.proto-title {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--accent-gold);
+  margin-bottom: 4px;
+}
+
+.proto-col p {
+  font-size: 12.5px;
+  color: rgba(245, 240, 232, 0.9);
+  line-height: 1.5;
+}
+
+.vikriti-note-box {
+  margin-top: 18px;
+  background: rgba(196, 167, 125, 0.16);
+  border: 1px solid rgba(196, 167, 125, 0.3);
+  padding: 12px 16px;
+  border-radius: 6px;
+  font-size: 12.5px;
+  color: #F6ECD6;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.result-actions-row {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ================= CONSULTATION BOOKING MODAL ================= */
+.consult-modal-header {
+  margin-bottom: 24px;
+}
+
+.vaidya-tag-inline {
+  display: inline-block;
+  font-size: 12px;
+  color: #7D7365;
+  margin-top: 2px;
+}
+
+.mode-label {
+  display: block;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  color: #7D7365;
+  margin-bottom: 10px;
+}
+
+.mode-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  margin-bottom: 24px;
+}
+
+.mode-tab {
+  background: #FFFFFF;
+  border: 1.5px solid var(--border-subtle);
+  padding: 14px 10px;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.mode-tab.active {
+  border-color: var(--accent-gold);
+  background: #FAF7F2;
+}
+
+.mode-icon {
+  width: 22px;
+  height: 22px;
+  color: var(--accent-gold);
+  margin-bottom: 6px;
+}
+
+.mode-tab span {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-kala);
+}
+
+.mode-tab small {
+  font-size: 10px;
+  color: #8C8272;
+}
+
+.consult-form-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.field-item label {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  color: #4D4539;
+  margin-bottom: 6px;
+}
+
+.custom-select,
+.custom-input {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--border-subtle);
+  border-radius: 6px;
+  font-family: var(--font-inter);
+  font-size: 14px;
+  color: var(--text-kala);
+  outline: none;
+  background: #FFFFFF;
+}
+
+.custom-select:focus,
+.custom-input:focus {
+  border-color: var(--accent-gold);
+  box-shadow: 0 0 0 3px rgba(196, 167, 125, 0.2);
+}
+
+.checkbox-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-size: 12.5px;
+  color: #655E53;
+}
+
+.checkbox-row input {
+  margin-top: 3px;
+}
+
+.consult-fee-summary {
+  background: var(--bg-vastra);
+  padding: 14px 18px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+}
+
+.fee-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13.5px;
+  color: #4D4539;
+}
+
+.fee-sub {
+  font-size: 11px;
+  color: var(--sage-olive);
+  font-weight: 500;
+}
+
+/* ================= DAILY PARIKSHA MODAL ================= */
+.checkin-q-group {
+  margin-bottom: 20px;
+}
+
+.checkin-q-label {
+  display: block;
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--text-kala);
+  margin-bottom: 10px;
+}
+
+.checkin-pills-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.checkin-radio-pill {
+  cursor: pointer;
+}
+
+.checkin-radio-pill input {
+  display: none;
+}
+
+.checkin-radio-pill span {
+  display: inline-block;
+  padding: 8px 14px;
+  background: var(--bg-vastra);
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  font-size: 12.5px;
+  color: #4D4539;
+  transition: all 0.2s;
+}
+
+.checkin-radio-pill input:checked + span {
+  background: var(--bg-herbal-deep);
+  border-color: var(--bg-herbal-deep);
+  color: #FFFFFF;
+}
+
+.checkin-result-panel {
+  margin-top: 24px;
+  background: var(--bg-vastra);
+  border: 1px solid var(--border-gold-subtle);
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.checkin-result-badge {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 700;
+  color: var(--accent-gold);
+  margin-bottom: 6px;
+}
+
+/* ================= DOSHA EXPLORER MODAL ================= */
+.dosha-tag-elements {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--accent-gold);
+  font-weight: 600;
+}
+
+.dosha-breakdown-details {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 20px;
+  background: var(--bg-vastra);
+  padding: 20px;
+  border-radius: 8px;
+}
+
+.detail-block strong {
+  display: block;
+  font-size: 13px;
+  color: var(--text-kala);
+  margin-bottom: 2px;
+}
+
+.detail-block p {
+  font-size: 13px;
+  color: #554D40;
+  line-height: 1.5;
+}
+
+/* ================= ARTICLE READER MODAL ================= */
+.article-meta-row {
+  font-size: 12px;
+  color: #8C8272;
+  display: flex;
+  gap: 8px;
+  margin: 10px 0 20px;
+}
+
+.article-full-body {
+  font-size: 15px;
+  color: #4D4539;
+  line-height: 1.8;
+}
+
+.article-full-body p {
+  margin-bottom: 16px;
+}

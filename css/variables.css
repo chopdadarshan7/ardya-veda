@@ -1,0 +1,51 @@
+/* =========================================================================
+   ARDYA VEDA — CSS VARIABLES & DESIGN TOKENS
+   Updated with exact Herbal Olive Green (#6C805F) from Photo 1
+   ========================================================================= */
+
+:root {
+  /* Classical Vedic Earth & Botanical Color Palette */
+  --bg-vastra: #F5F0E8;
+  --text-kala: #2C2825;
+  --accent-gold: #C4A77D;
+  --accent-gold-hover: #b39466;
+
+  /* Photo 1 exact Ayurvedic Botanical Green */
+  --sage-olive: #6C805F;
+  --sage-olive-dark: #58694d;
+  --bg-herbal-green: #6C805F;
+  --bg-herbal-deep: #4E6044;
+  --bg-herbal-rich: #3E4E36;
+
+  --card-sand: #EDE6DA;
+  --card-sand-subtle: #F0EAE0;
+  --border-subtle: #E8E0D4;
+  --border-gold-subtle: rgba(196, 167, 125, 0.35);
+
+  /* Element Colors */
+  --color-vata: #7B8FA1;
+  --color-pitta: #B8703F;
+  --color-kapha: #6C805F;
+  --gold-glow: #E3B25A;
+
+  /* Typography */
+  --font-playfair: 'Playfair Display', Georgia, serif;
+  --font-cormorant: 'Cormorant Garamond', Georgia, serif;
+  --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-devanagari: 'Noto Sans Devanagari', serif;
+
+  /* Golden Ratio Spacing System */
+  --golden-xs: 8px;
+  --golden-sm: 13px;
+  --golden-md: 21px;
+  --golden-lg: 34px;
+  --golden-xl: 55px;
+  --golden-2xl: 89px;
+  --golden-3xl: 144px;
+
+  /* Elevation & Shadows */
+  --shadow-sm: 0 2px 8px rgba(44, 40, 37, 0.05);
+  --shadow-md: 0 8px 24px rgba(44, 40, 37, 0.08);
+  --shadow-lg: 0 16px 48px rgba(44, 40, 37, 0.12);
+  --shadow-gold: 0 4px 20px rgba(196, 167, 125, 0.28);
+}

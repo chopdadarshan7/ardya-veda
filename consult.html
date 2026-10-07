@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Consult Verified Vaidyas — Ayurvedic Doctors | Ardya Veda</title>
+  <meta name="description" content="Consult classically trained, identity-verified Ayurvedic physicians (MD & BAMS). Connect via Video, Audio, or Chat." />
+  <meta name="theme-color" content="#F5F0E8" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Modular CSS -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-vastra text-kala antialiased grain-overlay">
+
+  <!-- ================= HEADER ================= -->
+  <header class="navbar-fixed scrolled">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-mark">
+          <svg viewBox="0 0 100 100" class="logo-svg">
+            <circle cx="50" cy="50" r="46" fill="none" stroke="#C4A77D" stroke-width="2" opacity="0.6"/>
+            <path d="M50 16 C35 34, 30 54, 50 84 C70 54, 65 34, 50 16 Z" fill="none" stroke="#C4A77D" stroke-width="2.2"/>
+            <circle cx="50" cy="46" r="6" fill="#C4A77D"/>
+          </svg>
+        </div>
+        <span class="brand-text">Ardya Veda</span>
+      </a>
+
+      <div class="nav-links-desktop">
+        <a href="index.html" class="nav-link">Home</a>
+        <span class="nav-dot">·</span>
+        <a href="assessment.html" class="nav-link">Assessment</a>
+        <span class="nav-dot">·</span>
+        <a href="consult.html" class="nav-link active">Vaidyas</a>
+        <span class="nav-dot">·</span>
+        <a href="checkin.html" class="nav-link">Daily Pariksha</a>
+        <span class="nav-dot">·</span>
+        <a href="dosha.html" class="nav-link">Doshas</a>
+      </div>
+
+      <div class="nav-actions">
+        <button id="lang-toggle-btn" class="lang-switch-pill" title="Toggle Language">
+          <span id="lang-en" class="lang-code active">EN</span>
+          <span class="lang-sep">/</span>
+          <span id="lang-hi" class="lang-code">HI</span>
+        </button>
+        <a href="assessment.html" class="btn-outline-gold">Take Assessment</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= HERO ================= -->
+  <main style="padding-top: 100px;">
+    <section class="vaidya-hero-banner">
+      <div class="vaidya-hero-backdrop"></div>
+      <div class="vaidya-hero-content">
+        <div class="eyebrow-wrapper justify-center">
+          <span class="eyebrow-devanagari">चिकित्सक</span>
+          <span class="eyebrow-sep">·</span>
+          <span class="eyebrow-text-gold">Classical Ayurvedic Clinical Board</span>
+        </div>
+        <h1 class="vaidya-hero-title font-display">
+          Your Vaidya. <span class="italic font-cormorant">Your Guide.</span>
+        </h1>
+        <p class="vaidya-hero-sub">
+          Every Vaidya on Ardya Veda is an identity-verified, classical physician holding government-recognized MD or BAMS degrees. Before your consultation begins, your doctor reviews your constitutional Prakriti profile and recent check-ins.
+        </p>
+      </div>
+    </section>
+
+    <!-- ================= DIRECTORY GRID ================= -->
+    <section class="section-container">
+      <div class="section-header-split">
+        <div>
+          <div class="eyebrow-wrapper">
+            <span class="eyebrow-devanagari">वैद्य मण्डल</span>
+            <span class="eyebrow-sep">·</span>
+            <span class="eyebrow-text">Available Doctors</span>
+          </div>
+          <h2 class="section-title font-display">Select Your Physician</h2>
+        </div>
+      </div>
+
+      <!-- Grid of all Doctors -->
+      <div class="dosha-grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));">
+        <!-- Dr. Sumit Raina -->
+        <div class="vaidya-card-item" style="flex: auto;">
+          <div class="vaidya-avatar-wrap">
+            <div class="vaidya-initials-fallback">SR</div>
+            <div class="vaidya-verified-badge">
+              <i data-lucide="shield-check" class="icon-sm text-gold"></i>
+              <span>MD Ayurveda</span>
+            </div>
+          </div>
+          <div class="vaidya-card-body">
+            <h4 class="vaidya-card-name font-display">Dr. Sumit Raina</h4>
+            <div class="vaidya-card-exp">3 Years in Practice · 4.9 ★ (180+ consultations)</div>
+            <div class="vaidya-specs-wrap">
+              <span class="spec-badge">Digestive Health</span>
+              <span class="spec-badge">Stress & Anxiety</span>
+              <span class="spec-badge">Agni Balancing</span>
+            </div>
+            <div class="vaidya-langs-row">
+              <strong>Languages:</strong> Hindi, English, Kashmiri, Punjabi
+            </div>
+            <button class="vaidya-book-btn" onclick="openConsultModal('sumit-raina')">
+              <i data-lucide="video" class="icon-sm"></i>
+              <span>Book Consultation (₹499)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Dr. Shilpa V. Rajan -->
+        <div class="vaidya-card-item" style="flex: auto;">
+          <div class="vaidya-avatar-wrap">
+            <div class="vaidya-initials-fallback">SR</div>
+            <div class="vaidya-verified-badge">
+              <i data-lucide="shield-check" class="icon-sm text-gold"></i>
+              <span>MD Ayurveda</span>
+            </div>
+          </div>
+          <div class="vaidya-card-body">
+            <h4 class="vaidya-card-name font-display">Dr. Shilpa V. Rajan</h4>
+            <div class="vaidya-card-exp">9 Years in Practice · 5.0 ★ (450+ consultations)</div>
+            <div class="vaidya-specs-wrap">
+              <span class="spec-badge">Osteo-arthritis</span>
+              <span class="spec-badge">Sciatica</span>
+              <span class="spec-badge">Vata Disorders</span>
+            </div>
+            <div class="vaidya-langs-row">
+              <strong>Languages:</strong> Hindi, English
+            </div>
+            <button class="vaidya-book-btn" onclick="openConsultModal('shilpa-rajan')">
+              <i data-lucide="video" class="icon-sm"></i>
+              <span>Book Consultation (₹499)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Dr. Chaithra Sethumadhavan -->
+        <div class="vaidya-card-item" style="flex: auto;">
+          <div class="vaidya-avatar-wrap">
+            <div class="vaidya-initials-fallback">CS</div>
+            <div class="vaidya-verified-badge">
+              <i data-lucide="shield-check" class="icon-sm text-gold"></i>
+              <span>MD Ayurveda</span>
+            </div>
+          </div>
+          <div class="vaidya-card-body">
+            <h4 class="vaidya-card-name font-display">Dr. Chaithra Sethumadhavan</h4>
+            <div class="vaidya-card-exp">9 Years in Practice · 4.9 ★ (320+ consultations)</div>
+            <div class="vaidya-specs-wrap">
+              <span class="spec-badge">Ayurveda Psychiatry</span>
+              <span class="spec-badge">Manas Prakriti</span>
+              <span class="spec-badge">Sleep Insomnia</span>
+            </div>
+            <div class="vaidya-langs-row">
+              <strong>Languages:</strong> English, Malayalam
+            </div>
+            <button class="vaidya-book-btn" onclick="openConsultModal('chaithra-s')">
+              <i data-lucide="video" class="icon-sm"></i>
+              <span>Book Consultation (₹499)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Dr. Radhika Shah -->
+        <div class="vaidya-card-item" style="flex: auto;">
+          <div class="vaidya-avatar-wrap">
+            <div class="vaidya-initials-fallback">RS</div>
+            <div class="vaidya-verified-badge">
+              <i data-lucide="shield-check" class="icon-sm text-gold"></i>
+              <span>MD (Ayurveda)</span>
+            </div>
+          </div>
+          <div class="vaidya-card-body">
+            <h4 class="vaidya-card-name font-display">Dr. Radhika Shah</h4>
+            <div class="vaidya-card-exp">3 Years in Practice · 4.8 ★ (140+ consultations)</div>
+            <div class="vaidya-specs-wrap">
+              <span class="spec-badge">Women's Health</span>
+              <span class="spec-badge">Hormonal Balance</span>
+              <span class="spec-badge">Digestive Health</span>
+            </div>
+            <div class="vaidya-langs-row">
+              <strong>Languages:</strong> Hindi, English, Gujarati
+            </div>
+            <button class="vaidya-book-btn" onclick="openConsultModal('radhika-shah')">
+              <i data-lucide="video" class="icon-sm"></i>
+              <span>Book Consultation (₹499)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Dr. Priyanka Patil -->
+        <div class="vaidya-card-item" style="flex: auto;">
+          <div class="vaidya-avatar-wrap">
+            <div class="vaidya-initials-fallback">PP</div>
+            <div class="vaidya-verified-badge">
+              <i data-lucide="shield-check" class="icon-sm text-gold"></i>
+              <span>MD (Ayurveda)</span>
+            </div>
+          </div>
+          <div class="vaidya-card-body">
+            <h4 class="vaidya-card-name font-display">Dr. Priyanka Patil</h4>
+            <div class="vaidya-card-exp">3 Years in Practice · 4.9 ★ (195+ consultations)</div>
+            <div class="vaidya-specs-wrap">
+              <span class="spec-badge">PCOS & Women's Health</span>
+              <span class="spec-badge">Stress</span>
+              <span class="spec-badge">Skin Radiance</span>
+            </div>
+            <div class="vaidya-langs-row">
+              <strong>Languages:</strong> Hindi, English, Marathi
+            </div>
+            <button class="vaidya-book-btn" onclick="openConsultModal('priyanka-patil')">
+              <i data-lucide="video" class="icon-sm"></i>
+              <span>Book Consultation (₹499)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Dr. Karan Lakhani -->
+        <div class="vaidya-card-item" style="flex: auto;">
+          <div class="vaidya-avatar-wrap">
+            <div class="vaidya-initials-fallback">KL</div>
+            <div class="vaidya-verified-badge">
+              <i data-lucide="shield-check" class="icon-sm text-gold"></i>
+              <span>MD Ayurveda</span>
+            </div>
+          </div>
+          <div class="vaidya-card-body">
+            <h4 class="vaidya-card-name font-display">Dr. Karan Lakhani</h4>
+            <div class="vaidya-card-exp">3 Years in Practice · 4.8 ★ (110+ consultations)</div>
+            <div class="vaidya-specs-wrap">
+              <span class="spec-badge">Immunity (Ojas)</span>
+              <span class="spec-badge">General Practice</span>
+              <span class="spec-badge">Detoxification</span>
+            </div>
+            <div class="vaidya-langs-row">
+              <strong>Languages:</strong> Hindi, English
+            </div>
+            <button class="vaidya-book-btn" onclick="openConsultModal('karan-lakhani')">
+              <i data-lucide="video" class="icon-sm"></i>
+              <span>Book Consultation (₹499)</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= BOOKING MODAL ================= -->
+  <div id="consult-modal" class="modal-backdrop">
+    <div class="modal-card modal-medium">
+      <button class="modal-close-btn" onclick="closeConsultModal()"><i data-lucide="x"></i></button>
+
+      <div class="consult-modal-header">
+        <span class="crest-devanagari">वैद्य परामर्श</span>
+        <h2 id="modal-vaidya-name" class="font-display modal-title">Dr. Sumit Raina</h2>
+        <span id="modal-vaidya-qual" class="vaidya-tag-inline">MD Ayurveda · 3 Years in Practice</span>
+      </div>
+
+      <div class="consult-mode-selector">
+        <span class="mode-label">Choose Consultation Format:</span>
+        <div class="mode-tabs">
+          <button class="mode-tab active" data-mode="video" onclick="selectConsultMode('video')">
+            <i data-lucide="video" class="mode-icon"></i>
+            <span>Video Call</span>
+            <small>HD Consultation</small>
+          </button>
+          <button class="mode-tab" data-mode="voice" onclick="selectConsultMode('voice')">
+            <i data-lucide="phone" class="mode-icon"></i>
+            <span>Audio Call</span>
+            <small>Direct Voice</small>
+          </button>
+          <button class="mode-tab" data-mode="chat" onclick="selectConsultMode('chat')">
+            <i data-lucide="message-square" class="mode-icon"></i>
+            <span>Instant Chat</span>
+            <small>Async + Live</small>
+          </button>
+        </div>
+      </div>
+
+      <div class="consult-form-fields">
+        <div class="field-item">
+          <label>Select Date & Time Slot:</label>
+          <select id="consult-slot-select" class="custom-select">
+            <option>Today — 06:30 PM (Immediate / Next Available)</option>
+            <option>Today — 08:00 PM</option>
+            <option>Tomorrow — 10:00 AM</option>
+            <option>Tomorrow — 04:00 PM</option>
+            <option>Saturday — 11:30 AM</option>
+          </select>
+        </div>
+
+        <div class="field-item">
+          <label>Primary Health Goal or Imbalance:</label>
+          <input type="text" id="consult-reason-input" class="custom-input" placeholder="e.g. Digestive bloating, sleep insomnia, joint stiffness, stress" />
+        </div>
+
+        <div class="field-item">
+          <label>Attach My Prakriti Card:</label>
+          <div class="checkbox-row">
+            <input type="checkbox" id="attach-prakriti-check" checked />
+            <label for="attach-prakriti-check">Automatically share my Prakriti quiz results with this doctor.</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="consult-fee-summary">
+        <div class="fee-row">
+          <span>Consultation Fee:</span>
+          <strong>₹499 <span class="fee-sub">(Free initial 10-min for first-time members)</span></strong>
+        </div>
+      </div>
+
+      <button id="confirm-booking-btn" class="btn-solid-gold w-full btn-lg" onclick="confirmDoctorBooking()">
+        Confirm Consultation & Connect →
+      </button>
+    </div>
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-bottom-row">
+        <p class="copyright-text">© 2026 Akagai Labs. The science of life, in your hands.</p>
+        <div class="footer-badges">
+          <a href="index.html" class="f-badge text-gold">Home</a>
+          <a href="assessment.html" class="f-badge">Assessment</a>
+          <a href="checkin.html" class="f-badge">Check-in</a>
+          <a href="dosha.html" class="f-badge">Doshas</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modular Scripts -->
+  <script src="js/i18n.js"></script>
+  <script src="js/vaidyas.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,279 @@
+/* =========================================================================
+   ARDYA VEDA — HERO SECTION & PANCHANGA STYLES
+   Updated: Background replaced with Herbal Green (#6C805F) from Photo 1
+   ========================================================================= */
+
+.hero-section {
+  position: relative;
+  min-height: 100dvh;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 80px;
+  overflow: hidden;
+  background: var(--bg-herbal-deep); /* #4E6044 with #6C805F tone */
+}
+
+.hero-bg-container {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.hero-ambient-glow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 65% 35%, rgba(108, 128, 95, 0.45) 0%, rgba(196, 167, 125, 0.22) 40%, rgba(62, 78, 54, 0.95) 80%);
+}
+
+.hero-botanical-layer {
+  position: absolute;
+  inset: 0;
+  opacity: 0.16;
+  background-image: radial-gradient(#F5F0E8 1.5px, transparent 1.5px);
+  background-size: 32px 32px;
+}
+
+.hero-overlay-gradient {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(78, 96, 68, 0.3) 0%, rgba(62, 78, 54, 0.6) 45%, rgba(45, 58, 38, 0.92) 100%);
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  max-width: 680px;
+  margin-left: 8vw;
+  padding: 0 20px;
+  animation: heroFadeUp 1s ease-out forwards;
+}
+
+@keyframes heroFadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hero-devanagari-crest {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.crest-line {
+  width: 32px;
+  height: 1px;
+  background: var(--accent-gold);
+}
+
+.crest-devanagari {
+  font-family: var(--font-devanagari);
+  font-size: 13px;
+  color: var(--accent-gold);
+  letter-spacing: 0.08em;
+}
+
+.hero-title {
+  font-size: clamp(3.2rem, 7.5vw, 6.2rem);
+  color: #F5F0E8;
+  line-height: 0.96;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+.hero-tagline {
+  font-size: clamp(1.4rem, 2.6vw, 2.1rem);
+  font-style: italic;
+  color: #F6ECD6;
+  margin-top: 20px;
+  line-height: 1.35;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.25);
+}
+
+.hero-subtext {
+  color: rgba(245, 240, 232, 0.9);
+  font-size: 15px;
+  margin-top: 16px;
+  max-width: 520px;
+  line-height: 1.6;
+}
+
+.hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 36px;
+  flex-wrap: wrap;
+}
+
+.hero-primary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 36px;
+  border: 1px solid var(--accent-gold);
+  color: #F5F0E8;
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: rgba(108, 128, 95, 0.5);
+  backdrop-filter: blur(8px);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border-radius: 2px;
+  text-decoration: none;
+}
+
+.hero-primary-btn:hover {
+  background: var(--accent-gold);
+  border-color: var(--accent-gold);
+  color: #2C2825;
+}
+
+.hero-secondary-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px 28px;
+  color: rgba(245, 240, 232, 0.9);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.hero-secondary-btn:hover {
+  color: #FFFFFF;
+}
+
+.hero-badges {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 32px;
+  color: rgba(245, 240, 232, 0.85);
+  font-size: 12px;
+  flex-wrap: wrap;
+}
+
+.badge-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.badge-icon {
+  width: 14px;
+  height: 14px;
+  color: var(--accent-gold);
+}
+
+.badge-divider {
+  color: var(--accent-gold);
+  opacity: 0.5;
+}
+
+.scroll-indicator {
+  position: absolute;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.scroll-text {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  color: var(--accent-gold);
+  opacity: 0.9;
+}
+
+.scroll-line {
+  width: 1px;
+  height: 28px;
+  background: var(--accent-gold);
+  animation: scrollLinePulse 2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+}
+
+@keyframes scrollLinePulse {
+  0% { transform: scaleY(0); transform-origin: top; opacity: 0; }
+  50% { transform: scaleY(1); transform-origin: top; opacity: 1; }
+  51% { transform: scaleY(1); transform-origin: bottom; opacity: 1; }
+  100% { transform: scaleY(0); transform-origin: bottom; opacity: 0; }
+}
+
+/* ================= PANCHANGA BAR ================= */
+.panchanga-bar {
+  background: var(--bg-herbal-rich); /* Deep herbal green from Photo 1 */
+  border-top: 1px solid rgba(196, 167, 125, 0.35);
+  border-bottom: 1px solid rgba(196, 167, 125, 0.35);
+  padding: 12px 24px;
+}
+
+.panchanga-inner {
+  max-width: 1300px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.panchanga-tag {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: #F6ECD6;
+}
+
+.pulse-dot {
+  width: 8px;
+  height: 8px;
+  background: #A3E635;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #A3E635;
+}
+
+.panchanga-text {
+  font-size: 13px;
+  color: rgba(245, 240, 232, 0.9);
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.panchanga-sep {
+  opacity: 0.3;
+}
+
+.panchanga-quick-btn {
+  background: rgba(196, 167, 125, 0.2);
+  border: 1px solid var(--accent-gold);
+  color: #F5F0E8;
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  padding: 6px 16px;
+  cursor: pointer;
+  border-radius: 2px;
+  transition: background 0.2s;
+  text-decoration: none;
+}
+
+.panchanga-quick-btn:hover {
+  background: var(--accent-gold);
+  color: #2C2825;
+}

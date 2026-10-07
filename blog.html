@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Patrika Journal — Evidence-Based Ayurveda | Ardya Veda</title>
+  <meta name="description" content="Ayurvedic science written plainly. Classical research on chronobiology, seasonal routines (Ritucharya), and herbal pharmacology." />
+  <meta name="theme-color" content="#F5F0E8" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Modular CSS -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-vastra text-kala antialiased grain-overlay">
+
+  <!-- ================= HEADER ================= -->
+  <header class="navbar-fixed scrolled">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-mark">
+          <svg viewBox="0 0 100 100" class="logo-svg">
+            <circle cx="50" cy="50" r="46" fill="none" stroke="#C4A77D" stroke-width="2" opacity="0.6"/>
+            <path d="M50 16 C35 34, 30 54, 50 84 C70 54, 65 34, 50 16 Z" fill="none" stroke="#C4A77D" stroke-width="2.2"/>
+            <circle cx="50" cy="46" r="6" fill="#C4A77D"/>
+          </svg>
+        </div>
+        <span class="brand-text">Ardya Veda</span>
+      </a>
+
+      <div class="nav-links-desktop">
+        <a href="index.html" class="nav-link">Home</a>
+        <span class="nav-dot">·</span>
+        <a href="assessment.html" class="nav-link">Assessment</a>
+        <span class="nav-dot">·</span>
+        <a href="consult.html" class="nav-link">Vaidyas</a>
+        <span class="nav-dot">·</span>
+        <a href="checkin.html" class="nav-link">Daily Pariksha</a>
+        <span class="nav-dot">·</span>
+        <a href="blog.html" class="nav-link active">Patrika</a>
+      </div>
+
+      <div class="nav-actions">
+        <button id="lang-toggle-btn" class="lang-switch-pill" title="Toggle Language">
+          <span id="lang-en" class="lang-code active">EN</span>
+          <span class="lang-sep">/</span>
+          <span id="lang-hi" class="lang-code">HI</span>
+        </button>
+        <a href="assessment.html" class="btn-solid-gold">Prakriti Quiz</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= HERO ================= -->
+  <main style="padding-top: 100px;">
+    <section class="section-container" style="text-align: center; max-width: 860px;">
+      <div class="eyebrow-wrapper justify-center">
+        <span class="eyebrow-devanagari">पत्रिका</span>
+        <span class="eyebrow-sep">·</span>
+        <span class="eyebrow-text">Ayurvedic Journal</span>
+      </div>
+      <h1 class="section-title font-display" style="font-size: 48px;">
+        Ayurveda, Written Plainly
+      </h1>
+      <p class="section-subtitle">
+        Bridging 5,000 years of classical Sanskrit medical scriptures with contemporary peer-reviewed physiology, circadian chronobiology, and clinical pharmacology.
+      </p>
+    </section>
+
+    <!-- Articles Grid -->
+    <section class="section-container" style="padding-top: 0;">
+      <div class="journal-articles-grid">
+        <!-- Article 1 -->
+        <article class="journal-card" onclick="openArticleModal(1)">
+          <div class="journal-card-top">
+            <span class="article-category">CHRONOBIOLOGY</span>
+            <span class="article-read-time">5 min read</span>
+          </div>
+          <h2 class="journal-title font-display">The Circadian Body: How Ayurveda Predicted Modern Chronobiology by 3,000 Years</h2>
+          <p class="journal-excerpt">The four-hour dosha clock explains why afternoon brain fog occurs, why cortisol spikes at 6 AM, and how to harness your biological peak.</p>
+          <span class="journal-more">Read full study →</span>
+        </article>
+
+        <!-- Article 2 -->
+        <article class="journal-card" onclick="openArticleModal(2)">
+          <div class="journal-card-top">
+            <span class="article-category">RITUCHARYA</span>
+            <span class="article-read-time">7 min read</span>
+          </div>
+          <h2 class="journal-title font-display">Transitioning Your Digestive Agni: The Autumn Ritual of Sharad Ritu</h2>
+          <p class="journal-excerpt">Why skin flare-ups and sudden acidity spike as summer transitions into autumn, and how Tikta (bitter) herbs purge accumulated Pitta heat.</p>
+          <span class="journal-more">Read full study →</span>
+        </article>
+
+        <!-- Article 3 -->
+        <article class="journal-card" onclick="openArticleModal(3)">
+          <div class="journal-card-top">
+            <span class="article-category">PHARMACOLOGY</span>
+            <span class="article-read-time">4 min read</span>
+          </div>
+          <h2 class="journal-title font-display">Ashwagandha vs Brahmi: Classical Distinction for Modern Anxiety</h2>
+          <p class="journal-excerpt">Not all adaptogens are created equal. Discover whether your restless mind requires deep adrenal rejuvenation or cooling cerebral clarity.</p>
+          <span class="journal-more">Read full study →</span>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <!-- ================= ARTICLE READER MODAL ================= -->
+  <div id="article-modal" class="modal-backdrop">
+    <div class="modal-card modal-medium">
+      <button class="modal-close-btn" onclick="closeArticleModal()"><i data-lucide="x"></i></button>
+
+      <div class="article-reader-container">
+        <span id="article-modal-cat" class="article-category">CHRONOBIOLOGY</span>
+        <h2 id="article-modal-title" class="font-display modal-title mt-2">Article Title</h2>
+        <div class="article-meta-row">
+          <span>By Dr. Shilpa V. Rajan (MD Ayurveda)</span>
+          <span>·</span>
+          <span>5 min read</span>
+        </div>
+        <div id="article-modal-body" class="article-full-body font-body"></div>
+        <button class="btn-outline-gold w-full mt-6" onclick="closeArticleModal()">Close Reading</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-bottom-row">
+        <p class="copyright-text">© 2026 Akagai Labs. The science of life, in your hands.</p>
+        <div class="footer-badges">
+          <a href="index.html" class="f-badge text-gold">Home</a>
+          <a href="assessment.html" class="f-badge">Assessment</a>
+          <a href="consult.html" class="f-badge">Vaidyas</a>
+          <a href="checkin.html" class="f-badge">Check-in</a>
+          <a href="dosha.html" class="f-badge">Doshas</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modular Scripts -->
+  <script src="js/i18n.js"></script>
+  <script src="js/navigation.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

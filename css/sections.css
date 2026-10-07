@@ -1,0 +1,907 @@
+/* =========================================================================
+   ARDYA VEDA — CORE SECTIONS STYLING
+   Updated: Dark charcoal (#2C2825) replaced with Herbal Green (#6C805F / #4E6044)
+   ========================================================================= */
+
+.section-container {
+  max-width: 1260px;
+  margin: 0 auto;
+  padding: 100px 24px;
+}
+
+.bg-sand-subtle {
+  background-color: var(--card-sand-subtle);
+}
+
+.section-header-centered {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 60px;
+}
+
+.section-header-split {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 50px;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.eyebrow-wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.eyebrow-devanagari {
+  font-family: var(--font-devanagari);
+  font-size: 14px;
+  color: var(--accent-gold);
+  font-weight: 500;
+}
+
+.eyebrow-sep {
+  color: var(--accent-gold);
+  opacity: 0.4;
+}
+
+.eyebrow-text {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-weight: 600;
+  color: #7D7365;
+}
+
+.eyebrow-text-gold {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-weight: 600;
+  color: var(--accent-gold);
+}
+
+.section-title {
+  font-size: clamp(2rem, 3.8vw, 3.2rem);
+  color: var(--text-kala);
+  line-height: 1.15;
+  font-weight: 400;
+  letter-spacing: -0.01em;
+}
+
+.section-subtitle {
+  margin-top: 18px;
+  font-size: 16px;
+  color: #655E53;
+  line-height: 1.7;
+}
+
+/* ================= DOSHA GRID ================= */
+.dosha-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 28px;
+  margin-top: 40px;
+}
+
+.dosha-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 36px 30px;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.dosha-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+}
+
+.dosha-card.vata-theme::before { background: var(--color-vata); }
+.dosha-card.pitta-theme::before { background: var(--color-pitta); }
+.dosha-card.kapha-theme::before { background: var(--color-kapha); }
+
+.dosha-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-md);
+  border-color: rgba(196, 167, 125, 0.5);
+}
+
+.dosha-header {
+  margin-bottom: 16px;
+}
+
+.dosha-title-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+}
+
+.dosha-name {
+  font-size: 28px;
+  color: var(--text-kala);
+  font-weight: 500;
+}
+
+.dosha-devanagari {
+  font-family: var(--font-devanagari);
+  font-size: 18px;
+  opacity: 0.35;
+}
+
+.dosha-elements {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  color: #8C8272;
+}
+
+.dosha-motto {
+  font-family: var(--font-cormorant);
+  font-style: italic;
+  font-size: 17px;
+  color: #4D4539;
+  margin-bottom: 24px;
+  line-height: 1.4;
+}
+
+.dosha-traits {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 20px;
+  margin-bottom: 28px;
+  font-size: 13.5px;
+}
+
+.trait-row {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.trait-label {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #948A7B;
+  font-weight: 600;
+}
+
+.trait-val {
+  color: var(--text-kala);
+}
+
+.dosha-explore-btn {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: transparent;
+  border: 1px solid rgba(196, 167, 125, 0.5);
+  color: var(--text-kala);
+  padding: 12px 18px;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-decoration: none;
+}
+
+.dosha-explore-btn:hover {
+  background: var(--bg-vastra);
+  border-color: var(--accent-gold);
+  color: #1A1714;
+}
+
+/* Teaser Box Replaced with Photo 1 Herbal Green */
+.quiz-teaser-box {
+  margin-top: 50px;
+  background: var(--bg-herbal-deep); /* #4E6044 */
+  color: #F5F0E8;
+  padding: 36px 44px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 24px;
+  border: 1px solid rgba(196, 167, 125, 0.3);
+  box-shadow: 0 8px 30px rgba(78, 96, 68, 0.25);
+}
+
+.teaser-text h4, .teaser-text h3 {
+  font-size: 24px;
+  color: #F6ECD6;
+  margin-bottom: 6px;
+}
+
+.teaser-text p {
+  color: rgba(245, 240, 232, 0.9);
+  font-size: 14px;
+  max-width: 580px;
+}
+
+/* ================= EDITORIAL RITUAL GRID ================= */
+.editorial-split-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.editorial-art-card {
+  position: relative;
+  aspect-ratio: 4 / 4.8;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--bg-herbal-deep);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid rgba(196, 167, 125, 0.3);
+}
+
+.brass-vessel-art {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  background: radial-gradient(circle at 50% 30%, #6C805F 0%, #3E4E36 75%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.brass-bowl-glow {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #E3B25A 0%, #AA7C11 60%, transparent 80%);
+  filter: blur(16px);
+  opacity: 0.65;
+  animation: plateBreathe 4s ease-in-out infinite alternate;
+}
+
+@keyframes plateBreathe {
+  0% { transform: scale(0.92); opacity: 0.55; }
+  100% { transform: scale(1.08); opacity: 0.8; }
+}
+
+.art-overlay-caption {
+  position: absolute;
+  bottom: 24px;
+  left: 24px;
+  right: 24px;
+  background: rgba(62, 78, 54, 0.9); /* Photo 1 Herbal tone */
+  backdrop-filter: blur(12px);
+  padding: 16px 20px;
+  border-radius: 6px;
+  border: 1px solid rgba(196, 167, 125, 0.3);
+}
+
+.art-caption-title {
+  display: block;
+  font-size: 19px;
+  color: #F6ECD6;
+  font-style: italic;
+}
+
+.art-caption-sub {
+  display: block;
+  font-size: 12px;
+  color: rgba(245, 240, 232, 0.85);
+  margin-top: 2px;
+}
+
+.editorial-text-col h2 {
+  margin-bottom: 24px;
+}
+
+.editorial-body p {
+  color: #574F44;
+  font-size: 15.5px;
+  line-height: 1.75;
+  margin-bottom: 18px;
+}
+
+.ritual-pillars {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 30px;
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 24px;
+}
+
+.pillar-item {
+  display: flex;
+  gap: 18px;
+  align-items: baseline;
+}
+
+.pillar-num {
+  font-size: 20px;
+  color: var(--accent-gold);
+  font-weight: 600;
+  min-width: 28px;
+}
+
+.pillar-info strong {
+  display: block;
+  font-size: 15px;
+  color: var(--text-kala);
+}
+
+.pillar-info span {
+  font-size: 13.5px;
+  color: #6C6355;
+}
+
+/* ================= 4-STEP TIMELINE ================= */
+.steps-timeline-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.step-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 32px 24px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.step-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--accent-gold);
+}
+
+.step-badge {
+  font-size: 28px;
+  color: var(--accent-gold);
+  line-height: 1;
+  margin-bottom: 16px;
+}
+
+.step-title {
+  font-size: 22px;
+  color: var(--text-kala);
+  margin-bottom: 10px;
+  font-weight: 500;
+}
+
+.step-desc {
+  font-size: 14px;
+  color: #655E53;
+  line-height: 1.65;
+  margin-bottom: 20px;
+}
+
+.step-tag {
+  margin-top: auto;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  color: var(--sage-olive);
+  text-decoration: none;
+}
+
+/* ================= NOURISHMENT & 6 TASTES ================= */
+.tastes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 18px;
+  margin-top: 40px;
+}
+
+.taste-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 24px 18px;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.taste-card:hover, .taste-card.active {
+  border-color: var(--accent-gold);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  background: #FAF7F2;
+}
+
+.taste-sanskrit {
+  font-family: var(--font-devanagari);
+  font-size: 26px;
+  color: var(--accent-gold);
+  margin-bottom: 8px;
+}
+
+.taste-name {
+  font-size: 16px;
+  color: var(--text-kala);
+  margin-bottom: 4px;
+}
+
+.taste-elements {
+  display: block;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #8C8272;
+  margin-bottom: 10px;
+}
+
+.taste-desc {
+  font-size: 12.5px;
+  color: #554D40;
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+.taste-sample {
+  display: block;
+  font-size: 11px;
+  color: var(--sage-olive);
+  font-style: italic;
+}
+
+.taste-detail-box {
+  margin-top: 36px;
+  background: #FFFFFF;
+  border: 1px solid var(--border-subtle);
+  border-left: 4px solid var(--accent-gold);
+  border-radius: 6px;
+  padding: 20px 24px;
+}
+
+.taste-detail-inner {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 14.5px;
+  color: #4D4539;
+}
+
+/* ================= SANGHA COMMUNITY ================= */
+.sangha-interactive-container {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  gap: 40px;
+  margin-top: 50px;
+  align-items: start;
+}
+
+.sangha-col-title {
+  font-size: 20px;
+  color: var(--text-kala);
+  margin-bottom: 20px;
+}
+
+.questions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.q-bubble {
+  background: #FFFFFF;
+  border: 1px solid var(--border-subtle);
+  padding: 16px 20px;
+  border-radius: 8px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  font-size: 14px;
+  color: #4A4237;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.q-bubble:hover, .q-bubble.active {
+  border-color: var(--accent-gold);
+  background: #FAF7F2;
+  color: var(--text-kala);
+  transform: translateX(4px);
+}
+
+.q-icon {
+  width: 18px;
+  height: 18px;
+  color: var(--accent-gold);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.sangha-cards-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.sangha-feature-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 22px 24px;
+}
+
+.card-top {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 8px;
+}
+
+.feature-tag {
+  font-family: var(--font-devanagari);
+  font-size: 18px;
+}
+
+.sangha-feature-card h5 {
+  font-size: 17px;
+  color: var(--text-kala);
+}
+
+.sangha-feature-card p {
+  font-size: 13.5px;
+  color: #6C6355;
+  line-height: 1.5;
+}
+
+.sangha-cta-wrapper {
+  margin-top: 24px;
+  text-align: center;
+}
+
+.sangha-footnote {
+  display: block;
+  font-size: 12px;
+  color: #7D7365;
+  margin-top: 10px;
+}
+
+/* ================= SAMHITA QUOTE & ARCHED PORTRAIT ================= */
+.quote-editorial-wrapper {
+  display: grid;
+  grid-template-columns: 0.9fr 1.3fr;
+  gap: 60px;
+  align-items: center;
+}
+
+.arched-portrait-card {
+  aspect-ratio: 3 / 4;
+  border-top-left-radius: 200px;
+  border-top-right-radius: 200px;
+  overflow: hidden;
+  background: var(--bg-herbal-deep); /* Photo 1 Herbal Green */
+  border: 1px solid rgba(196, 167, 125, 0.4);
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.serene-illustration {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: radial-gradient(circle at 50% 40%, #6C805F 0%, #3E4E36 85%);
+}
+
+.sacred-aura {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 1px dashed var(--accent-gold);
+  opacity: 0.6;
+  animation: spin 30s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.scripture-badge {
+  position: absolute;
+  bottom: 24px;
+  font-family: var(--font-devanagari);
+  font-size: 16px;
+  color: #F6ECD6;
+  letter-spacing: 0.1em;
+}
+
+.quote-text-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sanskrit-verse {
+  font-family: var(--font-devanagari);
+  font-size: clamp(1.2rem, 2vw, 1.6rem);
+  color: var(--accent-gold);
+  line-height: 1.6;
+}
+
+.quote-translation {
+  font-size: clamp(1.15rem, 1.8vw, 1.45rem);
+  color: #3D372F;
+  line-height: 1.65;
+  font-style: italic;
+}
+
+.quote-author {
+  border-top: 1px solid var(--border-subtle);
+  padding-top: 16px;
+}
+
+.author-name {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-kala);
+}
+
+.author-sub {
+  display: block;
+  font-size: 12px;
+  color: #7D7365;
+}
+
+/* ================= PATRIKA ARTICLES ================= */
+.editorial-read-link {
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-weight: 600;
+  color: var(--text-kala);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.editorial-read-link:hover {
+  color: var(--accent-gold);
+}
+
+.journal-articles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 28px;
+}
+
+.journal-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-subtle);
+  border-radius: 8px;
+  padding: 30px;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+}
+
+.journal-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--accent-gold);
+}
+
+.journal-card-top {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.article-category {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  font-weight: 700;
+  color: var(--accent-gold);
+}
+
+.article-read-time {
+  font-size: 11px;
+  color: #8C8272;
+}
+
+.journal-title {
+  font-size: 20px;
+  color: var(--text-kala);
+  line-height: 1.35;
+  margin-bottom: 12px;
+}
+
+.journal-excerpt {
+  font-size: 13.5px;
+  color: #655E53;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.journal-more {
+  margin-top: auto;
+  font-size: 11.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  color: var(--sage-olive);
+}
+
+/* Final CTA Card Replaced with Photo 1 Herbal Green */
+.final-cta-section {
+  padding: 90px 24px;
+  background: var(--bg-vastra);
+}
+
+.cta-inner-card {
+  max-width: 800px;
+  margin: 0 auto;
+  background: var(--bg-herbal-deep); /* #4E6044 with #6C805F herbal tone */
+  color: #F5F0E8;
+  padding: 70px 40px;
+  border-radius: 12px;
+  text-align: center;
+  border: 1px solid rgba(196, 167, 125, 0.4);
+  box-shadow: 0 16px 48px rgba(78, 96, 68, 0.3);
+}
+
+.cta-crest-devanagari {
+  font-family: var(--font-devanagari);
+  font-size: 22px;
+  color: #F6ECD6;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.cta-title {
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  color: #F5F0E8;
+  margin-bottom: 14px;
+}
+
+.cta-body {
+  font-size: 16px;
+  color: rgba(245, 240, 232, 0.9);
+  max-width: 520px;
+  margin: 0 auto 32px;
+  line-height: 1.65;
+}
+
+.cta-btn-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.cta-trust-badge {
+  margin-top: 28px;
+  font-size: 12px;
+  color: rgba(245, 240, 232, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.cta-trust-badge .dot {
+  color: var(--accent-gold);
+}
+
+/* ================= FAQ ACCORDION ================= */
+.faq-accordion-list {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.faq-item {
+  border-bottom: 1px solid var(--border-gold-subtle);
+}
+
+.faq-question-btn {
+  width: 100%;
+  background: transparent;
+  border: none;
+  padding: 28px 12px;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  gap: 20px;
+}
+
+.faq-num-col {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  min-width: 80px;
+}
+
+.faq-num {
+  font-size: 20px;
+  color: var(--accent-gold);
+  font-style: italic;
+}
+
+.faq-devanagari {
+  font-family: var(--font-devanagari);
+  font-size: 13px;
+  color: #8C8272;
+}
+
+.faq-question-text {
+  font-size: clamp(1.15rem, 1.8vw, 1.4rem);
+  color: var(--text-kala);
+  flex: 1;
+  font-weight: 500;
+}
+
+.faq-icon {
+  width: 20px;
+  height: 20px;
+  color: var(--accent-gold);
+  transition: transform 0.3s;
+}
+
+.faq-item.active .faq-icon {
+  transform: rotate(45deg);
+}
+
+.faq-answer-panel {
+  display: none;
+  padding: 0 12px 30px 92px;
+  color: #554D40;
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+.faq-item.active .faq-answer-panel {
+  display: block;
+}
+
+.faq-inline-link {
+  background: transparent;
+  border: none;
+  color: var(--accent-gold-hover);
+  font-weight: 600;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 14px;
+  cursor: pointer;
+  display: inline-block;
+  text-decoration: none;
+}

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Daily Pariksha — 60-Second Health Log | Ardya Veda</title>
+  <meta name="description" content="Log your daily biological pulse. Track digestive Agni, sleep quality, and receive real-time Ayurvedic bio-remedies." />
+  <meta name="theme-color" content="#F5F0E8" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <!-- Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Modular CSS -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="bg-vastra text-kala antialiased grain-overlay">
+
+  <!-- ================= HEADER ================= -->
+  <header class="navbar-fixed scrolled">
+    <div class="nav-container">
+      <a href="index.html" class="brand-logo">
+        <div class="logo-mark">
+          <svg viewBox="0 0 100 100" class="logo-svg">
+            <circle cx="50" cy="50" r="46" fill="none" stroke="#C4A77D" stroke-width="2" opacity="0.6"/>
+            <path d="M50 16 C35 34, 30 54, 50 84 C70 54, 65 34, 50 16 Z" fill="none" stroke="#C4A77D" stroke-width="2.2"/>
+            <circle cx="50" cy="46" r="6" fill="#C4A77D"/>
+          </svg>
+        </div>
+        <span class="brand-text">Ardya Veda</span>
+      </a>
+
+      <div class="nav-links-desktop">
+        <a href="index.html" class="nav-link">Home</a>
+        <span class="nav-dot">·</span>
+        <a href="assessment.html" class="nav-link">Assessment</a>
+        <span class="nav-dot">·</span>
+        <a href="consult.html" class="nav-link">Vaidyas</a>
+        <span class="nav-dot">·</span>
+        <a href="checkin.html" class="nav-link active">Daily Pariksha</a>
+        <span class="nav-dot">·</span>
+        <a href="dosha.html" class="nav-link">Doshas</a>
+      </div>
+
+      <div class="nav-actions">
+        <button id="lang-toggle-btn" class="lang-switch-pill" title="Toggle Language">
+          <span id="lang-en" class="lang-code active">EN</span>
+          <span class="lang-sep">/</span>
+          <span id="lang-hi" class="lang-code">HI</span>
+        </button>
+        <a href="assessment.html" class="btn-solid-gold">Prakriti Quiz</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= MAIN CHECK-IN ================= -->
+  <main style="padding-top: 120px; min-height: 80vh;" class="section-container">
+    <div class="modal-card modal-medium" style="margin: 0 auto; box-shadow: var(--shadow-lg);">
+      <div class="checkin-header">
+        <span class="crest-devanagari">दैनिक परीक्षा</span>
+        <h1 class="font-display modal-title" style="font-size: 30px;">Daily Pariksha Pulse</h1>
+        <p class="modal-subtitle font-cormorant italic" style="font-size: 18px;">
+          "Tune in to what your internal biological clock is whispering today."
+        </p>
+      </div>
+
+      <form id="checkin-form" onsubmit="handleCheckinSubmit(event)">
+        <!-- Q1: Digestion -->
+        <div class="checkin-q-group">
+          <label class="checkin-q-label">1. How is your digestion and appetite today?</label>
+          <div class="checkin-pills-row">
+            <label class="checkin-radio-pill"><input type="radio" name="checkin_digestion" value="balanced" checked /> <span>Balanced & Light</span></label>
+            <label class="checkin-radio-pill"><input type="radio" name="checkin_digestion" value="vata" /> <span>Bloated / Irregular (Vata)</span></label>
+            <label class="checkin-radio-pill"><input type="radio" name="checkin_digestion" value="pitta" /> <span>Sharp / Acidic (Pitta)</span></label>
+            <label class="checkin-radio-pill"><input type="radio" name="checkin_digestion" value="kapha" /> <span>Heavy / Sluggish (Kapha)</span></label>
+          </div>
+        </div>
+
+        <!-- Q2: Energy -->
+        <div class="checkin-q-group">
+          <label class="checkin-q-label">2. How is your mental & physical energy?</label>
+          <div class="checkin-pills-row">
+            <label class="checkin-radio-pill"><input type="radio" name="checkin_energy" value="balanced" checked /> <span>Steady & Grounded</span></label>
+            <label class="checkin-radio-pill"><input type="radio" name="checkin_energy" value="vata" /> <span>Restless / Racing (Vata)</span></label>
+            <label class="checkin-radio-pill"><input type="radio" name="checkin_energy" value="pitta" /> <span>Intense / Overheated (Pitta)</span></label>
+            <label class="checkin-radio-pill"><input type="radio" name="checkin_energy" value="kapha" /> <span>Dull / Lethargic (Kapha)</span></label>
+          </div>
+        </div>
+
+        <!-- Q3: Sleep -->
+        <div class="checkin-q-group">
+          <label class="checkin-q-label">3. How was your sleep last night?</label>
+          <div class="checkin-pills-row">
+            <label class="checkin-radio-pill"><input type="radio" name="checkin_sleep" value="balanced" checked /> <span>Deep & Refreshed</span></label>
+            <label class="checkin-radio-pill"><input type="radio" name="checkin_sleep" value="vata" /> <span>Broken / Light (Vata)</span></label>
+            <label class="checkin-radio-pill"><input type="radio" name="checkin_sleep" value="pitta" /> <span>Hot / Vivid dreams (Pitta)</span></label>
+            <label class="checkin-radio-pill"><input type="radio" name="checkin_sleep" value="kapha" /> <span>Overslept / Groggy (Kapha)</span></label>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-solid-gold w-full btn-lg mt-4">
+          Calculate Today's Bio-Remedy →
+        </button>
+      </form>
+
+      <!-- Instant Advice Result Box -->
+      <div id="checkin-result-box" class="checkin-result-panel" style="display:none;">
+        <div class="checkin-result-badge">TODAY'S BIOLOGICAL PROTOCOL</div>
+        <h4 id="checkin-advice-title" class="font-display font-semibold text-lg text-kala">Your Agni is in equilibrium.</h4>
+        <p id="checkin-advice-body" class="text-sm text-kala/80 mt-1">Continue with your seasonal routine. Stay hydrated with warm CCF tea (Cumin, Coriander, Fennel).</p>
+        <div style="display:flex; gap:12px; margin-top:16px;">
+          <a href="consult.html" class="btn-solid-gold" style="flex:1;">Review with a Vaidya</a>
+          <button class="btn-outline-gold" onclick="location.reload()">New Check-in</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div class="footer-bottom-row">
+        <p class="copyright-text">© 2026 Akagai Labs. The science of life, in your hands.</p>
+        <div class="footer-badges">
+          <a href="index.html" class="f-badge text-gold">Home</a>
+          <a href="assessment.html" class="f-badge">Assessment</a>
+          <a href="consult.html" class="f-badge">Vaidyas</a>
+          <a href="dosha.html" class="f-badge">Doshas</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modular Scripts -->
+  <script src="js/i18n.js"></script>
+  <script src="js/checkin.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
