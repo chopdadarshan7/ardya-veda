@@ -14,6 +14,16 @@ html {
   -moz-osx-font-smoothing: grayscale;
 }
 
+button {
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button:focus,
+button:focus-visible {
+  outline: none;
+}
+
 body {
   background-color: var(--bg-vastra);
   color: var(--text-kala);

@@ -162,8 +162,6 @@ document.addEventListener('DOMContentLoaded', () => {
   
   const langBtn = document.getElementById('lang-toggle-btn');
   langBtn?.addEventListener('click', () => {
-    langBtn.classList.add('btn-pop');
-    setTimeout(() => langBtn.classList.remove('btn-pop'), 250);
     setLanguage(currentLang === 'en' ? 'hi' : 'en');
   });
 });
