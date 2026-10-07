@@ -160,8 +160,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const saved = localStorage.getItem('ardya_lang');
   if (saved) setLanguage(saved);
   
-  const langBtn = document.getElementById('lang-toggle-btn');
-  langBtn?.addEventListener('click', () => {
+  document.getElementById('lang-en')?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    setLanguage('en');
+  });
+  document.getElementById('lang-hi')?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    setLanguage('hi');
+  });
+  document.getElementById('lang-toggle-btn')?.addEventListener('click', () => {
     setLanguage(currentLang === 'en' ? 'hi' : 'en');
   });
 });

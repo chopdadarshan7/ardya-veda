@@ -793,9 +793,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.getElementById('open-checkin-nav-btn')?.addEventListener('click', openCheckinModal);
 
-  // Language toggle button (stable)
-  const langToggleBtn = document.getElementById('lang-toggle-btn');
-  langToggleBtn?.addEventListener('click', () => {
+  // Language toggle tabs (English / Hindi matching reference)
+  document.getElementById('lang-en')?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    setLanguage('en');
+  });
+  document.getElementById('lang-hi')?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    setLanguage('hi');
+  });
+  document.getElementById('lang-toggle-btn')?.addEventListener('click', () => {
     setLanguage(currentLang === 'en' ? 'hi' : 'en');
   });
 
