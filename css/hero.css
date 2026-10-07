@@ -212,7 +212,9 @@
 
 /* ================= PANCHANGA BAR ================= */
 .panchanga-bar {
-  background: var(--bg-herbal-rich); /* Deep herbal green from Photo 1 */
+  background-color: var(--bg-charcoal-earth, #2C2822);
+  background-image: radial-gradient(rgba(245, 240, 232, 0.12) 1.2px, transparent 1.2px);
+  background-size: 24px 24px;
   border-top: 1px solid rgba(196, 167, 125, 0.35);
   border-bottom: 1px solid rgba(196, 167, 125, 0.35);
   padding: 12px 24px;
