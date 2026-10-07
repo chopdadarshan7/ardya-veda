@@ -2,6 +2,9 @@
 
 A luxury Ayurvedic lifestyle web platform modeled after [ardyaveda.com](https://www.ardyaveda.com/), organized into a clean, modular multi-page codebase.
 
+- **GitHub Repository**: [https://github.com/chopdadarshan7/ardya-veda](https://github.com/chopdadarshan7/ardya-veda)
+- **Live Website (GitHub Pages)**: [https://chopdadarshan7.github.io/ardya-veda/](https://chopdadarshan7.github.io/ardya-veda/)
+
 ---
 
 ## 📁 Project Structure
