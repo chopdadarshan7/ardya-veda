@@ -793,8 +793,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
   document.getElementById('open-checkin-nav-btn')?.addEventListener('click', openCheckinModal);
 
-  // Language toggle button
-  document.getElementById('lang-toggle-btn')?.addEventListener('click', () => {
+  // Language toggle button with tactile micro-animation
+  const langToggleBtn = document.getElementById('lang-toggle-btn');
+  langToggleBtn?.addEventListener('click', () => {
+    langToggleBtn.classList.add('btn-pop');
+    setTimeout(() => langToggleBtn.classList.remove('btn-pop'), 250);
     setLanguage(currentLang === 'en' ? 'hi' : 'en');
   });
 

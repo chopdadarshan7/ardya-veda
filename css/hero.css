@@ -271,11 +271,18 @@
   padding: 6px 16px;
   cursor: pointer;
   border-radius: 2px;
-  transition: background 0.2s;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   text-decoration: none;
+  display: inline-block;
 }
 
 .panchanga-quick-btn:hover {
   background: var(--accent-gold);
   color: #2C2825;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 14px rgba(196, 167, 125, 0.45);
+}
+
+.panchanga-quick-btn:active {
+  transform: translateY(0) scale(0.96);
 }
