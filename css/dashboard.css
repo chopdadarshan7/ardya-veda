@@ -589,6 +589,34 @@
   font-weight: 450;
 }
 
+.vaidyas-nav-controls {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.doc-nav-arrow-btn {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: #FAF7F2;
+  border: 1px solid rgba(196, 167, 125, 0.45);
+  color: #4D4539;
+  font-size: 16px;
+  line-height: 1;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.doc-nav-arrow-btn:hover {
+  background-color: #B38646;
+  color: #FFFFFF;
+  border-color: #B38646;
+}
+
 .vaidyas-see-all {
   font-size: 12.5px;
   color: #6B6254;
@@ -596,6 +624,7 @@
   display: flex;
   align-items: center;
   gap: 4px;
+  margin-left: 4px;
 }
 
 .vaidyas-filter-tabs {
@@ -636,13 +665,42 @@
   display: flex;
   gap: 16px;
   overflow-x: auto;
-  padding-bottom: 12px;
+  overflow-y: hidden;
+  padding-bottom: 14px;
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  scroll-snap-type: x proximity;
+  touch-action: pan-x pan-y;
+  cursor: grab;
+  user-select: none;
   scrollbar-width: thin;
+  scrollbar-color: rgba(196, 167, 125, 0.4) transparent;
+}
+
+.doctors-carousel-track.grabbing {
+  cursor: grabbing;
+  scroll-behavior: auto;
+}
+
+.doctors-carousel-track::-webkit-scrollbar {
+  height: 6px;
+}
+
+.doctors-carousel-track::-webkit-scrollbar-track {
+  background: rgba(245, 240, 232, 0.4);
+  border-radius: 999px;
+}
+
+.doctors-carousel-track::-webkit-scrollbar-thumb {
+  background: rgba(196, 167, 125, 0.5);
+  border-radius: 999px;
 }
 
 .doctor-app-card {
   min-width: 175px;
   max-width: 175px;
+  flex-shrink: 0;
+  scroll-snap-align: start;
   background-color: #FFFFFF;
   border: 1px solid rgba(196, 167, 125, 0.3);
   border-radius: 12px;

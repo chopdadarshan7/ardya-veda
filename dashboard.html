@@ -300,7 +300,11 @@
             <div class="vaidyas-super-tag">YOUR VAIDYAS</div>
             <h3 class="vaidyas-main-heading">Practitioners online now</h3>
           </div>
-          <a href="consult.html" class="vaidyas-see-all">See all ›</a>
+          <div class="vaidyas-nav-controls">
+            <button id="doc-prev-btn" class="doc-nav-arrow-btn" title="Scroll Left" aria-label="Previous">‹</button>
+            <button id="doc-next-btn" class="doc-nav-arrow-btn" title="Scroll Right" aria-label="Next">›</button>
+            <a href="consult.html" class="vaidyas-see-all">See all ›</a>
+          </div>
         </div>
 
         <!-- Filters: Chat / Call / Video -->
@@ -320,12 +324,15 @@
         </div>
 
         <!-- Doctor Cards Horizontal Carousel -->
-        <div class="doctors-carousel-track">
+        <div class="doctors-carousel-track" id="doctors-carousel-track">
           
           <!-- Doctor 1: Dr. Radhika Shah -->
           <div class="doctor-app-card" data-supports="video call chat">
             <div class="doctor-card-photo-wrap">
-              <img src="https://images.unsplash.com/photo-1594824813576-90c0a9ef2230?auto=format&fit=crop&w=400&q=80" alt="Dr. Radhika Shah" class="doctor-card-photo">
+              <img src="https://images.unsplash.com/photo-1651008376811-b90baee60c1f?auto=format&fit=crop&w=400&q=80" 
+                   alt="Dr. Radhika Shah" 
+                   class="doctor-card-photo"
+                   onerror="this.src='https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=400&q=80'">
               <div class="doc-status-badge">
                 <span class="status-dot-green"></span> Available now
               </div>

@@ -64,6 +64,51 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
+  // 4. Doctor Carousel Navigation (Arrows + Drag to Scroll)
+  const docTrack = document.getElementById('doctors-carousel-track');
+  const prevDocBtn = document.getElementById('doc-prev-btn');
+  const nextDocBtn = document.getElementById('doc-next-btn');
+
+  if (docTrack) {
+    prevDocBtn?.addEventListener('click', () => {
+      docTrack.scrollBy({ left: -220, behavior: 'smooth' });
+    });
+
+    nextDocBtn?.addEventListener('click', () => {
+      docTrack.scrollBy({ left: 220, behavior: 'smooth' });
+    });
+
+    // Mouse Drag to Scroll
+    let isDown = false;
+    let startX = 0;
+    let scrollLeft = 0;
+
+    docTrack.addEventListener('mousedown', (e) => {
+      isDown = true;
+      docTrack.classList.add('grabbing');
+      startX = e.pageX - docTrack.offsetLeft;
+      scrollLeft = docTrack.scrollLeft;
+    });
+
+    docTrack.addEventListener('mouseleave', () => {
+      isDown = false;
+      docTrack.classList.remove('grabbing');
+    });
+
+    docTrack.addEventListener('mouseup', () => {
+      isDown = false;
+      docTrack.classList.remove('grabbing');
+    });
+
+    docTrack.addEventListener('mousemove', (e) => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - docTrack.offsetLeft;
+      const walk = (x - startX) * 1.6;
+      docTrack.scrollLeft = scrollLeft - walk;
+    });
+  }
+
   // 4. Video Now Consultation Trigger
   document.querySelectorAll('.btn-video-now').forEach(btn => {
     btn.addEventListener('click', (e) => {
