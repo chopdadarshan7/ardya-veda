@@ -9,7 +9,32 @@ document.addEventListener('DOMContentLoaded', () => {
     lucide.createIcons();
   }
 
-  // 2. Alert Banner Dismissal
+  // 2. Mobile Sidebar Drawer Controls
+  const sidebar = document.getElementById('app-sidebar');
+  const backdrop = document.getElementById('sidebar-backdrop');
+  const openSidebarBtns = [
+    document.getElementById('mobile-sidebar-toggle'),
+    document.getElementById('bottom-more-btn')
+  ];
+  const closeSidebarBtn = document.getElementById('close-sidebar-btn');
+
+  function openMobileSidebar() {
+    sidebar?.classList.add('mobile-open');
+    backdrop?.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMobileSidebar() {
+    sidebar?.classList.remove('mobile-open');
+    backdrop?.classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  openSidebarBtns.forEach(btn => btn?.addEventListener('click', openMobileSidebar));
+  closeSidebarBtn?.addEventListener('click', closeMobileSidebar);
+  backdrop?.addEventListener('click', closeMobileSidebar);
+
+  // 3. Alert Banner Dismissal
   const closeAlertBtn = document.getElementById('close-profile-alert');
   const alertBanner = document.getElementById('profile-alert-banner');
   if (closeAlertBtn && alertBanner) {

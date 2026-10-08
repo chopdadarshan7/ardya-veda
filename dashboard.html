@@ -21,20 +21,25 @@
   <div class="app-layout">
     
     <!-- ================= 1. LEFT PERSISTENT SIDEBAR ================= -->
-    <aside class="app-sidebar">
-      <!-- Brand Logo -->
-      <a href="index.html" class="sidebar-brand" title="Back to Public Landing">
-        <div class="sidebar-logo-icon">
-          <svg viewBox="0 0 100 100" class="logo-svg" fill="none" stroke="#C4A77D" stroke-width="2.5" style="width:34px; height:34px;">
-            <circle cx="50" cy="50" r="45" stroke="#C4A77D" stroke-width="1.5" stroke-dasharray="3 3"/>
-            <polygon points="50,12 88,75 12,75" stroke="#C4A77D" stroke-width="2"/>
-            <polygon points="50,88 88,25 12,25" stroke="#C4A77D" stroke-width="2"/>
-            <circle cx="50" cy="50" r="16" fill="rgba(196, 167, 125, 0.25)" stroke="#C4A77D"/>
-            <circle cx="50" cy="50" r="5" fill="#C4A77D"/>
-          </svg>
-        </div>
-        <span class="sidebar-brand-name">Ardya Veda</span>
-      </a>
+    <aside class="app-sidebar" id="app-sidebar">
+      <!-- Sidebar Top Header with Mobile Close -->
+      <div class="sidebar-top-header">
+        <a href="index.html" class="sidebar-brand" title="Back to Public Landing">
+          <div class="sidebar-logo-icon">
+            <svg viewBox="0 0 100 100" class="logo-svg" fill="none" stroke="#C4A77D" stroke-width="2.5" style="width:34px; height:34px;">
+              <circle cx="50" cy="50" r="45" stroke="#C4A77D" stroke-width="1.5" stroke-dasharray="3 3"/>
+              <polygon points="50,12 88,75 12,75" stroke="#C4A77D" stroke-width="2"/>
+              <polygon points="50,88 88,25 12,25" stroke="#C4A77D" stroke-width="2"/>
+              <circle cx="50" cy="50" r="16" fill="rgba(196, 167, 125, 0.25)" stroke="#C4A77D"/>
+              <circle cx="50" cy="50" r="5" fill="#C4A77D"/>
+            </svg>
+          </div>
+          <span class="sidebar-brand-name">Ardya Veda</span>
+        </a>
+        <button id="close-sidebar-btn" class="close-sidebar-btn" aria-label="Close Navigation">
+          <i data-lucide="x" style="width:20px; height:20px;"></i>
+        </button>
+      </div>
 
       <!-- Navigation Menu Items -->
       <ul class="sidebar-nav-list">
@@ -152,10 +157,16 @@
       
       <!-- Topbar Header -->
       <header class="app-topbar">
-        <a href="index.html" class="topbar-brand-inline">
-          <i data-lucide="flower" style="width:18px; height:18px; color:#C4A77D;"></i>
-          <span>Ardya Veda</span>
-        </a>
+        <div class="topbar-left-group">
+          <!-- Mobile Hamburger Toggle -->
+          <button id="mobile-sidebar-toggle" class="mobile-sidebar-btn" aria-label="Open Navigation">
+            <i data-lucide="menu" style="width:22px; height:22px;"></i>
+          </button>
+          <a href="index.html" class="topbar-brand-inline">
+            <i data-lucide="flower" style="width:18px; height:18px; color:#C4A77D;"></i>
+            <span>Ardya Veda</span>
+          </a>
+        </div>
 
         <div class="topbar-actions">
           <!-- Exact Reference Language Toggle Pill -->
@@ -173,7 +184,7 @@
           <!-- Notification Bell -->
           <button id="notif-bell-btn" class="notif-btn" title="Notifications">
             <i data-lucide="bell" style="width:18px; height:18px;"></i>
-            <span class="notif-badge-dot">0+</span>
+            <span class="notif-badge-dot">9+</span>
           </button>
         </div>
       </header>
@@ -768,6 +779,33 @@
     </main>
 
   </div>
+
+  <!-- Backdrop for mobile drawer -->
+  <div id="sidebar-backdrop" class="sidebar-backdrop"></div>
+
+  <!-- Mobile Bottom Navigation Bar (Matching screenshot) -->
+  <nav class="mobile-bottom-nav">
+    <a href="dashboard.html" class="bottom-nav-item active">
+      <i data-lucide="home" class="bottom-nav-icon"></i>
+      <span>Home</span>
+    </a>
+    <a href="consult.html" class="bottom-nav-item">
+      <i data-lucide="stethoscope" class="bottom-nav-icon"></i>
+      <span>Consult</span>
+    </a>
+    <a href="#move" class="bottom-nav-item" onclick="alert('Move: Guided Vyāyāma, Sitali Pranayama & Cooling Asanas.')">
+      <i data-lucide="activity" class="bottom-nav-icon"></i>
+      <span>Move</span>
+    </a>
+    <a href="#sangha" class="bottom-nav-item" onclick="alert('Sangha: Join 12,000+ members in Ayurvedic community circles.')">
+      <i data-lucide="users" class="bottom-nav-icon"></i>
+      <span>Sangha</span>
+    </a>
+    <button id="bottom-more-btn" class="bottom-nav-item bottom-nav-btn">
+      <i data-lucide="menu" class="bottom-nav-icon"></i>
+      <span>More</span>
+    </button>
+  </nav>
 
   <!-- Floating Action Buttons -->
   <div class="app-fab-stack">
