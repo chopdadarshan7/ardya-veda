@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ardya Veda — Member Portal & Dashboard</title>
+  
+  <!-- Google Fonts: Playfair Display, Cormorant Garamond, Inter, Noto Sans Devanagari -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="grain-overlay">
+
+  <div class="app-layout">
+    
+    <!-- ================= 1. LEFT PERSISTENT SIDEBAR ================= -->
+    <aside class="app-sidebar">
+      <!-- Brand Logo -->
+      <a href="index.html" class="sidebar-brand" title="Back to Public Landing">
+        <div class="sidebar-logo-icon">
+          <svg viewBox="0 0 100 100" class="logo-svg" fill="none" stroke="#C4A77D" stroke-width="2.5" style="width:34px; height:34px;">
+            <circle cx="50" cy="50" r="45" stroke="#C4A77D" stroke-width="1.5" stroke-dasharray="3 3"/>
+            <polygon points="50,12 88,75 12,75" stroke="#C4A77D" stroke-width="2"/>
+            <polygon points="50,88 88,25 12,25" stroke="#C4A77D" stroke-width="2"/>
+            <circle cx="50" cy="50" r="16" fill="rgba(196, 167, 125, 0.25)" stroke="#C4A77D"/>
+            <circle cx="50" cy="50" r="5" fill="#C4A77D"/>
+          </svg>
+        </div>
+        <span class="sidebar-brand-name">Ardya Veda</span>
+      </a>
+
+      <!-- Navigation Menu Items -->
+      <ul class="sidebar-nav-list">
+        <li>
+          <a href="dashboard.html" class="sidebar-link active">
+            <i data-lucide="home" class="link-icon"></i>
+            <span>Home</span>
+          </a>
+        </li>
+        <li>
+          <a href="consult.html" class="sidebar-link">
+            <i data-lucide="stethoscope" class="link-icon"></i>
+            <span>Consult</span>
+          </a>
+        </li>
+        <li>
+          <a href="#move" class="sidebar-link">
+            <i data-lucide="activity" class="link-icon"></i>
+            <span>Move</span>
+          </a>
+        </li>
+        <li>
+          <a href="#sangha" class="sidebar-link">
+            <i data-lucide="users" class="link-icon"></i>
+            <span>Sangha</span>
+          </a>
+        </li>
+        <li>
+          <a href="#remedies" class="sidebar-link">
+            <i data-lucide="utensils" class="link-icon"></i>
+            <span>Home remedies</span>
+          </a>
+        </li>
+        <li>
+          <a href="#garden" class="sidebar-link">
+            <i data-lucide="sprout" class="link-icon"></i>
+            <span>Herb garden</span>
+          </a>
+        </li>
+        <li>
+          <a href="#games" class="sidebar-link">
+            <i data-lucide="dices" class="link-icon"></i>
+            <span>Games</span>
+          </a>
+        </li>
+        <li>
+          <a href="#shop" class="sidebar-link">
+            <i data-lucide="leaf" class="link-icon"></i>
+            <span>Shop</span>
+            <span class="soon-pill">SOON</span>
+          </a>
+        </li>
+        <li>
+          <a href="#chat" class="sidebar-link" id="ask-ardya-sidebar-btn">
+            <i data-lucide="message-circle" class="link-icon"></i>
+            <span>Chat</span>
+          </a>
+        </li>
+        <li>
+          <a href="#plans" class="sidebar-link">
+            <i data-lucide="file-text" class="link-icon"></i>
+            <span>My Plans</span>
+          </a>
+        </li>
+        <li>
+          <a href="#me" class="sidebar-link">
+            <i data-lucide="user" class="link-icon"></i>
+            <span>Me</span>
+          </a>
+        </li>
+      </ul>
+
+      <!-- Bottom Widgets -->
+      <div class="sidebar-bottom">
+        <!-- Ask Ardya AI Card -->
+        <div class="card-ask-ardya" id="ask-ardya-banner-btn">
+          <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=120&q=80" alt="Ardya AI" class="ask-avatar">
+          <div class="ask-text-col">
+            <span class="ask-tag">ASK ARDYA</span>
+            <span class="ask-heading">Ask anything</span>
+          </div>
+        </div>
+
+        <!-- Ardya Pro Upgrade Card -->
+        <a href="#upgrade-pro" class="card-pro-upgrade" onclick="alert('Ardya Pro unlocks 1-on-1 weekly consultations, personalized herbal kits, and 24/7 Vaidya chat.')">
+          <div class="pro-icon-box">
+            <i data-lucide="sparkles" style="width:15px; height:15px;"></i>
+          </div>
+          <div>
+            <div class="pro-tag">ARDYA PRO</div>
+            <div class="pro-title">Upgrade to Pro</div>
+          </div>
+        </a>
+
+        <!-- User Profile Strip -->
+        <div class="sidebar-user-strip">
+          <div class="user-info-group">
+            <div class="user-avatar-circle">C</div>
+            <div class="user-names">
+              <span class="user-name">Chopda</span>
+              <span class="user-dosha-tag">Pitta</span>
+            </div>
+          </div>
+          <button class="btn-logout" title="Sign Out" onclick="if(confirm('Namaste Chopda. Do you want to sign out?')) window.location.href='index.html';">
+            <i data-lucide="log-out" style="width:16px; height:16px;"></i>
+          </button>
+        </div>
+
+        <div class="sidebar-tagline">The science of life, in your hands.</div>
+      </div>
+    </aside>
+
+    <!-- ================= 2. MAIN CONTENT AREA ================= -->
+    <main class="app-main">
+      
+      <!-- Topbar Header -->
+      <header class="app-topbar">
+        <a href="index.html" class="topbar-brand-inline">
+          <i data-lucide="flower" style="width:18px; height:18px; color:#C4A77D;"></i>
+          <span>Ardya Veda</span>
+        </a>
+
+        <div class="topbar-actions">
+          <!-- Exact Reference Language Toggle Pill -->
+          <div id="lang-toggle-btn" class="lang-switch-pill" title="Switch Language (English / Hindi)">
+            <span id="lang-en" class="lang-tab active">English</span>
+            <span id="lang-hi" class="lang-tab">Hindi</span>
+          </div>
+
+          <!-- Wallet Balance Pill -->
+          <div class="wallet-badge-pill" title="Ayurvedic Health Wallet Balance">
+            <i data-lucide="wallet" style="width:14px; height:14px; color:#B38646;"></i>
+            <span>₹75</span>
+          </div>
+
+          <!-- Notification Bell -->
+          <button id="notif-bell-btn" class="notif-btn" title="Notifications">
+            <i data-lucide="bell" style="width:18px; height:18px;"></i>
+            <span class="notif-badge-dot">0+</span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Greeting & Season Bar -->
+      <section class="greeting-section">
+        <h1 class="greeting-title">Good afternoon, Chopda.</h1>
+        <div class="greeting-subtitle">Śarad season · Pitta rising</div>
+      </section>
+
+      <!-- Profile Incomplete Alert Banner -->
+      <div class="alert-banner-incomplete" id="profile-alert-banner">
+        <div class="alert-left-content">
+          <div class="alert-icon-wrap">
+            <i data-lucide="clipboard-list" style="width:18px; height:18px;"></i>
+          </div>
+          <div>
+            <div class="alert-title-main">Profile incomplete</div>
+            <div class="alert-desc-sub">
+              8 section(s) remaining — complete for personalized guidance.
+              <a href="assessment.html" class="alert-action-link">Complete Profile →</a>
+            </div>
+          </div>
+        </div>
+        <button id="close-profile-alert" class="alert-close-btn" title="Dismiss">×</button>
+      </div>
+
+      <!-- Concentric Rings Prakriti Widget (Centerpiece) -->
+      <section class="prakriti-hero-card">
+        <div class="concentric-rings-container">
+          <!-- Ambient Diya Flame Center -->
+          <div class="candle-glow-bg">
+            <svg viewBox="0 0 100 140" class="flame-img" fill="none">
+              <defs>
+                <radialGradient id="flameGrad" cx="50%" cy="60%" r="50%">
+                  <stop offset="0%" stop-color="#FEF08A" />
+                  <stop offset="35%" stop-color="#F59E0B" />
+                  <stop offset="70%" stop-color="#D97706" />
+                  <stop offset="100%" stop-color="#92400E" stop-opacity="0" />
+                </radialGradient>
+              </defs>
+              <ellipse cx="50" cy="115" rx="14" ry="7" fill="#B45309" opacity="0.4" />
+              <!-- Outer Flame -->
+              <path d="M50 20 C62 55 76 80 72 105 C68 124 50 128 50 128 C50 128 32 124 28 105 C24 80 38 55 50 20 Z" fill="url(#flameGrad)" />
+              <!-- Inner Core -->
+              <path d="M50 48 C56 70 64 88 61 106 C58 118 50 120 50 120 C50 120 42 118 39 106 C36 88 44 70 50 48 Z" fill="#FFFBEB" opacity="0.9" />
+            </svg>
+          </div>
+
+          <!-- Concentric Arcs SVG: Vata 0%, Pitta 74%, Kapha 26% -->
+          <svg viewBox="0 0 200 200" class="prakriti-rings-svg">
+            <!-- Vata Ring (Radius 85, Blue) - 0% -->
+            <circle cx="100" cy="100" r="85" fill="none" stroke="rgba(100, 116, 139, 0.15)" stroke-width="4"/>
+            <circle cx="100" cy="100" r="85" fill="none" stroke="#64748B" stroke-width="4"
+                    stroke-dasharray="534" stroke-dashoffset="530" stroke-linecap="round"/>
+            
+            <!-- Pitta Ring (Radius 70, Orange/Copper) - 74% -->
+            <circle cx="100" cy="100" r="70" fill="none" stroke="rgba(217, 119, 6, 0.15)" stroke-width="6"/>
+            <circle cx="100" cy="100" r="70" fill="none" stroke="#D97706" stroke-width="6"
+                    stroke-dasharray="440" stroke-dashoffset="114" stroke-linecap="round"/>
+
+            <!-- Kapha Ring (Radius 55, Olive Green) - 26% -->
+            <circle cx="100" cy="100" r="55" fill="none" stroke="rgba(101, 163, 13, 0.15)" stroke-width="5"/>
+            <circle cx="100" cy="100" r="55" fill="none" stroke="#65A30D" stroke-width="5"
+                    stroke-dasharray="345" stroke-dashoffset="255" stroke-linecap="round"/>
+          </svg>
+        </div>
+
+        <div class="prakriti-label-tag">YOUR PRAKRITI</div>
+        <h2 class="prakriti-dosha-title">Pitta <span class="sub-dosha">· Kapha</span></h2>
+
+        <!-- Score Breakdown Row -->
+        <div class="dosha-scores-row">
+          <div class="dosha-score-item">
+            <div class="score-dot-val">
+              <span class="dot-indicator dot-vata"></span>
+              <span>0</span>
+            </div>
+            <span class="dosha-name-label">VATA</span>
+          </div>
+
+          <div class="dosha-score-item">
+            <div class="score-dot-val">
+              <span class="dot-indicator dot-pitta"></span>
+              <span>74</span>
+            </div>
+            <span class="dosha-name-label">PITTA</span>
+          </div>
+
+          <div class="dosha-score-item">
+            <div class="score-dot-val">
+              <span class="dot-indicator dot-kapha"></span>
+              <span>26</span>
+            </div>
+            <span class="dosha-name-label">KAPHA</span>
+          </div>
+        </div>
+
+        <!-- Action Links -->
+        <div class="prakriti-actions-links">
+          <a href="dosha.html" class="prakriti-link">Detailed Analysis</a>
+          <span class="link-divider">·</span>
+          <a href="#prakriti-card" id="view-prakriti-card-btn" class="prakriti-link">Prakriti Card</a>
+          <span class="link-divider">·</span>
+          <a href="assessment.html" class="prakriti-link">Retake</a>
+        </div>
+      </section>
+
+      <!-- ================= 3. YOUR VAIDYAS SECTION ================= -->
+      <section class="vaidyas-section-app">
+        <div class="vaidyas-header-row">
+          <div>
+            <div class="vaidyas-super-tag">YOUR VAIDYAS</div>
+            <h3 class="vaidyas-main-heading">Practitioners online now</h3>
+          </div>
+          <a href="consult.html" class="vaidyas-see-all">See all ›</a>
+        </div>
+
+        <!-- Filters: Chat / Call / Video -->
+        <div class="vaidyas-filter-tabs">
+          <button class="filter-pill-btn active" data-filter="all">
+            <i data-lucide="sliders-horizontal" style="width:13px; height:13px;"></i> All
+          </button>
+          <button class="filter-pill-btn" data-filter="chat">
+            <i data-lucide="message-square" style="width:13px; height:13px;"></i> Chat
+          </button>
+          <button class="filter-pill-btn" data-filter="call">
+            <i data-lucide="phone" style="width:13px; height:13px;"></i> Call
+          </button>
+          <button class="filter-pill-btn" data-filter="video">
+            <i data-lucide="video" style="width:13px; height:13px;"></i> Video
+          </button>
+        </div>
+
+        <!-- Doctor Cards Horizontal Carousel -->
+        <div class="doctors-carousel-track">
+          
+          <!-- Doctor 1: Dr. Radhika Shah -->
+          <div class="doctor-app-card" data-supports="video call chat">
+            <div class="doctor-card-photo-wrap">
+              <img src="https://images.unsplash.com/photo-1594824813576-90c0a9ef2230?auto=format&fit=crop&w=400&q=80" alt="Dr. Radhika Shah" class="doctor-card-photo">
+              <div class="doc-status-badge">
+                <span class="status-dot-green"></span> Available now
+              </div>
+              <div class="doc-arrow-corner">↗</div>
+              <div class="doctor-card-overlay-text">
+                <div class="doc-name">Dr. Radhika Shah</div>
+                <div class="doc-specialty-short">Women's health / PCOS... · MD (Ayurveda)</div>
+              </div>
+            </div>
+            <div class="doctor-card-actions">
+              <button class="btn-video-now">
+                <i data-lucide="video" style="width:13px; height:13px;"></i> Video now
+              </button>
+              <button class="btn-schedule-sub">
+                <i data-lucide="calendar" style="width:12px; height:12px;"></i> Schedule for later
+              </button>
+            </div>
+          </div>
+
+          <!-- Doctor 2: Dr. Shilpa V. Rajan -->
+          <div class="doctor-app-card" data-supports="video call">
+            <div class="doctor-card-photo-wrap">
+              <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=400&q=80" alt="Dr. Shilpa V. Rajan" class="doctor-card-photo">
+              <div class="doc-status-badge">
+                <span class="status-dot-green"></span> Available now
+              </div>
+              <div class="doc-arrow-corner">↗</div>
+              <div class="doctor-card-overlay-text">
+                <div class="doc-name">Dr. Shilpa V. Rajan</div>
+                <div class="doc-specialty-short">Osteo-arthritis · Sciatica · MD Ayurveda</div>
+              </div>
+            </div>
+            <div class="doctor-card-actions">
+              <button class="btn-video-now">
+                <i data-lucide="video" style="width:13px; height:13px;"></i> Video now
+              </button>
+              <button class="btn-schedule-sub">
+                <i data-lucide="calendar" style="width:12px; height:12px;"></i> Schedule for later
+              </button>
+            </div>
+          </div>
+
+          <!-- Doctor 3: Dr. Sumit Raina -->
+          <div class="doctor-app-card" data-supports="video call chat">
+            <div class="doctor-card-photo-wrap">
+              <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=400&q=80" alt="Dr. Sumit Raina" class="doctor-card-photo">
+              <div class="doc-status-badge">
+                <span class="status-dot-green"></span> Available now
+              </div>
+              <div class="doc-arrow-corner">↗</div>
+              <div class="doctor-card-overlay-text">
+                <div class="doc-name">Dr. Sumit Raina</div>
+                <div class="doc-specialty-short">Digestive health / IBS · Stress · MD Ayurveda</div>
+              </div>
+            </div>
+            <div class="doctor-card-actions">
+              <button class="btn-video-now">
+                <i data-lucide="video" style="width:13px; height:13px;"></i> Video now
+              </button>
+              <button class="btn-schedule-sub">
+                <i data-lucide="calendar" style="width:12px; height:12px;"></i> Schedule for later
+              </button>
+            </div>
+          </div>
+
+          <!-- Doctor 4: Dr. Karan Lakhani -->
+          <div class="doctor-app-card" data-supports="video call">
+            <div class="doctor-card-photo-wrap">
+              <img src="https://images.unsplash.com/photo-1537368910025-700350fe46c7?auto=format&fit=crop&w=400&q=80" alt="Dr. Karan Lakhani" class="doctor-card-photo">
+              <div class="doc-status-badge">
+                <span class="status-dot-green"></span> Available now
+              </div>
+              <div class="doc-arrow-corner">↗</div>
+              <div class="doctor-card-overlay-text">
+                <div class="doc-name">Dr. Karan Lakhani</div>
+                <div class="doc-specialty-short">Stress / sleep / anxiety · MD Ayurveda</div>
+              </div>
+            </div>
+            <div class="doctor-card-actions">
+              <button class="btn-video-now">
+                <i data-lucide="video" style="width:13px; height:13px;"></i> Video now
+              </button>
+              <button class="btn-schedule-sub">
+                <i data-lucide="calendar" style="width:12px; height:12px;"></i> Schedule for later
+              </button>
+            </div>
+          </div>
+
+          <!-- Doctor 5: Dr. Chaithra Sethuraman -->
+          <div class="doctor-app-card" data-supports="call chat">
+            <div class="doctor-card-photo-wrap">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80" alt="Dr. Chaithra" class="doctor-card-photo">
+              <div class="doc-status-badge" style="background:rgba(30,30,30,0.7);">
+                Today, 10:00 AM
+              </div>
+              <div class="doc-arrow-corner">↗</div>
+              <div class="doctor-card-overlay-text">
+                <div class="doc-name">Dr. Chaithra Seth...</div>
+                <div class="doc-specialty-short">Ayurveda Psychiatry · MD Ayurveda</div>
+              </div>
+            </div>
+            <div class="doctor-card-actions">
+              <button class="btn-schedule-sub" style="width:100%; padding:8px;">
+                <i data-lucide="calendar" style="width:12px; height:12px;"></i> Schedule for later
+              </button>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ================= 4. TWO COLUMN CORE DASHBOARD ================= -->
+      <div class="dashboard-grid-two-col">
+        
+        <!-- LEFT COLUMN: Profile % + Daily Check-in + Tip of Day + Metrics + Ahara Krama -->
+        <div class="left-dashboard-col">
+          
+          <!-- Profile 27% complete strip -->
+          <a href="assessment.html" class="widget-strip-profile">
+            <div class="strip-profile-left">
+              <div class="circle-progress-badge">27%</div>
+              <div>
+                <div class="strip-profile-title">Profile 27% complete</div>
+                <div class="strip-profile-sub">Fill remaining sections for personalized care</div>
+              </div>
+            </div>
+            <i data-lucide="chevron-right" style="width:16px; height:16px; color:#9C9385;"></i>
+          </a>
+
+          <!-- Today's Ritual · 60 Sec -->
+          <div class="widget-ritual-strip">
+            <div class="ritual-left-group">
+              <div class="ritual-thumb-box">
+                <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?auto=format&fit=crop&w=150&q=80" alt="Morning checkin" class="ritual-thumb-img">
+              </div>
+              <div>
+                <div class="ritual-tag-top">TODAY'S RITUAL · 60 SEC</div>
+                <div class="ritual-heading-main">Morning check-in</div>
+                <div class="ritual-sub-text">Begin with your 60-second check-in</div>
+              </div>
+            </div>
+            <a href="checkin.html" class="btn-begin-gold">Begin</a>
+          </div>
+
+          <!-- Tip of the Day Card -->
+          <div class="card-tip-of-day">
+            <div class="tip-label-header">TIP OF THE DAY</div>
+            <div class="tip-quote-body">
+              <strong>विदाही</strong> is a food category with no everyday word for it. It does not mean spicy and it does not mean hot. It means food that creates burning while it digests — the effect shows up after the meal, not during it.
+            </div>
+            <div class="tip-source-ref">Charaka Chikitsasthana — विदाही (CC p.27)</div>
+          </div>
+
+          <!-- Something troubling you? -->
+          <a href="#remedies" class="widget-strip-remedies" onclick="alert('Exploring 10 Classical Kitchen Remedies for Pitta acidity, bloating, and fatigue.')">
+            <div class="strip-profile-left">
+              <div class="remedy-icon-box">🥣</div>
+              <div>
+                <div class="strip-profile-title">Something troubling you?</div>
+                <div class="strip-profile-sub">Ten kitchen remedies — and when to stop and see someone.</div>
+              </div>
+            </div>
+            <i data-lucide="chevron-right" style="width:16px; height:16px; color:#9C9385;"></i>
+          </a>
+
+          <!-- 3-Card Metrics Row (Agni, Ama, Streak) -->
+          <div class="metrics-row-cards">
+            <!-- Agni -->
+            <div class="metric-card-box">
+              <div class="gauge-circle">2.6/5</div>
+              <div class="metric-title-name">Agni</div>
+            </div>
+
+            <!-- Ama -->
+            <div class="metric-card-box">
+              <div class="gauge-circle gauge-green" style="font-size:11px;">mild</div>
+              <div class="metric-title-name">Ama</div>
+              <div class="metric-status-line">● On track</div>
+            </div>
+
+            <!-- Streak -->
+            <div class="metric-card-box">
+              <div class="gauge-circle gauge-green">8</div>
+              <div class="metric-title-name">STREAK</div>
+              <div class="metric-status-line">● On track</div>
+            </div>
+          </div>
+
+          <!-- Ahara Krama (Meal Diet Plan) -->
+          <div class="ahara-krama-card">
+            <div class="ahara-header-row">
+              <div>
+                <div class="ahara-super-tag">Ahara Krama</div>
+                <div class="ahara-main-title">Pitta-Kapha Autumn Harmony: Cooling & Light Digestive Plan</div>
+              </div>
+              <i data-lucide="chevron-right" style="width:16px; height:16px; color:#9C9385;"></i>
+            </div>
+
+            <!-- Date Selector Tabs -->
+            <div class="date-selector-tabs">
+              <span style="cursor:pointer;">‹</span>
+              <strong style="color:#2C2825;">Today</strong>
+              <span style="cursor:pointer;">›</span>
+            </div>
+
+            <!-- Meal Items -->
+            <div class="meal-items-list">
+              <!-- Meal 1 -->
+              <div class="meal-item-row">
+                <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=120&q=80" alt="Upma" class="meal-thumb">
+                <div>
+                  <div class="meal-item-title">SAFFRON & CARDAMOM SOOJI UPMA</div>
+                  <div class="meal-item-desc">Light, warm semolina cooked with cooling saffron and cardamom, seasoned with gentle spices for easy digestion.</div>
+                </div>
+              </div>
+
+              <!-- Meal 2 -->
+              <div class="meal-item-row">
+                <img src="https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=120&q=80" alt="Khichdi" class="meal-thumb">
+                <div>
+                  <div class="meal-item-title">BARLEY & MUNG DAL KHICHDI WITH COOLING GREENS</div>
+                  <div class="meal-item-desc">A nourishing khichdi featuring barley and mung dal, cooked with Pitta-pacifying vegetables and digestive spices.</div>
+                </div>
+              </div>
+
+              <!-- Meal 3 -->
+              <div class="meal-item-row">
+                <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=120&q=80" alt="Raita" class="meal-thumb">
+                <div>
+                  <div class="meal-item-title">FENNEL & CUCUMBER RAITA WITH STEAMED BASMATI RICE</div>
+                  <div class="meal-item-desc">Light and cooling raita with fennel and cucumber, served alongside steamed basmati rice for a gentle dinner.</div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Herbal & Lifestyle Guidance Card -->
+          <div class="herbal-guidance-card">
+            <div class="herbal-guidance-tag">HERBAL & LIFESTYLE GUIDANCE</div>
+            
+            <div class="guidance-items-list">
+              <!-- Item 1 -->
+              <div class="guidance-item-row">
+                <i data-lucide="leaf" class="guidance-icon"></i>
+                <div>
+                  <div class="guidance-item-heading">Guduchi (Tinospora cordifolia)</div>
+                  <div class="guidance-item-body">
+                    <strong>500mg (or 15ml swarasa) · Morning</strong><br>
+                    Balances Pitta, supports immunity, detoxifies Ama
+                  </div>
+                </div>
+              </div>
+
+              <!-- Item 2 -->
+              <div class="guidance-item-row">
+                <i data-lucide="heart" class="guidance-icon"></i>
+                <div>
+                  <div class="guidance-item-heading">Lifestyle Practice</div>
+                  <div class="guidance-item-body">
+                    Maintain consistent meal timings every day to regulate Vishamagni. Aim for a light walk after dinner to aid digestion but finish eating at least 2-3 hours before bed.
+                  </div>
+                </div>
+              </div>
+
+              <!-- Item 3 -->
+              <div class="guidance-item-row">
+                <i data-lucide="coffee" class="guidance-icon"></i>
+                <div>
+                  <div class="guidance-item-heading">Snack Suggestion</div>
+                  <div class="guidance-item-body">
+                    If hungry between meals, have a small portion of sweet grapes or a few soaked and peeled almonds (max 5-7). Warm water sips are encouraged.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- RIGHT COLUMN: "Your Tools" (2x2 Grid) + Vyāyāma + Sangha + Ask Ardya -->
+        <div class="right-dashboard-col">
+          
+          <div>
+            <h4 class="tools-super-title">Your Tools</h4>
+            
+            <!-- 2x2 Grid Visual Tools -->
+            <div class="tools-2x2-grid">
+              <!-- Tool 1: Daily Check-in -->
+              <a href="checkin.html" class="tool-photo-card">
+                <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=400&q=80" alt="Check-in" class="tool-card-bg-img">
+                <div class="tool-overlay-content">
+                  <div class="tool-top-icon-pill">
+                    <i data-lucide="heart" style="width:13px; height:13px;"></i>
+                  </div>
+                  <div>
+                    <div class="tool-card-title">Daily Check-in</div>
+                    <div class="tool-card-sub">60-second ritual</div>
+                  </div>
+                </div>
+              </a>
+
+              <!-- Tool 2: Pariksha -->
+              <a href="checkin.html" class="tool-photo-card">
+                <img src="https://images.unsplash.com/photo-1600334089648-b0d9d3028eb2?auto=format&fit=crop&w=400&q=80" alt="Pariksha" class="tool-card-bg-img">
+                <div class="tool-overlay-content">
+                  <div class="tool-top-icon-pill">
+                    <i data-lucide="scan" style="width:13px; height:13px;"></i>
+                  </div>
+                  <div>
+                    <div class="tool-card-title">Pariksha</div>
+                    <div class="tool-card-sub">Face · tongue · pulse soon</div>
+                  </div>
+                </div>
+              </a>
+
+              <!-- Tool 3: Meal Plan -->
+              <a href="#plans" class="tool-photo-card">
+                <img src="https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&w=400&q=80" alt="Meal Plan" class="tool-card-bg-img">
+                <div class="tool-overlay-content">
+                  <div class="tool-top-icon-pill">
+                    <i data-lucide="leaf" style="width:13px; height:13px;"></i>
+                  </div>
+                  <div>
+                    <div class="tool-card-title">Meal Plan</div>
+                    <div class="tool-card-sub">Eat for your dosha</div>
+                  </div>
+                </div>
+              </a>
+
+              <!-- Tool 4: Prakriti -->
+              <a href="dosha.html" class="tool-photo-card">
+                <img src="https://images.unsplash.com/photo-1506126613408-eca07ce68773?auto=format&fit=crop&w=400&q=80" alt="Prakriti" class="tool-card-bg-img">
+                <div class="tool-overlay-content">
+                  <div class="tool-top-icon-pill">
+                    <i data-lucide="sparkles" style="width:13px; height:13px;"></i>
+                  </div>
+                  <div>
+                    <div class="tool-card-title">Prakriti</div>
+                    <div class="tool-card-sub">Your constitution</div>
+                  </div>
+                </div>
+              </a>
+            </div>
+          </div>
+
+          <!-- Today's Vyāyāma Widget -->
+          <div class="widget-vyayama-card" onclick="alert('Starting guided 52-minute Cooling Sharad Vyāyāma: Sitali Pranayama, Chandra Bhedana & restorative Yin asanas.')">
+            <div class="vyayama-header-strip">
+              <div class="play-circle-btn">
+                <i data-lucide="play" style="width:15px; height:15px; fill:#FAF7F2;"></i>
+              </div>
+              <div style="flex:1;">
+                <div class="vyayama-tag">TODAY'S VYĀYĀMA</div>
+                <div class="vyayama-title">Cooling Practice</div>
+                <div class="vyayama-meta">52 min · moderate</div>
+              </div>
+              <i data-lucide="chevron-right" style="width:16px; height:16px; color:#9C9385;"></i>
+            </div>
+            <div class="vyayama-note-season">
+              Sharad season — Post-monsoon rebuild, kept cooling.
+            </div>
+          </div>
+
+          <!-- Community Sangha Banner -->
+          <a href="#sangha" class="widget-sangha-banner" onclick="alert('Sangha Community: 2 posts are waiting for a reply in the Pitta Pacification circle.')">
+            <div class="sangha-banner-left">
+              <div class="sangha-icon-box">
+                <i data-lucide="users" style="width:16px; height:16px;"></i>
+              </div>
+              <div>
+                <div class="sangha-banner-tag">SANGHA</div>
+                <div class="sangha-banner-title">The community</div>
+                <div class="sangha-banner-sub">2 posts are waiting for a reply</div>
+              </div>
+            </div>
+            <i data-lucide="chevron-right" style="width:16px; height:16px; color:#4E6044;"></i>
+          </a>
+
+          <!-- Ask Ardya AI Banner Card -->
+          <div class="widget-ask-ardya-banner" onclick="openAskArdyaModal()">
+            <div class="sangha-banner-left">
+              <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=120&q=80" alt="Ask Ardya" style="width:40px; height:40px; border-radius:50%; object-fit:cover; border:1.5px solid #C4A77D;">
+              <div>
+                <div style="font-size:9.5px; font-weight:700; color:#B38646; letter-spacing:0.1em;">ASK ARDYA ✦</div>
+                <div style="font-size:14px; font-weight:600; color:#2C2825;">Ask anything, anytime</div>
+                <div style="font-size:11.5px; color:#6E6454;">Your body, food, herbs & routine — answered</div>
+              </div>
+            </div>
+            <i data-lucide="chevron-right" style="width:16px; height:16px; color:#B38646;"></i>
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- ================= 5. BOTTOM EXPLORE HORIZONTAL GALLERY ================= -->
+      <section class="explore-section-app">
+        <h3 class="explore-section-title">Explore</h3>
+        
+        <div class="explore-cards-carousel">
+          
+          <!-- Card 1: Ritucharya -->
+          <a href="blog.html" class="explore-item-card">
+            <img src="https://images.unsplash.com/photo-1615485290382-441e4d049cb5?auto=format&fit=crop&w=400&q=80" alt="Ritucharya" class="explore-card-img">
+            <div class="explore-card-overlay">
+              <div class="explore-card-tag">RITUCHARYA</div>
+              <div class="explore-card-headline">Śarad season guide</div>
+            </div>
+          </a>
+
+          <!-- Card 2: Consult -->
+          <a href="consult.html" class="explore-item-card">
+            <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=400&q=80" alt="Consult" class="explore-card-img">
+            <div class="explore-card-overlay">
+              <div class="explore-card-tag">CONSULT</div>
+              <div class="explore-card-headline">Talk to a Vaidya</div>
+            </div>
+          </a>
+
+          <!-- Card 3: Apothecary -->
+          <a href="#shop" class="explore-item-card" onclick="alert('Ardya Apothecary is coming soon with authentic single-origin Ayurvedic herbs.')">
+            <span class="explore-badge-top">COMING SOON</span>
+            <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?auto=format&fit=crop&w=400&q=80" alt="Apothecary" class="explore-card-img">
+            <div class="explore-card-overlay">
+              <div class="explore-card-tag">APOTHECARY</div>
+              <div class="explore-card-headline">Shop herbs & remedies</div>
+            </div>
+          </a>
+
+          <!-- Card 4: Practices -->
+          <a href="dosha.html" class="explore-item-card">
+            <img src="https://images.unsplash.com/photo-1518241353330-0f7941c2d9b5?auto=format&fit=crop&w=400&q=80" alt="Practices" class="explore-card-img">
+            <div class="explore-card-overlay">
+              <div class="explore-card-tag">PRACTICES</div>
+              <div class="explore-card-headline">Japa · Dīpa · Trāṭaka</div>
+            </div>
+          </a>
+
+          <!-- Card 5: Know Your Dosha -->
+          <a href="assessment.html" class="explore-item-card">
+            <img src="https://images.unsplash.com/photo-1513836279014-a89f7a76ae86?auto=format&fit=crop&w=400&q=80" alt="Know Your Dosha" class="explore-card-img">
+            <div class="explore-card-overlay">
+              <div class="explore-card-tag">KNOW YOUR DOSHA</div>
+              <div class="explore-card-headline">Your constitution</div>
+            </div>
+          </a>
+
+        </div>
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- Floating Action Buttons -->
+  <div class="app-fab-stack">
+    <!-- Mail Button -->
+    <button class="fab-btn-mail" title="Messages" onclick="alert('Namaste! You have no unread messages from your Vaidya.')">
+      <i data-lucide="mail" style="width:20px; height:20px;"></i>
+    </button>
+    
+    <!-- Vaidya Avatar FAB -->
+    <div class="fab-btn-vaidya" id="fab-vaidya-btn" title="Ask Vaidya">
+      <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=120&q=80" alt="Vaidya" class="fab-vaidya-img">
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="js/i18n.js"></script>
+  <script src="js/dashboard.js"></script>
+</body>
+</html>

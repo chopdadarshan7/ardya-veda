@@ -13,6 +13,7 @@ A luxury Ayurvedic lifestyle web platform modeled after [ardyaveda.com](https://
 ardya veda/
 │
 ├── index.html          # Main Landing Page (Hero, Philosophy, Ritual, Shad Rasa, Sangha, FAQ)
+├── dashboard.html      # Member Portal & Dashboard (Prakriti Rings, Vaidyas Carousel, Ahara Krama)
 ├── assessment.html     # Dedicated 5-Minute Prakriti Assessment Quiz & Prakriti Card
 ├── consult.html        # Dedicated Verified Vaidyas Directory & Consultation Booking
 ├── checkin.html        # Dedicated Daily Pariksha 60-Second Pulse Log & Bio-Remedy
@@ -26,6 +27,7 @@ ardya veda/
 │   ├── hero.css        # Hero 100dvh cinematic visual, scroll indicator, Panchanga bar
 │   ├── sections.css    # Dosha grid, brass ritual, timeline, 6 tastes, sangha, quote, FAQ
 │   ├── components.css  # Vaidya cards, carousel track, modals, quiz progress, Prakriti card
+│   ├── dashboard.css   # Member portal layout, sidebar, concentric rings, Ahara Krama widgets
 │   └── footer.css      # Footer, copyright, badges, and responsive media queries
 │
 ├── js/                 # Modular JavaScript Architecture
@@ -33,6 +35,7 @@ ardya veda/
 │   ├── vaidyas.js      # Verified doctor profiles, carousel controls, booking modal
 │   ├── assessment.js   # 10 diagnostic questions, scoring engine, Vikriti alert, Prakriti card
 │   ├── checkin.js      # Daily Pariksha 60-second pulse log & custom daily bio-remedies
+│   ├── dashboard.js    # Member portal interactions, doctor filters, Ask Ardya AI, card download
 │   ├── navigation.js   # Dosha modal, 6-taste explorer, article reader, FAQ accordion, scroll
 │   └── main.js         # Entry point & Lucide icon initializations
 │
@@ -49,7 +52,8 @@ The application is served live on:
 👉 **[http://localhost:3000](http://localhost:3000)**
 
 Direct Sub-Pages:
-- **Home:** [http://localhost:3000/index.html](http://localhost:3000/index.html)
+- **Member Dashboard:** [http://localhost:3000/dashboard.html](http://localhost:3000/dashboard.html)
+- **Home Landing:** [http://localhost:3000/index.html](http://localhost:3000/index.html)
 - **Prakriti Quiz:** [http://localhost:3000/assessment.html](http://localhost:3000/assessment.html)
 - **Vaidya Consultations:** [http://localhost:3000/consult.html](http://localhost:3000/consult.html)
 - **Daily Pariksha Log:** [http://localhost:3000/checkin.html](http://localhost:3000/checkin.html)

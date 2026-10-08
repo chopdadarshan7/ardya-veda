@@ -1,0 +1,1513 @@
+/* =========================================================================
+   ARDYA VEDA — MEMBER PORTAL & DASHBOARD STYLES
+   Pixel-accurate luxury dashboard matching member screenshots
+   ========================================================================= */
+
+/* Root App Layout */
+.app-layout {
+  display: flex;
+  min-height: 100vh;
+  background-color: #F8F5EE;
+  color: #2C2825;
+  font-family: var(--font-inter);
+}
+
+/* ================= 1. LEFT PERSISTENT SIDEBAR ================= */
+.app-sidebar {
+  width: 250px;
+  background-color: #F6F1E8;
+  border-right: 1px solid rgba(196, 167, 125, 0.3);
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 16px 20px 16px;
+  z-index: 200;
+  overflow-y: auto;
+  scrollbar-width: thin;
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 8px 24px 8px;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(196, 167, 125, 0.2);
+  margin-bottom: 16px;
+}
+
+.sidebar-logo-icon {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sidebar-brand-name {
+  font-family: var(--font-playfair);
+  font-size: 20px;
+  color: #2C2825;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+/* Sidebar Nav Links */
+.sidebar-nav-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.sidebar-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  color: #4D4539;
+  font-size: 13.5px;
+  font-weight: 450;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.sidebar-link:hover {
+  background-color: rgba(237, 228, 211, 0.6);
+  color: #2C2825;
+}
+
+.sidebar-link.active {
+  background-color: #EDE4D3;
+  color: #8C642B;
+  font-weight: 600;
+}
+
+.sidebar-link .link-icon {
+  width: 17px;
+  height: 17px;
+  stroke-width: 1.8;
+  opacity: 0.85;
+}
+
+.sidebar-link.active .link-icon {
+  opacity: 1;
+  color: #8C642B;
+}
+
+.soon-pill {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  background-color: #E6DDCF;
+  color: #8A7A64;
+  padding: 2px 6px;
+  border-radius: 10px;
+  margin-left: auto;
+}
+
+/* Sidebar Bottom Widgets */
+.sidebar-bottom {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 16px;
+  border-top: 1px solid rgba(196, 167, 125, 0.2);
+}
+
+.card-ask-ardya {
+  background: linear-gradient(135deg, #FAF7F0 0%, #F5ECDB 100%);
+  border: 1px solid rgba(196, 167, 125, 0.45);
+  border-radius: 14px;
+  padding: 10px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+}
+
+.card-ask-ardya:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(196, 167, 125, 0.25);
+}
+
+.ask-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid #C4A77D;
+}
+
+.ask-text-col {
+  display: flex;
+  flex-direction: column;
+}
+
+.ask-tag {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #B38646;
+  text-transform: uppercase;
+}
+
+.ask-heading {
+  font-size: 13px;
+  font-weight: 500;
+  color: #2C2825;
+}
+
+.card-pro-upgrade {
+  background-color: #EFE8DC;
+  border: 1px solid rgba(196, 167, 125, 0.35);
+  border-radius: 14px;
+  padding: 8px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.card-pro-upgrade:hover {
+  background-color: #E9E0D2;
+}
+
+.pro-icon-box {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #C4A77D;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #2C2825;
+}
+
+.pro-tag {
+  font-size: 9px;
+  font-weight: 700;
+  color: #7D6B4E;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.pro-title {
+  font-size: 12px;
+  font-weight: 500;
+  color: #2C2825;
+}
+
+/* User Account Strip */
+.sidebar-user-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 4px;
+}
+
+.user-info-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-avatar-circle {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background-color: #EBE3D5;
+  color: #4D4539;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(196, 167, 125, 0.4);
+}
+
+.user-names {
+  display: flex;
+  flex-direction: column;
+}
+
+.user-name {
+  font-size: 13px;
+  font-weight: 600;
+  color: #2C2825;
+}
+
+.user-dosha-tag {
+  font-size: 11px;
+  color: #7A7265;
+}
+
+.btn-logout {
+  background: none;
+  border: none;
+  color: #8C8273;
+  cursor: pointer;
+  padding: 4px;
+  transition: color 0.2s;
+}
+
+.btn-logout:hover {
+  color: #2C2825;
+}
+
+.sidebar-tagline {
+  font-family: var(--font-cormorant);
+  font-size: 11.5px;
+  font-style: italic;
+  color: #9C9385;
+  text-align: center;
+  margin-top: 4px;
+}
+
+/* ================= 2. MAIN CONTENT AREA ================= */
+.app-main {
+  margin-left: 250px;
+  flex: 1;
+  padding: 24px 44px 80px 44px;
+  max-width: 1340px;
+  margin-right: auto;
+}
+
+/* Topbar */
+.app-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.topbar-brand-inline {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  color: #2C2825;
+  font-family: var(--font-playfair);
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.topbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.wallet-badge-pill {
+  background-color: #FAF7F2;
+  border: 1px solid rgba(196, 167, 125, 0.45);
+  padding: 5px 14px;
+  border-radius: 999px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #2C2825;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.notif-btn {
+  background: none;
+  border: none;
+  position: relative;
+  cursor: pointer;
+  padding: 6px;
+  color: #5C5245;
+}
+
+.notif-badge-dot {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  background-color: #C2410C;
+  color: #FFFFFF;
+  font-size: 9px;
+  font-weight: 700;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Greeting Section */
+.greeting-section {
+  margin-bottom: 20px;
+}
+
+.greeting-title {
+  font-family: var(--font-playfair);
+  font-size: 32px;
+  color: #2C2825;
+  font-weight: 450;
+  letter-spacing: -0.015em;
+  margin-bottom: 4px;
+}
+
+.greeting-subtitle {
+  font-size: 13px;
+  color: #7D7365;
+  font-weight: 400;
+}
+
+/* Profile Incomplete Alert Banner */
+.alert-banner-incomplete {
+  background-color: #FCFAF6;
+  border: 1px solid rgba(196, 167, 125, 0.35);
+  border-radius: 14px;
+  padding: 14px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 34px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.02);
+}
+
+.alert-left-content {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.alert-icon-wrap {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background-color: #F3EBDD;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #B38646;
+}
+
+.alert-title-main {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #2C2825;
+  margin-bottom: 2px;
+}
+
+.alert-desc-sub {
+  font-size: 12.5px;
+  color: #7D7365;
+}
+
+.alert-action-link {
+  font-size: 12.5px;
+  color: #9E7438;
+  font-weight: 600;
+  text-decoration: none;
+  margin-left: 8px;
+}
+
+.alert-close-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #9C9385;
+  cursor: pointer;
+}
+
+/* ================= 3. CONCENTRIC RINGS PRAKRITI WIDGET ================= */
+.prakriti-hero-card {
+  text-align: center;
+  padding: 20px 0 36px 0;
+  position: relative;
+}
+
+.concentric-rings-container {
+  width: 260px;
+  height: 260px;
+  margin: 0 auto 16px auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.candle-glow-bg {
+  position: absolute;
+  width: 130px;
+  height: 130px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 237, 196, 0.9) 0%, rgba(248, 245, 238, 0) 70%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.flame-img {
+  width: 44px;
+  height: 60px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 12px rgba(234, 179, 8, 0.6));
+}
+
+.prakriti-rings-svg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  transform: rotate(-90deg);
+}
+
+.prakriti-label-tag {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: #B38646;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.prakriti-dosha-title {
+  font-family: var(--font-playfair);
+  font-size: 34px;
+  color: #2C2825;
+  font-weight: 500;
+  margin-bottom: 14px;
+}
+
+.prakriti-dosha-title .sub-dosha {
+  font-family: var(--font-cormorant);
+  font-style: italic;
+  color: #B38646;
+  font-weight: 400;
+  font-size: 28px;
+}
+
+.dosha-scores-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 36px;
+  margin-bottom: 16px;
+}
+
+.dosha-score-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+}
+
+.score-dot-val {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #2C2825;
+}
+
+.dot-indicator {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.dot-vata { background-color: #64748B; }
+.dot-pitta { background-color: #D97706; }
+.dot-kapha { background-color: #65A30D; }
+
+.dosha-name-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #8C8273;
+  text-transform: uppercase;
+}
+
+.prakriti-actions-links {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  font-size: 12.5px;
+  color: #6B6254;
+}
+
+.prakriti-link {
+  color: #6B6254;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.prakriti-link:hover {
+  color: #9E7438;
+}
+
+.link-divider {
+  opacity: 0.4;
+}
+
+/* ================= 4. YOUR VAIDYAS SECTION ================= */
+.vaidyas-section-app {
+  margin-bottom: 40px;
+}
+
+.vaidyas-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.vaidyas-super-tag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #B38646;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+
+.vaidyas-main-heading {
+  font-family: var(--font-playfair);
+  font-size: 22px;
+  color: #2C2825;
+  font-weight: 450;
+}
+
+.vaidyas-see-all {
+  font-size: 12.5px;
+  color: #6B6254;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.vaidyas-filter-tabs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.filter-pill-btn {
+  background-color: #FCFAF6;
+  border: 1px solid rgba(196, 167, 125, 0.4);
+  color: #5C5245;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all 0.2s;
+}
+
+.filter-pill-btn:hover {
+  border-color: #B38646;
+  color: #2C2825;
+}
+
+.filter-pill-btn.active {
+  background-color: #2C2825;
+  border-color: #2C2825;
+  color: #FAF7F2;
+}
+
+/* Doctors Horizontal Carousel */
+.doctors-carousel-track {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 12px;
+  scrollbar-width: thin;
+}
+
+.doctor-app-card {
+  min-width: 175px;
+  max-width: 175px;
+  background-color: #FFFFFF;
+  border: 1px solid rgba(196, 167, 125, 0.3);
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.doctor-app-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(44, 40, 37, 0.08);
+}
+
+.doctor-card-photo-wrap {
+  width: 100%;
+  height: 185px;
+  position: relative;
+  background-color: #E8E0D2;
+}
+
+.doctor-card-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.doc-status-badge {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  background: rgba(30, 41, 25, 0.75);
+  backdrop-filter: blur(4px);
+  color: #E5E7EB;
+  font-size: 9.5px;
+  font-weight: 600;
+  padding: 3px 8px;
+  border-radius: 999px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.status-dot-green {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #22C55E;
+}
+
+.doc-arrow-corner {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(30, 41, 25, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #FFFFFF;
+  font-size: 11px;
+}
+
+.doctor-card-overlay-text {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 16px 10px 8px 10px;
+  background: linear-gradient(to top, rgba(20, 20, 20, 0.9) 0%, transparent 100%);
+  color: #FFFFFF;
+}
+
+.doc-name {
+  font-size: 12.5px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.doc-specialty-short {
+  font-size: 10px;
+  opacity: 0.8;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.doctor-card-actions {
+  padding: 10px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  background-color: #FAF7F2;
+}
+
+.btn-video-now {
+  background-color: #4E6044; /* Photo 1 Herbal Olive Green */
+  color: #FAF7F2;
+  border: none;
+  border-radius: 6px;
+  padding: 7px 10px;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: background-color 0.2s;
+}
+
+.btn-video-now:hover {
+  background-color: #3E4E36;
+}
+
+.btn-schedule-sub {
+  background: transparent;
+  color: #4D4539;
+  border: 1px solid rgba(196, 167, 125, 0.5);
+  border-radius: 6px;
+  padding: 6px 8px;
+  font-size: 10.5px;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  transition: all 0.2s;
+}
+
+.btn-schedule-sub:hover {
+  background-color: #EDE4D3;
+}
+
+/* ================= 5. TWO COLUMN DASHBOARD CORE ================= */
+.dashboard-grid-two-col {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 28px;
+  margin-bottom: 40px;
+}
+
+/* Left Column Widgets */
+.left-dashboard-col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Profile 27% complete strip */
+.widget-strip-profile {
+  background-color: #FCFAF6;
+  border: 1px solid rgba(196, 167, 125, 0.35);
+  border-radius: 12px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.widget-strip-profile:hover {
+  background-color: #F8F3EA;
+}
+
+.strip-profile-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.circle-progress-badge {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 2px solid #C4A77D;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #8C642B;
+}
+
+.strip-profile-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: #2C2825;
+}
+
+.strip-profile-sub {
+  font-size: 11.5px;
+  color: #7D7365;
+}
+
+/* Today's Ritual 60-Sec Widget */
+.widget-ritual-strip {
+  background-color: #FCFAF6;
+  border: 1px solid rgba(196, 167, 125, 0.35);
+  border-radius: 12px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ritual-left-group {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.ritual-thumb-box {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.ritual-thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ritual-tag-top {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #B38646;
+  text-transform: uppercase;
+}
+
+.ritual-heading-main {
+  font-size: 14px;
+  font-weight: 600;
+  color: #2C2825;
+}
+
+.ritual-sub-text {
+  font-size: 12px;
+  color: #7D7365;
+}
+
+.btn-begin-gold {
+  background-color: #B38646;
+  color: #FAF7F2;
+  border: none;
+  border-radius: 999px;
+  padding: 8px 20px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  text-decoration: none;
+}
+
+.btn-begin-gold:hover {
+  background-color: #9E7438;
+}
+
+/* Tip of the Day Card */
+.card-tip-of-day {
+  background-color: #FCFAF6;
+  border: 1px solid rgba(196, 167, 125, 0.35);
+  border-radius: 12px;
+  padding: 16px 20px;
+}
+
+.tip-label-header {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #B38646;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.tip-quote-body {
+  font-family: var(--font-cormorant);
+  font-size: 15.5px;
+  font-style: italic;
+  color: #4D4539;
+  line-height: 1.55;
+  margin-bottom: 8px;
+}
+
+.tip-source-ref {
+  font-size: 11px;
+  color: #8C8273;
+}
+
+/* Kitchen Remedies Strip */
+.widget-strip-remedies {
+  background-color: #FCFAF6;
+  border: 1px solid rgba(196, 167, 125, 0.35);
+  border-radius: 12px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.2s;
+}
+
+.widget-strip-remedies:hover {
+  background-color: #F8F3EA;
+}
+
+.remedy-icon-box {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background-color: #F3EBDD;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+}
+
+/* 3-Card Metrics Row (Agni, Ama, Streak) */
+.metrics-row-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+}
+
+.metric-card-box {
+  background-color: #FFFFFF;
+  border: 1px solid rgba(196, 167, 125, 0.35);
+  border-radius: 12px;
+  padding: 16px 12px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.gauge-circle {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 3px solid #C4A77D;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: #2C2825;
+}
+
+.gauge-circle.gauge-green {
+  border-color: #4E6044;
+}
+
+.metric-title-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: #2C2825;
+}
+
+.metric-status-line {
+  font-size: 10px;
+  color: #4E6044;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Ahara Krama (Meal Diet Plan) */
+.ahara-krama-card {
+  background-color: #FCFAF6;
+  border: 1px solid rgba(196, 167, 125, 0.35);
+  border-radius: 14px;
+  padding: 18px 20px;
+}
+
+.ahara-header-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.ahara-super-tag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #B38646;
+  text-transform: uppercase;
+}
+
+.ahara-main-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #2C2825;
+}
+
+.date-selector-tabs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(196, 167, 125, 0.2);
+  margin-bottom: 14px;
+  font-size: 12px;
+  color: #5C5245;
+}
+
+.meal-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.meal-item-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.meal-thumb {
+  width: 44px;
+  height: 44px;
+  border-radius: 8px;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.meal-item-title {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #6E6454;
+  margin-bottom: 2px;
+}
+
+.meal-item-desc {
+  font-size: 12px;
+  color: #3A352E;
+  line-height: 1.4;
+}
+
+/* Herbal & Lifestyle Guidance Card */
+.herbal-guidance-card {
+  background-color: #FCFAF6;
+  border: 1px solid rgba(196, 167, 125, 0.35);
+  border-radius: 14px;
+  padding: 18px 20px;
+}
+
+.herbal-guidance-tag {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #B38646;
+  text-transform: uppercase;
+  margin-bottom: 14px;
+}
+
+.guidance-items-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.guidance-item-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.guidance-icon {
+  width: 18px;
+  height: 18px;
+  color: #4E6044;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.guidance-item-heading {
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #2C2825;
+  margin-bottom: 2px;
+}
+
+.guidance-item-body {
+  font-size: 11.5px;
+  color: #6E6454;
+  line-height: 1.45;
+}
+
+/* Right Column Widgets ("Your Tools") */
+.right-dashboard-col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.tools-super-title {
+  font-family: var(--font-playfair);
+  font-size: 18px;
+  color: #2C2825;
+  font-weight: 450;
+  margin-bottom: 12px;
+}
+
+/* 2x2 Visual Tool Cards */
+.tools-2x2-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.tool-photo-card {
+  height: 125px;
+  border-radius: 14px;
+  overflow: hidden;
+  position: relative;
+  text-decoration: none;
+  border: 1px solid rgba(196, 167, 125, 0.35);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.tool-photo-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+}
+
+.tool-card-bg-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tool-overlay-content {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(15, 15, 15, 0.85) 0%, rgba(15, 15, 15, 0.2) 60%, transparent 100%);
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #FFFFFF;
+}
+
+.tool-top-icon-pill {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tool-card-title {
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 2px;
+}
+
+.tool-card-sub {
+  font-size: 10px;
+  opacity: 0.8;
+}
+
+/* Today's Vyayama Widget */
+.widget-vyayama-card {
+  background: linear-gradient(135deg, #FCFAF6 0%, #F5ECDB 100%);
+  border: 1px solid rgba(196, 167, 125, 0.4);
+  border-radius: 14px;
+  padding: 16px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.2s;
+}
+
+.widget-vyayama-card:hover {
+  transform: translateY(-2px);
+}
+
+.vyayama-header-strip {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.play-circle-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #B38646;
+  color: #FAF7F2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vyayama-tag {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #B38646;
+  text-transform: uppercase;
+}
+
+.vyayama-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: #2C2825;
+}
+
+.vyayama-meta {
+  font-size: 11px;
+  color: #7D7365;
+}
+
+.vyayama-note-season {
+  font-size: 11.5px;
+  color: #6E6454;
+  padding-top: 8px;
+  border-top: 1px solid rgba(196, 167, 125, 0.25);
+}
+
+/* Community Sangha Banner */
+.widget-sangha-banner {
+  background: #E8EFE5;
+  border: 1px solid rgba(78, 96, 68, 0.3);
+  border-radius: 14px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.widget-sangha-banner:hover {
+  background: #DFE8DC;
+}
+
+.sangha-banner-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.sangha-icon-box {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: #4E6044;
+  color: #FAF7F2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.sangha-banner-tag {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #4E6044;
+  text-transform: uppercase;
+}
+
+.sangha-banner-title {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: #2C2825;
+}
+
+.sangha-banner-sub {
+  font-size: 11px;
+  color: #6E6454;
+}
+
+/* Ask Ardya Banner Card */
+.widget-ask-ardya-banner {
+  background: linear-gradient(135deg, #FCFAF6 0%, #F5ECDB 100%);
+  border: 1px solid rgba(196, 167, 125, 0.4);
+  border-radius: 14px;
+  padding: 14px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.widget-ask-ardya-banner:hover {
+  transform: translateY(-2px);
+}
+
+/* ================= 6. BOTTOM EXPLORE HORIZONTAL GALLERY ================= */
+.explore-section-app {
+  margin-top: 30px;
+}
+
+.explore-section-title {
+  font-family: var(--font-playfair);
+  font-size: 22px;
+  color: #2C2825;
+  font-weight: 450;
+  margin-bottom: 16px;
+}
+
+.explore-cards-carousel {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;
+  padding-bottom: 16px;
+  scrollbar-width: thin;
+}
+
+.explore-item-card {
+  min-width: 180px;
+  max-width: 180px;
+  height: 220px;
+  border-radius: 14px;
+  overflow: hidden;
+  position: relative;
+  text-decoration: none;
+  border: 1px solid rgba(196, 167, 125, 0.35);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.explore-item-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.explore-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.explore-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(15, 15, 15, 0.88) 0%, rgba(15, 15, 15, 0.25) 60%, transparent 100%);
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  color: #FFFFFF;
+}
+
+.explore-card-tag {
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #C4A77D;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.explore-card-headline {
+  font-family: var(--font-cormorant);
+  font-size: 16px;
+  font-style: italic;
+  line-height: 1.3;
+}
+
+.explore-badge-top {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #B38646;
+  color: #FAF7F2;
+  font-size: 8.5px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 999px;
+}
+
+/* ================= 7. FLOATING ACTION BUTTONS ================= */
+.app-fab-stack {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index: 300;
+}
+
+.fab-btn-mail {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: #B38646;
+  color: #FAF7F2;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 16px rgba(179, 134, 70, 0.4);
+  transition: transform 0.2s;
+}
+
+.fab-btn-mail:hover {
+  transform: scale(1.08);
+}
+
+.fab-btn-vaidya {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 2px solid #B38646;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s;
+}
+
+.fab-btn-vaidya:hover {
+  transform: scale(1.08);
+}
+
+.fab-vaidya-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .dashboard-grid-two-col {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .app-sidebar {
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+  }
+  .app-sidebar.mobile-open {
+    transform: translateX(0);
+  }
+  .app-main {
+    margin-left: 0;
+    padding: 20px 16px 80px 16px;
+  }
+  .metrics-row-cards {
+    grid-template-columns: 1fr 1fr;
+  }
+}

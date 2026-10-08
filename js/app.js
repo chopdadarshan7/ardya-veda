@@ -820,9 +820,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Login button placeholder
+  // Login button -> Member Dashboard
   document.getElementById('login-modal-btn')?.addEventListener('click', () => {
-    alert("Namaste! User authentication portal is active. You can explore the full assessment, check-ins, and doctor consultations immediately without an account.");
+    window.location.href = 'dashboard.html';
   });
 
   // Sangha question click interaction
