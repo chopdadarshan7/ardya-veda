@@ -324,7 +324,10 @@
         </div>
 
         <!-- Doctor Cards Horizontal Carousel -->
-        <div class="doctors-carousel-track" id="doctors-carousel-track">
+        <div class="carousel-relative-container">
+          <button id="doc-track-prev-btn" class="track-floating-arrow-btn prev-arrow" aria-label="Previous Doctors">‹</button>
+          
+          <div class="doctors-carousel-track" id="doctors-carousel-track">
           
           <!-- Doctor 1: Dr. Radhika Shah -->
           <div class="doctor-app-card" data-supports="video call chat">
@@ -441,6 +444,45 @@
             </div>
           </div>
 
+          <!-- Doctor 6: Dr. Priyanka Patil -->
+          <div class="doctor-app-card" data-supports="video chat">
+            <div class="doctor-card-photo-wrap">
+              <img src="https://images.unsplash.com/photo-1622902046580-2b47f47f5471?auto=format&fit=crop&w=400&q=80" 
+                   alt="Dr. Priyanka Patil" 
+                   class="doctor-card-photo"
+                   onerror="this.src='https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=400&q=80'">
+              <div class="doc-status-badge" style="background:rgba(30,30,30,0.7);">
+                Currently Offline
+              </div>
+              <div class="doc-arrow-corner">↗</div>
+              <div class="doctor-card-overlay-text">
+                <div class="doc-name">Dr. Priyanka Patil</div>
+                <div class="doc-specialty-short">Women's Health · MD (Ayurveda)</div>
+              </div>
+            </div>
+            <div class="doctor-card-actions">
+              <button class="btn-schedule-sub" style="width:100%; padding:8px;">
+                <i data-lucide="calendar" style="width:12px; height:12px;"></i> Schedule for later
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+          <button id="doc-track-next-btn" class="track-floating-arrow-btn next-arrow" aria-label="Next Doctors">›</button>
+        </div>
+
+        <!-- Mobile Scroll/Swipe Guide Bar -->
+        <div class="carousel-mobile-hint">
+          <span class="carousel-hint-text">Swipe or tap <strong>›</strong> to view all 6 Vaidyas</span>
+          <div class="carousel-dots-indicator" id="carousel-dots">
+            <span class="carousel-dot active" data-index="0"></span>
+            <span class="carousel-dot" data-index="1"></span>
+            <span class="carousel-dot" data-index="2"></span>
+            <span class="carousel-dot" data-index="3"></span>
+            <span class="carousel-dot" data-index="4"></span>
+            <span class="carousel-dot" data-index="5"></span>
+          </div>
         </div>
       </section>
 

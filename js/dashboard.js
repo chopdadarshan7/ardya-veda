@@ -64,49 +64,130 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // 4. Doctor Carousel Navigation (Arrows + Drag to Scroll)
+  // 4. Doctor Carousel Navigation (Arrows, Dots, Mouse Drag & Mobile Touch Swipe)
   const docTrack = document.getElementById('doctors-carousel-track');
-  const prevDocBtn = document.getElementById('doc-prev-btn');
-  const nextDocBtn = document.getElementById('doc-next-btn');
+  const prevBtns = [
+    document.getElementById('doc-prev-btn'),
+    document.getElementById('doc-track-prev-btn')
+  ].filter(Boolean);
+  const nextBtns = [
+    document.getElementById('doc-next-btn'),
+    document.getElementById('doc-track-next-btn')
+  ].filter(Boolean);
+  const dots = document.querySelectorAll('.carousel-dot');
 
   if (docTrack) {
-    prevDocBtn?.addEventListener('click', () => {
-      docTrack.scrollBy({ left: -220, behavior: 'smooth' });
+    const getScrollStep = () => {
+      const firstCard = docTrack.querySelector('.doctor-app-card');
+      return firstCard ? firstCard.offsetWidth + 14 : 200;
+    };
+
+    const updateDots = () => {
+      const step = getScrollStep();
+      const activeIdx = Math.min(
+        dots.length - 1,
+        Math.max(0, Math.round(docTrack.scrollLeft / step))
+      );
+      dots.forEach((dot, idx) => {
+        dot.classList.toggle('active', idx === activeIdx);
+      });
+    };
+
+    prevBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const step = getScrollStep();
+        docTrack.scrollBy({ left: -step, behavior: 'smooth' });
+      });
     });
 
-    nextDocBtn?.addEventListener('click', () => {
-      docTrack.scrollBy({ left: 220, behavior: 'smooth' });
+    nextBtns.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        const step = getScrollStep();
+        docTrack.scrollBy({ left: step, behavior: 'smooth' });
+      });
     });
 
-    // Mouse Drag to Scroll
-    let isDown = false;
-    let startX = 0;
-    let scrollLeft = 0;
+    dots.forEach((dot, idx) => {
+      dot.addEventListener('click', () => {
+        const step = getScrollStep();
+        docTrack.scrollTo({ left: idx * step, behavior: 'smooth' });
+      });
+    });
+
+    docTrack.addEventListener('scroll', () => {
+      window.requestAnimationFrame(updateDots);
+    }, { passive: true });
+
+    // Touch Swipe Gesture Handling (Guarantees smooth swipe on all mobile browsers)
+    let touchStartX = 0;
+    let touchStartY = 0;
+    let touchStartScrollLeft = 0;
+    let isHorizontalSwipe = false;
+
+    docTrack.addEventListener('touchstart', (e) => {
+      if (e.touches.length === 1) {
+        touchStartX = e.touches[0].pageX;
+        touchStartY = e.touches[0].pageY;
+        touchStartScrollLeft = docTrack.scrollLeft;
+        isHorizontalSwipe = false;
+      }
+    }, { passive: true });
+
+    docTrack.addEventListener('touchmove', (e) => {
+      if (e.touches.length === 1) {
+        const deltaX = e.touches[0].pageX - touchStartX;
+        const deltaY = e.touches[0].pageY - touchStartY;
+        
+        if (!isHorizontalSwipe && Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 6) {
+          isHorizontalSwipe = true;
+        }
+
+        if (isHorizontalSwipe) {
+          docTrack.scrollLeft = touchStartScrollLeft - deltaX;
+        }
+      }
+    }, { passive: true });
+
+    // Desktop Mouse Drag to Scroll
+    let isMouseDown = false;
+    let mouseStartX = 0;
+    let mouseStartScrollLeft = 0;
+    let hasDragged = false;
 
     docTrack.addEventListener('mousedown', (e) => {
-      isDown = true;
+      if (e.button !== 0) return;
+      isMouseDown = true;
+      hasDragged = false;
       docTrack.classList.add('grabbing');
-      startX = e.pageX - docTrack.offsetLeft;
-      scrollLeft = docTrack.scrollLeft;
+      mouseStartX = e.pageX - docTrack.offsetLeft;
+      mouseStartScrollLeft = docTrack.scrollLeft;
     });
 
-    docTrack.addEventListener('mouseleave', () => {
-      isDown = false;
-      docTrack.classList.remove('grabbing');
-    });
-
-    docTrack.addEventListener('mouseup', () => {
-      isDown = false;
-      docTrack.classList.remove('grabbing');
+    window.addEventListener('mouseup', () => {
+      if (isMouseDown) {
+        isMouseDown = false;
+        docTrack.classList.remove('grabbing');
+      }
     });
 
     docTrack.addEventListener('mousemove', (e) => {
-      if (!isDown) return;
-      e.preventDefault();
+      if (!isMouseDown) return;
       const x = e.pageX - docTrack.offsetLeft;
-      const walk = (x - startX) * 1.6;
-      docTrack.scrollLeft = scrollLeft - walk;
+      const walk = (x - mouseStartX) * 1.5;
+      if (Math.abs(walk) > 4) {
+        hasDragged = true;
+      }
+      docTrack.scrollLeft = mouseStartScrollLeft - walk;
     });
+
+    docTrack.addEventListener('click', (e) => {
+      if (hasDragged) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    }, true);
   }
 
   // 4. Video Now Consultation Trigger

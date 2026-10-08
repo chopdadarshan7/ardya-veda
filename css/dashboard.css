@@ -280,8 +280,10 @@
 .app-main {
   margin-left: 250px;
   flex: 1;
-  padding: 24px 44px 80px 44px;
+  min-width: 0;
+  width: calc(100% - 250px);
   max-width: 1340px;
+  padding: 24px 44px 80px 44px;
   margin-right: auto;
 }
 
@@ -563,7 +565,10 @@
 
 /* ================= 4. YOUR VAIDYAS SECTION ================= */
 .vaidyas-section-app {
-  margin-bottom: 40px;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  margin-bottom: 36px;
 }
 
 .vaidyas-header-row {
@@ -660,21 +665,81 @@
   color: #FAF7F2;
 }
 
-/* Doctors Horizontal Carousel */
+/* Doctors Horizontal Carousel Container */
+.carousel-relative-container {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* Prominent Floating Carousel Navigation Arrows */
+.track-floating-arrow-btn {
+  position: absolute;
+  top: 38%;
+  transform: translateY(-50%);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1.5px solid #C4A77D;
+  color: #2C2825;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 30;
+  box-shadow: 0 4px 16px rgba(44, 40, 37, 0.16);
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 0 0 2px 0;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.track-floating-arrow-btn:hover {
+  background-color: #B38646;
+  border-color: #B38646;
+  color: #FFFFFF;
+  transform: translateY(-50%) scale(1.08);
+  box-shadow: 0 6px 20px rgba(179, 134, 70, 0.35);
+}
+
+.track-floating-arrow-btn:active {
+  transform: translateY(-50%) scale(0.92);
+}
+
+.track-floating-arrow-btn.prev-arrow {
+  left: -12px;
+}
+
+.track-floating-arrow-btn.next-arrow {
+  right: -12px;
+}
+
+/* Doctors Carousel Scroll Track */
 .doctors-carousel-track {
   display: flex;
   gap: 16px;
   overflow-x: auto;
   overflow-y: hidden;
-  padding-bottom: 14px;
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  padding: 4px 2px 14px 2px;
   -webkit-overflow-scrolling: touch;
   scroll-behavior: smooth;
-  scroll-snap-type: x proximity;
+  scroll-snap-type: x mandatory;
   touch-action: pan-x pan-y;
   cursor: grab;
   user-select: none;
+  -webkit-user-select: none;
   scrollbar-width: thin;
-  scrollbar-color: rgba(196, 167, 125, 0.4) transparent;
+  scrollbar-color: rgba(196, 167, 125, 0.55) rgba(245, 240, 232, 0.4);
 }
 
 .doctors-carousel-track.grabbing {
@@ -720,12 +785,20 @@
   height: 185px;
   position: relative;
   background-color: #E8E0D2;
+  pointer-events: none;
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .doctor-card-photo {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  pointer-events: none;
+  -webkit-user-drag: none;
+  user-select: none;
+  -webkit-user-select: none;
 }
 
 .doc-status-badge {
@@ -796,6 +869,7 @@
   flex-direction: column;
   gap: 6px;
   background-color: #FAF7F2;
+  pointer-events: auto;
 }
 
 .btn-video-now {
@@ -812,6 +886,7 @@
   justify-content: center;
   gap: 6px;
   transition: background-color 0.2s;
+  pointer-events: auto;
 }
 
 .btn-video-now:hover {
@@ -832,10 +907,52 @@
   justify-content: center;
   gap: 4px;
   transition: all 0.2s;
+  pointer-events: auto;
 }
 
 .btn-schedule-sub:hover {
   background-color: #EDE4D3;
+}
+
+/* Mobile Carousel Guide & Dots */
+.carousel-mobile-hint {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+  padding: 6px 14px;
+  background: rgba(246, 241, 232, 0.7);
+  border-radius: 999px;
+  border: 1px solid rgba(196, 167, 125, 0.3);
+  font-size: 11.5px;
+  color: #6B6254;
+}
+
+.carousel-hint-text strong {
+  color: #B38646;
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.carousel-dots-indicator {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.carousel-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: rgba(196, 167, 125, 0.4);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.carousel-dot.active {
+  width: 16px;
+  border-radius: 999px;
+  background-color: #B38646;
 }
 
 /* ================= 5. TWO COLUMN DASHBOARD CORE ================= */
@@ -1717,6 +1834,32 @@
     overflow-x: auto;
     flex-wrap: nowrap;
     padding-bottom: 4px;
+  }
+
+  .track-floating-arrow-btn {
+    width: 34px;
+    height: 34px;
+    font-size: 20px;
+    box-shadow: 0 4px 12px rgba(44, 40, 37, 0.22);
+  }
+
+  .track-floating-arrow-btn.prev-arrow {
+    left: -4px;
+  }
+
+  .track-floating-arrow-btn.next-arrow {
+    right: -4px;
+  }
+
+  .doctors-carousel-track {
+    gap: 12px;
+    padding-bottom: 8px;
+    scroll-padding-left: 4px;
+  }
+
+  .doctor-app-card {
+    min-width: 162px;
+    max-width: 162px;
   }
 
   /* Dashboard Core Single Column */
