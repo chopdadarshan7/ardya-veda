@@ -15,18 +15,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function updateTimeGreeting() {
     const hour = new Date().getHours();
-    let greetingEn = 'G O O D   M O R N I N G';
-    let greetingHi = 'शु भ   प्र भा त';
+    let greetingEn = 'GOOD MORNING';
+    let greetingHi = 'शुभ प्रभात';
 
     if (hour >= 12 && hour < 17) {
-      greetingEn = 'G O O D   A F T E R N O O N';
-      greetingHi = 'शु भ   दो प ह र';
+      greetingEn = 'GOOD AFTERNOON';
+      greetingHi = 'शुभ दोपहर';
     } else if (hour >= 17 && hour < 22) {
-      greetingEn = 'G O O D   E V E N I N G';
-      greetingHi = 'शु भ   सं ध्या';
+      greetingEn = 'GOOD EVENING';
+      greetingHi = 'शुभ संध्या';
     } else if (hour >= 22 || hour < 5) {
-      greetingEn = 'G O O D   N I G H T';
-      greetingHi = 'शु भ   रा त्रि';
+      greetingEn = 'GOOD NIGHT';
+      greetingHi = 'शुभ रात्रि';
     }
 
     if (timeGreetingEl) {
@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
       p3Title: 'A Vaidya beside you',
       p3Desc: 'Chat, call or video, whenever you need one',
       shlokaTrans: 'May all beings be happy.',
-      lampLitTag: 'C O M E   I N ,   T H E   L A M P   I S   L I T',
+      lampLitTag: 'COME IN, THE LAMP IS LIT',
       welcomeTitle: 'Welcome to Ardya Veda',
       welcomeSubtitle: 'Enter your email and password, then Sign Up<br>Complete your profile after OTP verification',
       googleBtn: 'Continue with Google',
@@ -126,7 +126,7 @@ document.addEventListener('DOMContentLoaded', () => {
       p3Title: 'आपके साथ एक वैद्य',
       p3Desc: 'चैट, कॉल या वीडियो, जब भी आपको आवश्यकता हो',
       shlokaTrans: 'सभी प्राणी सुखी और निरोगी रहें।',
-      lampLitTag: 'अं द र   आ इ ए ,   दी प   प्र ज्व लि त   है',
+      lampLitTag: 'अंदर आइए, दीप प्रज्वलित है',
       welcomeTitle: 'अर्द्य वेद में आपका स्वागत है',
       welcomeSubtitle: 'अपना ईमेल और पासवर्ड दर्ज करें, फिर साइन अप करें<br>ओटीपी सत्यापन के बाद प्रोफ़ाइल पूरी करें',
       googleBtn: 'गूगल के साथ जारी रखें',
