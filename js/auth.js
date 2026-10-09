@@ -1,6 +1,6 @@
 /* =========================================================================
    ARDYA VEDA — SWAGATAM (AUTH & WELCOME) JAVASCRIPT
-   Interactive Diwali Atmosphere, Meditative Audio, Language Toggle & Auth
+   Clean, simple, reliable sign-in flow with gentle confirmation on sign in
    ========================================================================= */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -42,7 +42,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const eyeIcon = document.getElementById('pwd-eye-icon');
 
   if (togglePwdBtn && pwdInput) {
-    togglePwdBtn.addEventListener('click', () => {
+    togglePwdBtn.addEventListener('click', (e) => {
+      e.preventDefault();
       const isPassword = pwdInput.getAttribute('type') === 'password';
       pwdInput.setAttribute('type', isPassword ? 'text' : 'password');
       if (eyeIcon) {
@@ -52,195 +53,40 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 4. Meditative Temple Bell, Singing Bowl & Tanpura Drone Engine (Web Audio API)
-  const soundBtn = document.getElementById('auth-sound-toggle-btn');
-  const soundIcon = document.getElementById('sound-icon-on');
-  let audioCtx = null;
-  let isSoundPlaying = false;
-  let chimeInterval = null;
-  let droneNodes = null;
-
-  function initAudioContext() {
-    if (!audioCtx) {
-      const AudioCtxClass = window.AudioContext || window.webkitAudioContext;
-      audioCtx = new AudioCtxClass();
-    }
-    if (audioCtx.state === 'suspended') {
-      audioCtx.resume();
-    }
-  }
-
-  // Play an authentic resonant Bronze Temple Bell strike with rich overtones
-  function strikeTempleBell() {
+  // 4. Soft Temple Chime — ONLY plays when sign-in is successful
+  function playSignInSuccessChime() {
     try {
-      initAudioContext();
-      const now = audioCtx.currentTime;
+      const AudioCtxClass = window.AudioContext || window.webkitAudioContext;
+      if (!AudioCtxClass) return;
+      const ctx = new AudioCtxClass();
+      if (ctx.state === 'suspended') ctx.resume();
 
-      // Master bell gain node
-      const bellGain = audioCtx.createGain();
-      bellGain.gain.setValueAtTime(0.42, now);
-      bellGain.connect(audioCtx.destination);
+      const now = ctx.currentTime;
+      const master = ctx.createGain();
+      master.gain.setValueAtTime(0.35, now);
+      master.gain.exponentialRampToValueAtTime(0.0001, now + 1.2);
+      master.connect(ctx.destination);
 
-      // Sacred Solfeggio & Vedic harmonic frequencies for Temple Bell (Fundamental ~528Hz + Tibetan bowl partials)
-      const harmonics = [
-        { freq: 528, gain: 0.55, decay: 6.5 },   // Fundamental ring (Love & Healing tone)
-        { freq: 1457, gain: 0.32, decay: 4.8 },  // Metallic overtone (2.76x)
-        { freq: 2154, gain: 0.22, decay: 3.5 },  // Bright shimmer (4.08x)
-        { freq: 2851, gain: 0.14, decay: 2.2 },  // High bell sparkle (5.4x)
-        { freq: 132, gain: 0.40, decay: 7.5 }    // Deep grounding bronze resonance (Om tone)
-      ];
+      // Sacred 528Hz bell chime harmonic
+      [528, 1056, 1584].forEach((freq, idx) => {
+        const osc = ctx.createOscillator();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(freq, now);
+        
+        const gain = ctx.createGain();
+        gain.gain.setValueAtTime(0.4 / (idx + 1), now);
+        gain.gain.exponentialRampToValueAtTime(0.0001, now + (1.2 - idx * 0.2));
 
-      harmonics.forEach(h => {
-        const osc = audioCtx.createOscillator();
-        const g = audioCtx.createGain();
-
-        osc.type = h.freq < 300 ? 'triangle' : 'sine';
-        osc.frequency.setValueAtTime(h.freq, now);
-
-        // Immediate crisp bell strike attack, then long golden exponential decay
-        g.gain.setValueAtTime(0.0001, now);
-        g.gain.exponentialRampToValueAtTime(h.gain, now + 0.025);
-        g.gain.exponentialRampToValueAtTime(0.0001, now + h.decay);
-
-        osc.connect(g);
-        g.connect(bellGain);
+        osc.connect(gain);
+        gain.connect(master);
 
         osc.start(now);
-        osc.stop(now + h.decay + 0.2);
+        osc.stop(now + 1.3);
       });
-
-      // Wooden mallet / bronze clapper strike transient (filtered noise burst)
-      const bufferSize = Math.floor(audioCtx.sampleRate * 0.07);
-      const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
-      const data = buffer.getChannelData(0);
-      for (let i = 0; i < bufferSize; i++) {
-        data[i] = (Math.random() * 2 - 1) * Math.exp(-i / (bufferSize * 0.2));
-      }
-
-      const noiseSource = audioCtx.createBufferSource();
-      noiseSource.buffer = buffer;
-      const filter = audioCtx.createBiquadFilter();
-      filter.type = 'bandpass';
-      filter.frequency.setValueAtTime(1400, now);
-      filter.Q.setValueAtTime(3.5, now);
-
-      const noiseGain = audioCtx.createGain();
-      noiseGain.gain.setValueAtTime(0.28, now);
-      noiseGain.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
-
-      noiseSource.connect(filter);
-      filter.connect(noiseGain);
-      noiseGain.connect(bellGain);
-
-      noiseSource.start(now);
-    } catch (err) {
-      console.warn('Audio synthesis warning:', err);
+    } catch(e) {
+      // Audio fallback silent
     }
   }
-
-  // Warm background meditative drone (Om vibration 108Hz)
-  function startWarmDrone() {
-    try {
-      initAudioContext();
-      const now = audioCtx.currentTime;
-
-      const droneGain = audioCtx.createGain();
-      droneGain.gain.setValueAtTime(0.0001, now);
-      droneGain.gain.exponentialRampToValueAtTime(0.12, now + 1.5);
-      droneGain.connect(audioCtx.destination);
-
-      // 108 Hz Sacred Vedic Tanpura drone with LFO warmth
-      const osc1 = audioCtx.createOscillator();
-      osc1.type = 'sine';
-      osc1.frequency.setValueAtTime(108, now);
-
-      const osc2 = audioCtx.createOscillator();
-      osc2.type = 'triangle';
-      osc2.frequency.setValueAtTime(216, now); // Octave overtone
-
-      const lfo = audioCtx.createOscillator();
-      lfo.frequency.setValueAtTime(0.2, now); // Gentle slow breath wave (every 5 seconds)
-      const lfoGain = audioCtx.createGain();
-      lfoGain.gain.setValueAtTime(0.04, now);
-      lfo.connect(lfoGain);
-      lfoGain.connect(droneGain.gain);
-
-      osc1.connect(droneGain);
-      osc2.connect(droneGain);
-
-      osc1.start(now);
-      osc2.start(now);
-      lfo.start(now);
-
-      droneNodes = { osc1, osc2, lfo, droneGain };
-    } catch (e) {
-      console.warn('Drone error:', e);
-    }
-  }
-
-  function stopWarmDrone() {
-    if (droneNodes && audioCtx) {
-      try {
-        const now = audioCtx.currentTime;
-        droneNodes.droneGain.gain.setValueAtTime(droneNodes.droneGain.gain.value, now);
-        droneNodes.droneGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.5);
-        setTimeout(() => {
-          droneNodes.osc1.stop();
-          droneNodes.osc2.stop();
-          droneNodes.lfo.stop();
-          droneNodes = null;
-        }, 550);
-      } catch (e) {}
-    }
-  }
-
-  function startTempleSoundscape() {
-    initAudioContext();
-    isSoundPlaying = true;
-    soundBtn?.classList.add('playing');
-    if (soundIcon) {
-      soundIcon.setAttribute('data-lucide', 'volume-2');
-      if (typeof lucide !== 'undefined') lucide.createIcons();
-    }
-
-    // Play immediate first resonant bell strike
-    strikeTempleBell();
-    startWarmDrone();
-
-    // Repeat a serene bell strike every 8 seconds
-    chimeInterval = setInterval(() => {
-      if (isSoundPlaying) {
-        strikeTempleBell();
-      }
-    }, 8200);
-
-    showToast(currentLanguage === 'hi' ? '🪔 मंदिर की घंटियां और ध्यान ध्वनि चालू...' : '🪔 Sacred temple chimes playing...');
-  }
-
-  function stopTempleSoundscape() {
-    isSoundPlaying = false;
-    soundBtn?.classList.remove('playing');
-    if (soundIcon) {
-      soundIcon.setAttribute('data-lucide', 'volume-x');
-      if (typeof lucide !== 'undefined') lucide.createIcons();
-    }
-
-    if (chimeInterval) {
-      clearInterval(chimeInterval);
-      chimeInterval = null;
-    }
-    stopWarmDrone();
-    showToast(currentLanguage === 'hi' ? 'ध्वनि बंद की गई' : 'Sound muted');
-  }
-
-  soundBtn?.addEventListener('click', (e) => {
-    e.preventDefault();
-    if (isSoundPlaying) {
-      stopTempleSoundscape();
-    } else {
-      startTempleSoundscape();
-    }
-  });
 
   // 5. Bilingual Language Translations (English / Hindi)
   const translations = {
@@ -315,12 +161,12 @@ document.addEventListener('DOMContentLoaded', () => {
   btnLangEn?.addEventListener('click', () => setLanguage('en'));
   btnLangHi?.addEventListener('click', () => setLanguage('hi'));
 
-  // 6. Interactive Toast Message Helper
+  // 6. Toast Notification Helper
   const toast = document.getElementById('auth-toast');
   const toastMsg = document.getElementById('auth-toast-msg');
   let toastTimer = null;
 
-  function showToast(message, duration = 3200) {
+  function showToast(message, duration = 2400) {
     if (!toast || !toastMsg) return;
     toastMsg.textContent = message;
     toast.classList.add('show');
@@ -330,19 +176,20 @@ document.addEventListener('DOMContentLoaded', () => {
     }, duration);
   }
 
-  // 7. Confetti Sparkles Effect
+  // 7. Golden Confetti
   function triggerGoldenConfetti() {
     if (typeof confetti === 'function') {
       confetti({
-        particleCount: 55,
-        spread: 60,
+        particleCount: 45,
+        spread: 55,
         origin: { y: 0.65 },
         colors: ['#F59E0B', '#FEF08A', '#C4A77D', '#D97706', '#FAF7F2']
       });
     }
   }
 
-  // 8. One-Click Sign In & Google Continue
+  // 8. Sign In Execution — Straight to Dashboard
+  const authForm = document.getElementById('auth-main-form');
   const btnSignIn = document.getElementById('btn-submit-signin');
   const btnSignUp = document.getElementById('btn-submit-signup');
   const btnGoogle = document.getElementById('btn-google-login');
@@ -350,42 +197,48 @@ document.addEventListener('DOMContentLoaded', () => {
   const emailInput = document.getElementById('auth-email-input');
 
   function proceedToDashboard(successMessage) {
+    // 🔔 Play chime on successful sign-in
+    playSignInSuccessChime();
     triggerGoldenConfetti();
-    showToast(successMessage, 2200);
+    showToast(successMessage, 1500);
+
+    const userEmail = emailInput?.value?.trim() || 'Chopda';
+    localStorage.setItem('ardya_user', userEmail);
+
     setTimeout(() => {
       window.location.href = 'dashboard.html';
-    }, 950);
+    }, 450);
   }
 
+  // Form Submit (Handles Enter key in email or password field)
+  authForm?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    proceedToDashboard(currentLanguage === 'hi' ? 'स्वागतम्! डैशबोर्ड खुल रहा है...' : 'Welcome back, Chopda! Opening Dashboard...');
+  });
+
+  // Direct Button Click
   btnSignIn?.addEventListener('click', (e) => {
     e.preventDefault();
-    const emailVal = emailInput?.value?.trim();
-    if (emailVal && !emailVal.includes('@')) {
-      showToast('Please enter a valid email address');
-      emailInput.focus();
-      return;
-    }
-    proceedToDashboard(currentLanguage === 'hi' ? 'स्वागतम्! डैशबोर्ड में प्रवेश कर रहे हैं...' : 'Welcome back, Chopda! Entering your sanctuary...');
+    proceedToDashboard(currentLanguage === 'hi' ? 'स्वागतम्! डैशबोर्ड खुल रहा है...' : 'Welcome back, Chopda! Opening Dashboard...');
   });
 
+  // Google Sign In Click
   btnGoogle?.addEventListener('click', (e) => {
     e.preventDefault();
-    proceedToDashboard(currentLanguage === 'hi' ? 'गूगल से प्रमाणित! स्वागतम्...' : 'Signed in with Google! Entering sanctuary...');
+    proceedToDashboard(currentLanguage === 'hi' ? 'गूगल से प्रमाणित! स्वागतम्...' : 'Signed in with Google! Opening Dashboard...');
   });
 
+  // Sign Up Click
   btnSignUp?.addEventListener('click', (e) => {
     e.preventDefault();
-    triggerGoldenConfetti();
-    showToast(currentLanguage === 'hi' ? 'ओटीपी कोड आपके ईमेल पर भेजा गया है!' : 'OTP verification sent! Proceeding to setup...', 2000);
-    setTimeout(() => {
-      window.location.href = 'assessment.html';
-    }, 1000);
+    proceedToDashboard(currentLanguage === 'hi' ? 'साइन अप सफल! स्वागतम्...' : 'Sign up successful! Opening Dashboard...');
   });
 
+  // Forgot Password
   forgotLink?.addEventListener('click', (e) => {
     e.preventDefault();
     const emailVal = emailInput?.value?.trim() || 'your email';
-    showToast(`Password reset link sent to ${emailVal}!`, 3500);
+    showToast(`Password reset link sent to ${emailVal}!`, 3000);
   });
 
   // 9. Switcher Links
