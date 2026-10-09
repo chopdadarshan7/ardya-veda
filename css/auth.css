@@ -762,15 +762,29 @@
 /* ================= RESPONSIVE MOBILE VIEW ================= */
 @media (max-width: 960px) {
   .auth-main-wrapper {
-    grid-template-columns: 1fr;
-    gap: 36px;
-    padding: 10px 20px 60px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 44px;
+    padding: 12px 18px 60px 18px;
   }
 
+  /* 1. Login Card & Diya appear FIRST on Mobile */
+  .auth-right-content {
+    order: 1;
+    width: 100%;
+    max-width: 440px;
+    margin: 0 auto;
+  }
+
+  /* 2. Swagatam & Details appear BELOW the Card on Mobile */
   .auth-left-content {
+    order: 2;
     max-width: 100%;
     text-align: center;
     align-items: center;
+    margin: 12px auto 0 auto;
+    border-top: 1px solid rgba(196, 167, 125, 0.25);
+    padding-top: 36px;
   }
 
   .auth-headline-large {
@@ -778,7 +792,7 @@
   }
 
   .auth-swagatam-sanskrit {
-    font-size: 36px;
+    font-size: 38px;
   }
 
   .auth-pillars-list {
@@ -786,26 +800,28 @@
     text-align: left;
     width: 100%;
     max-width: 380px;
+    margin: 0 auto 30px auto;
   }
 
   .auth-header-nav {
-    padding: 16px 20px;
+    padding: 14px 18px;
   }
 
   .auth-diya-halo {
-    width: 380px;
-    height: 380px;
-    top: 50%;
-    right: 50%;
-    transform: translate(50%, -50%);
+    width: 320px;
+    height: 320px;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .auth-mandala-bg {
-    width: 480px;
-    height: 480px;
-    right: 50%;
-    top: 65%;
-    transform: translate(50%, -50%);
+    width: 440px;
+    height: 440px;
+    left: 50%;
+    top: 220px;
+    transform: translate(-50%, -50%);
+    opacity: 0.10;
   }
 
   .auth-shrine-card {
