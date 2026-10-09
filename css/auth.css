@@ -469,42 +469,6 @@
   pointer-events: none;
 }
 
-/* Ornate Corner Brackets */
-.corner-ornament {
-  position: absolute;
-  width: 14px;
-  height: 14px;
-  border-color: #B38646;
-  pointer-events: none;
-}
-
-.corner-ornament.top-left {
-  top: 10px;
-  left: 10px;
-  border-top: 2px solid #C4A77D;
-  border-left: 2px solid #C4A77D;
-}
-
-.corner-ornament.top-right {
-  top: 10px;
-  right: 10px;
-  border-top: 2px solid #C4A77D;
-  border-right: 2px solid #C4A77D;
-}
-
-.corner-ornament.bottom-left {
-  bottom: 10px;
-  left: 10px;
-  border-bottom: 2px solid #C4A77D;
-  border-left: 2px solid #C4A77D;
-}
-
-.corner-ornament.bottom-right {
-  bottom: 10px;
-  right: 10px;
-  border-bottom: 2px solid #C4A77D;
-  border-right: 2px solid #C4A77D;
-}
 
 /* Card Header Text */
 .auth-card-header {
