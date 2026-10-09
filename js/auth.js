@@ -52,75 +52,193 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 4. Meditative Temple Singing Bowl / Tanpura Sound Synthesis (Web Audio API)
+  // 4. Meditative Temple Bell, Singing Bowl & Tanpura Drone Engine (Web Audio API)
   const soundBtn = document.getElementById('auth-sound-toggle-btn');
+  const soundIcon = document.getElementById('sound-icon-on');
   let audioCtx = null;
   let isSoundPlaying = false;
-  let activeOscillators = [];
+  let chimeInterval = null;
+  let droneNodes = null;
 
-  function playTempleChime() {
-    try {
-      const AudioContext = window.AudioContext || window.webkitAudioContext;
-      if (!AudioContext) return;
-      if (!audioCtx) audioCtx = new AudioContext();
-      if (audioCtx.state === 'suspended') audioCtx.resume();
-
-      // Clear existing oscillators
-      activeOscillators.forEach(osc => {
-        try { osc.stop(); } catch(e) {}
-      });
-      activeOscillators = [];
-
-      // Frequencies for warm meditative Vedic drone (D-minor sacred harmonic series: 146.83Hz, 220Hz, 293.66Hz, 440Hz, 587.33Hz)
-      const freqs = [146.83, 220, 293.66, 440, 587.33];
-      const masterGain = audioCtx.createGain();
-      masterGain.gain.setValueAtTime(0.08, audioCtx.currentTime);
-      masterGain.connect(audioCtx.destination);
-
-      freqs.forEach((freq, idx) => {
-        const osc = audioCtx.createOscillator();
-        const gain = audioCtx.createGain();
-
-        osc.type = idx % 2 === 0 ? 'sine' : 'triangle';
-        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
-
-        // Gentle envelope
-        gain.gain.setValueAtTime(0.001, audioCtx.currentTime);
-        gain.gain.exponentialRampToValueAtTime(0.07 / (idx + 1), audioCtx.currentTime + 1.2);
-        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 9.0);
-
-        osc.connect(gain);
-        gain.connect(masterGain);
-
-        osc.start();
-        osc.stop(audioCtx.currentTime + 9.5);
-        activeOscillators.push(osc);
-      });
-
-      isSoundPlaying = true;
-      soundBtn?.classList.add('playing');
-      showToast('🪔 Sacred temple chimes playing...');
-
-      setTimeout(() => {
-        isSoundPlaying = false;
-        soundBtn?.classList.remove('playing');
-      }, 9000);
-    } catch(err) {
-      console.warn('Web Audio error:', err);
+  function initAudioContext() {
+    if (!audioCtx) {
+      const AudioCtxClass = window.AudioContext || window.webkitAudioContext;
+      audioCtx = new AudioCtxClass();
+    }
+    if (audioCtx.state === 'suspended') {
+      audioCtx.resume();
     }
   }
 
-  soundBtn?.addEventListener('click', () => {
-    if (isSoundPlaying) {
-      activeOscillators.forEach(osc => {
-        try { osc.stop(); } catch(e) {}
+  // Play an authentic resonant Bronze Temple Bell strike with rich overtones
+  function strikeTempleBell() {
+    try {
+      initAudioContext();
+      const now = audioCtx.currentTime;
+
+      // Master bell gain node
+      const bellGain = audioCtx.createGain();
+      bellGain.gain.setValueAtTime(0.42, now);
+      bellGain.connect(audioCtx.destination);
+
+      // Sacred Solfeggio & Vedic harmonic frequencies for Temple Bell (Fundamental ~528Hz + Tibetan bowl partials)
+      const harmonics = [
+        { freq: 528, gain: 0.55, decay: 6.5 },   // Fundamental ring (Love & Healing tone)
+        { freq: 1457, gain: 0.32, decay: 4.8 },  // Metallic overtone (2.76x)
+        { freq: 2154, gain: 0.22, decay: 3.5 },  // Bright shimmer (4.08x)
+        { freq: 2851, gain: 0.14, decay: 2.2 },  // High bell sparkle (5.4x)
+        { freq: 132, gain: 0.40, decay: 7.5 }    // Deep grounding bronze resonance (Om tone)
+      ];
+
+      harmonics.forEach(h => {
+        const osc = audioCtx.createOscillator();
+        const g = audioCtx.createGain();
+
+        osc.type = h.freq < 300 ? 'triangle' : 'sine';
+        osc.frequency.setValueAtTime(h.freq, now);
+
+        // Immediate crisp bell strike attack, then long golden exponential decay
+        g.gain.setValueAtTime(0.0001, now);
+        g.gain.exponentialRampToValueAtTime(h.gain, now + 0.025);
+        g.gain.exponentialRampToValueAtTime(0.0001, now + h.decay);
+
+        osc.connect(g);
+        g.connect(bellGain);
+
+        osc.start(now);
+        osc.stop(now + h.decay + 0.2);
       });
-      activeOscillators = [];
-      isSoundPlaying = false;
-      soundBtn.classList.remove('playing');
-      showToast('Sound muted');
+
+      // Wooden mallet / bronze clapper strike transient (filtered noise burst)
+      const bufferSize = Math.floor(audioCtx.sampleRate * 0.07);
+      const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+      const data = buffer.getChannelData(0);
+      for (let i = 0; i < bufferSize; i++) {
+        data[i] = (Math.random() * 2 - 1) * Math.exp(-i / (bufferSize * 0.2));
+      }
+
+      const noiseSource = audioCtx.createBufferSource();
+      noiseSource.buffer = buffer;
+      const filter = audioCtx.createBiquadFilter();
+      filter.type = 'bandpass';
+      filter.frequency.setValueAtTime(1400, now);
+      filter.Q.setValueAtTime(3.5, now);
+
+      const noiseGain = audioCtx.createGain();
+      noiseGain.gain.setValueAtTime(0.28, now);
+      noiseGain.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
+
+      noiseSource.connect(filter);
+      filter.connect(noiseGain);
+      noiseGain.connect(bellGain);
+
+      noiseSource.start(now);
+    } catch (err) {
+      console.warn('Audio synthesis warning:', err);
+    }
+  }
+
+  // Warm background meditative drone (Om vibration 108Hz)
+  function startWarmDrone() {
+    try {
+      initAudioContext();
+      const now = audioCtx.currentTime;
+
+      const droneGain = audioCtx.createGain();
+      droneGain.gain.setValueAtTime(0.0001, now);
+      droneGain.gain.exponentialRampToValueAtTime(0.12, now + 1.5);
+      droneGain.connect(audioCtx.destination);
+
+      // 108 Hz Sacred Vedic Tanpura drone with LFO warmth
+      const osc1 = audioCtx.createOscillator();
+      osc1.type = 'sine';
+      osc1.frequency.setValueAtTime(108, now);
+
+      const osc2 = audioCtx.createOscillator();
+      osc2.type = 'triangle';
+      osc2.frequency.setValueAtTime(216, now); // Octave overtone
+
+      const lfo = audioCtx.createOscillator();
+      lfo.frequency.setValueAtTime(0.2, now); // Gentle slow breath wave (every 5 seconds)
+      const lfoGain = audioCtx.createGain();
+      lfoGain.gain.setValueAtTime(0.04, now);
+      lfo.connect(lfoGain);
+      lfoGain.connect(droneGain.gain);
+
+      osc1.connect(droneGain);
+      osc2.connect(droneGain);
+
+      osc1.start(now);
+      osc2.start(now);
+      lfo.start(now);
+
+      droneNodes = { osc1, osc2, lfo, droneGain };
+    } catch (e) {
+      console.warn('Drone error:', e);
+    }
+  }
+
+  function stopWarmDrone() {
+    if (droneNodes && audioCtx) {
+      try {
+        const now = audioCtx.currentTime;
+        droneNodes.droneGain.gain.setValueAtTime(droneNodes.droneGain.gain.value, now);
+        droneNodes.droneGain.gain.exponentialRampToValueAtTime(0.0001, now + 0.5);
+        setTimeout(() => {
+          droneNodes.osc1.stop();
+          droneNodes.osc2.stop();
+          droneNodes.lfo.stop();
+          droneNodes = null;
+        }, 550);
+      } catch (e) {}
+    }
+  }
+
+  function startTempleSoundscape() {
+    initAudioContext();
+    isSoundPlaying = true;
+    soundBtn?.classList.add('playing');
+    if (soundIcon) {
+      soundIcon.setAttribute('data-lucide', 'volume-2');
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+    }
+
+    // Play immediate first resonant bell strike
+    strikeTempleBell();
+    startWarmDrone();
+
+    // Repeat a serene bell strike every 8 seconds
+    chimeInterval = setInterval(() => {
+      if (isSoundPlaying) {
+        strikeTempleBell();
+      }
+    }, 8200);
+
+    showToast(currentLanguage === 'hi' ? '🪔 मंदिर की घंटियां और ध्यान ध्वनि चालू...' : '🪔 Sacred temple chimes playing...');
+  }
+
+  function stopTempleSoundscape() {
+    isSoundPlaying = false;
+    soundBtn?.classList.remove('playing');
+    if (soundIcon) {
+      soundIcon.setAttribute('data-lucide', 'volume-x');
+      if (typeof lucide !== 'undefined') lucide.createIcons();
+    }
+
+    if (chimeInterval) {
+      clearInterval(chimeInterval);
+      chimeInterval = null;
+    }
+    stopWarmDrone();
+    showToast(currentLanguage === 'hi' ? 'ध्वनि बंद की गई' : 'Sound muted');
+  }
+
+  soundBtn?.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (isSoundPlaying) {
+      stopTempleSoundscape();
     } else {
-      playTempleChime();
+      startTempleSoundscape();
     }
   });
 
