@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Ardya Veda — स्वागतम् · Step into your own light</title>
+  <meta name="description" content="Welcome to Ardya Veda. Step into your own light. A quiet place that comes to know your nature, your rhythms and your Vaidya." />
+  <meta name="theme-color" content="#0D0A14" />
+
+  <!-- Google Fonts: Cormorant Garamond, Playfair Display, Inter, Noto Sans Devanagari -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Canvas Confetti -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <!-- Master & Auth CSS -->
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/auth.css" />
+</head>
+<body class="auth-page-body">
+
+  <!-- ================= BACKGROUND AMBIENT ATMOSPHERE ================= -->
+  <div class="auth-bg-ambient-layer">
+    <!-- Golden Halo radiating from Diya -->
+    <div class="auth-diya-halo"></div>
+
+    <!-- Sacred Vedic Mandala Line Art -->
+    <svg class="auth-mandala-bg" viewBox="0 0 600 600" fill="none" stroke="#C4A77D">
+      <!-- Outer Ring -->
+      <circle cx="300" cy="300" r="280" stroke-width="1.2" opacity="0.6"/>
+      <circle cx="300" cy="300" r="268" stroke-width="0.8" stroke-dasharray="3 4" opacity="0.5"/>
+      <circle cx="300" cy="300" r="240" stroke-width="1" opacity="0.7"/>
+      
+      <!-- 16 Sacred Lotus Petals Outer -->
+      <g stroke-width="1.2" opacity="0.75">
+        <path d="M300 60 C320 150 360 210 300 240 C240 210 280 150 300 60 Z"/>
+        <path d="M300 60 C320 150 360 210 300 240 C240 210 280 150 300 60 Z" transform="rotate(22.5 300 300)"/>
+        <path d="M300 60 C320 150 360 210 300 240 C240 210 280 150 300 60 Z" transform="rotate(45 300 300)"/>
+        <path d="M300 60 C320 150 360 210 300 240 C240 210 280 150 300 60 Z" transform="rotate(67.5 300 300)"/>
+        <path d="M300 60 C320 150 360 210 300 240 C240 210 280 150 300 60 Z" transform="rotate(90 300 300)"/>
+        <path d="M300 60 C320 150 360 210 300 240 C240 210 280 150 300 60 Z" transform="rotate(112.5 300 300)"/>
+        <path d="M300 60 C320 150 360 210 300 240 C240 210 280 150 300 60 Z" transform="rotate(135 300 300)"/>
+        <path d="M300 60 C320 150 360 210 300 240 C240 210 280 150 300 60 Z" transform="rotate(157.5 300 300)"/>
+        <path d="M300 60 C320 150 360 210 300 240 C240 210 280 150 300 60 Z" transform="rotate(180 300 300)"/>
+        <path d="M300 60 C320 150 360 210 300 240 C240 210 280 150 300 60 Z" transform="rotate(202.5 300 300)"/>
+        <path d="M300 60 C320 150 360 210 300 240 C240 210 280 150 300 60 Z" transform="rotate(225 300 300)"/>
+        <path d="M300 60 C320 150 360 210 300 240 C240 210 280 150 300 60 Z" transform="rotate(247.5 300 300)"/>
+        <path d="M300 60 C320 150 360 210 300 240 C240 210 280 150 300 60 Z" transform="rotate(270 300 300)"/>
+        <path d="M300 60 C320 150 360 210 300 240 C240 210 280 150 300 60 Z" transform="rotate(292.5 300 300)"/>
+        <path d="M300 60 C320 150 360 210 300 240 C240 210 280 150 300 60 Z" transform="rotate(315 300 300)"/>
+        <path d="M300 60 C320 150 360 210 300 240 C240 210 280 150 300 60 Z" transform="rotate(337.5 300 300)"/>
+      </g>
+
+      <!-- Inner Geometrics -->
+      <circle cx="300" cy="300" r="160" stroke-width="1.2" opacity="0.8"/>
+      <circle cx="300" cy="300" r="120" stroke-width="1" stroke-dasharray="4 4" opacity="0.6"/>
+      <circle cx="300" cy="300" r="80" stroke-width="1.4" opacity="0.9"/>
+      <circle cx="300" cy="300" r="40" stroke-width="1" opacity="0.7"/>
+      <circle cx="300" cy="300" r="8" fill="#C4A77D" opacity="0.6"/>
+    </svg>
+
+    <!-- Floating Golden Diwali Sparkles -->
+    <div class="auth-sparkle" style="top: 25%; left: 14%; width: 5px; height: 5px; animation-delay: 0s;"></div>
+    <div class="auth-sparkle" style="top: 45%; left: 38%; width: 4px; height: 4px; animation-delay: 1.5s;"></div>
+    <div class="auth-sparkle" style="top: 75%; left: 22%; width: 6px; height: 6px; animation-delay: 3s;"></div>
+    <div class="auth-sparkle" style="top: 30%; right: 28%; width: 4px; height: 4px; animation-delay: 0.8s;"></div>
+    <div class="auth-sparkle" style="top: 60%; right: 18%; width: 5px; height: 5px; animation-delay: 2.2s;"></div>
+    <div class="auth-sparkle" style="top: 85%; right: 35%; width: 3px; height: 3px; animation-delay: 4.1s;"></div>
+    <div class="auth-sparkle" style="top: 15%; right: 45%; width: 4px; height: 4px; animation-delay: 2.8s;"></div>
+  </div>
+
+  <!-- ================= TOP NAVIGATION BAR ================= -->
+  <header class="auth-header-nav">
+    <div class="auth-nav-left">
+      <a href="index.html" class="auth-go-home-link" id="nav-go-home">
+        <i data-lucide="arrow-left" style="width:16px; height:16px;"></i>
+        <span data-i18n="goHome">Go home</span>
+      </a>
+
+      <a href="index.html" class="auth-brand-inline">
+        <div class="auth-brand-logo-icon">
+          <svg viewBox="0 0 100 100" style="width:26px; height:26px;">
+            <circle cx="50" cy="50" r="46" fill="none" stroke="#C4A77D" stroke-width="2.5" opacity="0.8"/>
+            <circle cx="50" cy="50" r="36" fill="none" stroke="#C4A77D" stroke-width="1.5" stroke-dasharray="3 3"/>
+            <path d="M50 16 C35 34, 30 54, 50 84 C70 54, 65 34, 50 16 Z" fill="none" stroke="#C4A77D" stroke-width="2.5"/>
+            <circle cx="50" cy="46" r="6" fill="#C4A77D"/>
+          </svg>
+        </div>
+        <span class="auth-brand-name">Ardya Veda</span>
+      </a>
+    </div>
+
+    <div class="auth-nav-right">
+      <!-- Meditative Temple Chimes Audio Toggle -->
+      <button id="auth-sound-toggle-btn" class="auth-sound-btn" title="Ambient Temple Sound (On/Off)" aria-label="Toggle Meditative Ambient Sound">
+        <i data-lucide="volume-2" id="sound-icon-on" style="width:18px; height:18px;"></i>
+      </button>
+
+      <!-- Language Toggle Pill (English / Hindi) -->
+      <div class="auth-lang-pill" id="auth-lang-switch">
+        <button type="button" class="auth-lang-btn active" id="btn-lang-en">English</button>
+        <button type="button" class="auth-lang-btn" id="btn-lang-hi">Hindi</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================= MAIN SPLIT CONTENT ================= -->
+  <main class="auth-main-wrapper">
+    
+    <!-- ================= LEFT COLUMN: SWAGATAM ================= -->
+    <section class="auth-left-content">
+      
+      <!-- Sanskrit Heading -->
+      <div class="auth-swagatam-sanskrit">स्वागतम्</div>
+      
+      <!-- Time-Aware Greeting Subtitle -->
+      <div class="auth-time-greeting-tag" id="auth-time-greeting">G O O D   M O R N I N G</div>
+
+      <!-- Main Headline Statement -->
+      <h1 class="auth-headline-large">
+        <span data-i18n="stepInto">Step into your own</span>
+        <span data-i18n="light">light.</span>
+      </h1>
+
+      <!-- Description Paragraph -->
+      <p class="auth-description-text" data-i18n="swagatamDesc">
+        A quiet place that comes to know your nature, your rhythms and your Vaidya, and keeps them together, for you alone.
+      </p>
+
+      <!-- 3 Feature Pillars -->
+      <div class="auth-pillars-list">
+        <!-- Pillar 1: Prakriti -->
+        <div class="auth-pillar-item">
+          <div class="auth-pillar-icon-wrap">
+            <i data-lucide="sparkles" style="width:20px; height:20px;"></i>
+          </div>
+          <div>
+            <div class="auth-pillar-title" data-i18n="p1Title">Know your nature</div>
+            <div class="auth-pillar-desc" data-i18n="p1Desc">Your Prakriti and Manas Prakriti, read in minutes</div>
+          </div>
+        </div>
+
+        <!-- Pillar 2: Rhythms -->
+        <div class="auth-pillar-item">
+          <div class="auth-pillar-icon-wrap">
+            <i data-lucide="sun" style="width:20px; height:20px;"></i>
+          </div>
+          <div>
+            <div class="auth-pillar-title" data-i18n="p2Title">Live by your rhythm</div>
+            <div class="auth-pillar-desc" data-i18n="p2Desc">Daily check-ins that change with you</div>
+          </div>
+        </div>
+
+        <!-- Pillar 3: Vaidya Support -->
+        <div class="auth-pillar-item">
+          <div class="auth-pillar-icon-wrap">
+            <i data-lucide="heart-pulse" style="width:20px; height:20px;"></i>
+          </div>
+          <div>
+            <div class="auth-pillar-title" data-i18n="p3Title">A Vaidya beside you</div>
+            <div class="auth-pillar-desc" data-i18n="p3Desc">Chat, call or video, whenever you need one</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sanskrit Shloka Blessing -->
+      <div class="auth-shloka-box">
+        <div class="auth-shloka-diamond">♦</div>
+        <div class="auth-shloka-sanskrit">सर्वे भवन्तु सुखिनः</div>
+        <div class="auth-shloka-trans" data-i18n="shlokaTrans">May all beings be happy.</div>
+      </div>
+
+    </section>
+
+    <!-- ================= RIGHT COLUMN: FESTIVE DIYA & CARD ================= -->
+    <section class="auth-right-content">
+
+      <!-- 🪔 The Diwali Diya (Oil Lamp) on Top of Card -->
+      <div class="auth-diya-hero-container">
+        <!-- Ambient Glowing Aura -->
+        <div class="diya-radiance-aura"></div>
+
+        <!-- Layered Clay Diya with Flickering Golden Flame -->
+        <svg viewBox="0 0 100 80" class="diya-svg">
+          <defs>
+            <!-- Flame Radial Gradient (Warm Core to Amber Tip) -->
+            <radialGradient id="diyaFlameGrad" cx="50%" cy="65%" r="55%">
+              <stop offset="0%" stop-color="#FFFDF0"/>
+              <stop offset="25%" stop-color="#FEF08A"/>
+              <stop offset="55%" stop-color="#F59E0B"/>
+              <stop offset="85%" stop-color="#D97706"/>
+              <stop offset="100%" stop-color="#92400E" stop-opacity="0.2"/>
+            </radialGradient>
+            <!-- Clay Bowl Gradient -->
+            <linearGradient id="clayBowlGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#C26A2D"/>
+              <stop offset="45%" stop-color="#8C4115"/>
+              <stop offset="100%" stop-color="#542407"/>
+            </linearGradient>
+            <!-- Gold Trim Gradient -->
+            <linearGradient id="goldTrimGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#F3DEB8"/>
+              <stop offset="50%" stop-color="#C4A77D"/>
+              <stop offset="100%" stop-color="#8C6D46"/>
+            </linearGradient>
+          </defs>
+
+          <!-- Shadow beneath Diya base -->
+          <ellipse cx="50" cy="74" rx="28" ry="4" fill="#000000" opacity="0.45"/>
+
+          <!-- Clay Bowl Base (Deep Terracotta Diya) -->
+          <path d="M22 56 C22 68, 34 74, 50 74 C66 74, 78 68, 78 56 C78 54, 22 54, 22 56 Z" fill="url(#clayBowlGrad)"/>
+          
+          <!-- Ornate Golden Rim of the Diya -->
+          <ellipse cx="50" cy="55" rx="28" ry="5" fill="none" stroke="url(#goldTrimGrad)" stroke-width="1.8"/>
+          <ellipse cx="50" cy="55" rx="25" ry="4" fill="#3D1A05" opacity="0.9"/>
+
+          <!-- Cotton Baati / Wick Tip -->
+          <line x1="50" y1="54" x2="50" y2="44" stroke="#1A0C03" stroke-width="2.5" stroke-linecap="round"/>
+
+          <!-- Outer Vibrant Flickering Flame -->
+          <path class="diya-flame-outer" d="M50 8 C60 26, 68 38, 64 47 C60 55, 40 55, 36 47 C32 38, 40 26, 50 8 Z" fill="url(#diyaFlameGrad)"/>
+
+          <!-- Inner Luminous White-Yellow Core -->
+          <path class="diya-flame-inner" d="M50 22 C55 33, 59 40, 57 46 C55 50, 45 50, 43 46 C41 40, 45 33, 50 22 Z" fill="#FFFDF2" opacity="0.95"/>
+        </svg>
+      </div>
+
+      <!-- 🏛️ The Sacred Architectural Shrine Card -->
+      <div class="auth-shrine-card">
+        <!-- 4 Ornate Gold Corner Filigrees -->
+        <div class="corner-ornament top-left"></div>
+        <div class="corner-ornament top-right"></div>
+        <div class="corner-ornament bottom-left"></div>
+        <div class="corner-ornament bottom-right"></div>
+
+        <!-- Card Header Info -->
+        <div class="auth-card-header">
+          <div class="auth-lamp-lit-tag" data-i18n="lampLitTag">C O M E   I N ,   T H E   L A M P   I S   L I T</div>
+          <h2 class="auth-card-title" id="auth-title-text" data-i18n="welcomeTitle">Welcome to Ardya Veda</h2>
+          <p class="auth-card-subtitle" id="auth-subtitle-text" data-i18n="welcomeSubtitle">
+            Enter your email and password, then Sign Up<br>
+            Complete your profile after OTP verification
+          </p>
+        </div>
+
+        <!-- Google One-Tap Continue Button -->
+        <button type="button" class="btn-google-continue" id="btn-google-login">
+          <svg class="google-g-icon" viewBox="0 0 24 24">
+            <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+            <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+            <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z" fill="#FBBC05"/>
+            <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z" fill="#EA4335"/>
+          </svg>
+          <span data-i18n="googleBtn">Continue with Google</span>
+        </button>
+
+        <!-- Ornate Divider -->
+        <div class="auth-divider-ornate">
+          <div class="auth-divider-line"></div>
+          <div class="auth-divider-text">♦ or ♦</div>
+          <div class="auth-divider-line"></div>
+        </div>
+
+        <!-- Email & Password Form -->
+        <form id="auth-main-form" onsubmit="event.preventDefault();">
+          
+          <!-- Email Input -->
+          <div class="auth-form-group">
+            <div class="auth-input-wrap">
+              <i data-lucide="mail" class="auth-input-icon"></i>
+              <input type="email" id="auth-email-input" class="auth-text-input" placeholder="your@email.com" required autocomplete="email" />
+            </div>
+          </div>
+
+          <!-- Password Input -->
+          <div class="auth-form-group">
+            <div class="auth-input-wrap">
+              <i data-lucide="lock" class="auth-input-icon"></i>
+              <input type="password" id="auth-password-input" class="auth-text-input" placeholder="Password (min 8 characters)" required autocomplete="current-password" />
+              <button type="button" class="auth-eye-toggle" id="auth-toggle-pwd-btn" aria-label="Toggle Password Visibility">
+                <i data-lucide="eye" id="pwd-eye-icon" style="width:16px; height:16px;"></i>
+              </button>
+            </div>
+          </div>
+
+          <!-- Forgot Password Link -->
+          <div class="auth-forgot-row">
+            <a href="#" id="auth-forgot-link" class="auth-forgot-link" data-i18n="forgotPwd">Forgot password?</a>
+          </div>
+
+          <!-- Dual Action Buttons: SIGN UP / SIGN IN -->
+          <div class="auth-actions-row">
+            <button type="button" class="btn-auth-signup" id="btn-submit-signup" data-i18n="signUpBtn">SIGN UP</button>
+            <button type="submit" class="btn-auth-signin" id="btn-submit-signin" data-i18n="signInBtn">SIGN IN</button>
+          </div>
+
+        </form>
+
+        <!-- Bottom Mode Switcher -->
+        <div class="auth-card-footer" id="auth-mode-footer">
+          <span data-i18n="footerPrompt">New user? </span>
+          <a class="auth-mode-switch-link" id="switch-to-signup" data-i18n="footerSignup">Sign Up</a>
+          <span> · </span>
+          <span data-i18n="alreadyAccount">Already have an account? </span>
+          <a class="auth-mode-switch-link" id="switch-to-signin" data-i18n="footerSignin">Sign In</a>
+        </div>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Interactive Feedback Toast -->
+  <div id="auth-toast" class="auth-toast" role="alert">
+    <i data-lucide="sparkles" style="width:16px; height:16px; color:#F59E0B;"></i>
+    <span id="auth-toast-msg">Welcome to Ardya Veda</span>
+  </div>
+
+  <!-- Auth JavaScript Interactivity -->
+  <script src="js/auth.js"></script>
+</body>
+</html>

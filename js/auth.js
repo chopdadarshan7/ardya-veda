@@ -1,0 +1,292 @@
+/* =========================================================================
+   ARDYA VEDA — SWAGATAM (AUTH & WELCOME) JAVASCRIPT
+   Interactive Diwali Atmosphere, Meditative Audio, Language Toggle & Auth
+   ========================================================================= */
+
+document.addEventListener('DOMContentLoaded', () => {
+  // 1. Initialize Lucide Icons
+  if (typeof lucide !== 'undefined') {
+    lucide.createIcons();
+  }
+
+  // 2. Dynamic Time-Aware Greeting (Good Morning / Afternoon / Evening)
+  const timeGreetingEl = document.getElementById('auth-time-greeting');
+  let currentLanguage = 'en';
+
+  function updateTimeGreeting() {
+    const hour = new Date().getHours();
+    let greetingEn = 'G O O D   M O R N I N G';
+    let greetingHi = 'शु भ   प्र भा त';
+
+    if (hour >= 12 && hour < 17) {
+      greetingEn = 'G O O D   A F T E R N O O N';
+      greetingHi = 'शु भ   दो प ह र';
+    } else if (hour >= 17 && hour < 22) {
+      greetingEn = 'G O O D   E V E N I N G';
+      greetingHi = 'शु भ   सं ध्या';
+    } else if (hour >= 22 || hour < 5) {
+      greetingEn = 'G O O D   N I G H T';
+      greetingHi = 'शु भ   रा त्रि';
+    }
+
+    if (timeGreetingEl) {
+      timeGreetingEl.textContent = currentLanguage === 'hi' ? greetingHi : greetingEn;
+    }
+  }
+
+  updateTimeGreeting();
+
+  // 3. Password Visibility Toggle
+  const pwdInput = document.getElementById('auth-password-input');
+  const togglePwdBtn = document.getElementById('auth-toggle-pwd-btn');
+  const eyeIcon = document.getElementById('pwd-eye-icon');
+
+  if (togglePwdBtn && pwdInput) {
+    togglePwdBtn.addEventListener('click', () => {
+      const isPassword = pwdInput.getAttribute('type') === 'password';
+      pwdInput.setAttribute('type', isPassword ? 'text' : 'password');
+      if (eyeIcon) {
+        eyeIcon.setAttribute('data-lucide', isPassword ? 'eye-off' : 'eye');
+        if (typeof lucide !== 'undefined') lucide.createIcons();
+      }
+    });
+  }
+
+  // 4. Meditative Temple Singing Bowl / Tanpura Sound Synthesis (Web Audio API)
+  const soundBtn = document.getElementById('auth-sound-toggle-btn');
+  let audioCtx = null;
+  let isSoundPlaying = false;
+  let activeOscillators = [];
+
+  function playTempleChime() {
+    try {
+      const AudioContext = window.AudioContext || window.webkitAudioContext;
+      if (!AudioContext) return;
+      if (!audioCtx) audioCtx = new AudioContext();
+      if (audioCtx.state === 'suspended') audioCtx.resume();
+
+      // Clear existing oscillators
+      activeOscillators.forEach(osc => {
+        try { osc.stop(); } catch(e) {}
+      });
+      activeOscillators = [];
+
+      // Frequencies for warm meditative Vedic drone (D-minor sacred harmonic series: 146.83Hz, 220Hz, 293.66Hz, 440Hz, 587.33Hz)
+      const freqs = [146.83, 220, 293.66, 440, 587.33];
+      const masterGain = audioCtx.createGain();
+      masterGain.gain.setValueAtTime(0.08, audioCtx.currentTime);
+      masterGain.connect(audioCtx.destination);
+
+      freqs.forEach((freq, idx) => {
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+
+        osc.type = idx % 2 === 0 ? 'sine' : 'triangle';
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+
+        // Gentle envelope
+        gain.gain.setValueAtTime(0.001, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.07 / (idx + 1), audioCtx.currentTime + 1.2);
+        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 9.0);
+
+        osc.connect(gain);
+        gain.connect(masterGain);
+
+        osc.start();
+        osc.stop(audioCtx.currentTime + 9.5);
+        activeOscillators.push(osc);
+      });
+
+      isSoundPlaying = true;
+      soundBtn?.classList.add('playing');
+      showToast('🪔 Sacred temple chimes playing...');
+
+      setTimeout(() => {
+        isSoundPlaying = false;
+        soundBtn?.classList.remove('playing');
+      }, 9000);
+    } catch(err) {
+      console.warn('Web Audio error:', err);
+    }
+  }
+
+  soundBtn?.addEventListener('click', () => {
+    if (isSoundPlaying) {
+      activeOscillators.forEach(osc => {
+        try { osc.stop(); } catch(e) {}
+      });
+      activeOscillators = [];
+      isSoundPlaying = false;
+      soundBtn.classList.remove('playing');
+      showToast('Sound muted');
+    } else {
+      playTempleChime();
+    }
+  });
+
+  // 5. Bilingual Language Translations (English / Hindi)
+  const translations = {
+    en: {
+      goHome: 'Go home',
+      stepInto: 'Step into your own',
+      light: 'light.',
+      swagatamDesc: 'A quiet place that comes to know your nature, your rhythms and your Vaidya, and keeps them together, for you alone.',
+      p1Title: 'Know your nature',
+      p1Desc: 'Your Prakriti and Manas Prakriti, read in minutes',
+      p2Title: 'Live by your rhythm',
+      p2Desc: 'Daily check-ins that change with you',
+      p3Title: 'A Vaidya beside you',
+      p3Desc: 'Chat, call or video, whenever you need one',
+      shlokaTrans: 'May all beings be happy.',
+      lampLitTag: 'C O M E   I N ,   T H E   L A M P   I S   L I T',
+      welcomeTitle: 'Welcome to Ardya Veda',
+      welcomeSubtitle: 'Enter your email and password, then Sign Up<br>Complete your profile after OTP verification',
+      googleBtn: 'Continue with Google',
+      forgotPwd: 'Forgot password?',
+      signUpBtn: 'SIGN UP',
+      signInBtn: 'SIGN IN',
+      footerPrompt: 'New user? ',
+      footerSignup: 'Sign Up',
+      alreadyAccount: 'Already have an account? ',
+      footerSignin: 'Sign In'
+    },
+    hi: {
+      goHome: 'होम पर जाएं',
+      stepInto: 'स्वयं के प्रकाश में कदम रखें',
+      light: '',
+      swagatamDesc: 'एक शांत स्थान जो आपकी प्रकृति, आपकी लय और आपके वैद्य को समझता है, और आपको संपूर्ण स्वास्थ्य से जोड़ता है।',
+      p1Title: 'अपनी प्रकृति जानें',
+      p1Desc: 'आपकी प्रकृति और मानस प्रकृति, कुछ ही मिनटों में',
+      p2Title: 'अपनी लय के अनुसार जिएं',
+      p2Desc: 'दैनिक चेक-इन जो आपके साथ अनुकूलित होते हैं',
+      p3Title: 'आपके साथ एक वैद्य',
+      p3Desc: 'चैट, कॉल या वीडियो, जब भी आपको आवश्यकता हो',
+      shlokaTrans: 'सभी प्राणी सुखी और निरोगी रहें।',
+      lampLitTag: 'अं द र   आ इ ए ,   दी प   प्र ज्व लि त   है',
+      welcomeTitle: 'अर्द्य वेद में आपका स्वागत है',
+      welcomeSubtitle: 'अपना ईमेल और पासवर्ड दर्ज करें, फिर साइन अप करें<br>ओटीपी सत्यापन के बाद प्रोफ़ाइल पूरी करें',
+      googleBtn: 'गूगल के साथ जारी रखें',
+      forgotPwd: 'पासवर्ड भूल गए?',
+      signUpBtn: 'साइन अप',
+      signInBtn: 'साइन इन',
+      footerPrompt: 'नए उपयोगकर्ता? ',
+      footerSignup: 'साइन अप करें',
+      alreadyAccount: 'पहले से खाता है? ',
+      footerSignin: 'साइन इन करें'
+    }
+  };
+
+  const btnLangEn = document.getElementById('btn-lang-en');
+  const btnLangHi = document.getElementById('btn-lang-hi');
+
+  function setLanguage(lang) {
+    currentLanguage = lang;
+    btnLangEn?.classList.toggle('active', lang === 'en');
+    btnLangHi?.classList.toggle('active', lang === 'hi');
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (translations[lang] && translations[lang][key] !== undefined) {
+        el.innerHTML = translations[lang][key];
+      }
+    });
+
+    updateTimeGreeting();
+  }
+
+  btnLangEn?.addEventListener('click', () => setLanguage('en'));
+  btnLangHi?.addEventListener('click', () => setLanguage('hi'));
+
+  // 6. Interactive Toast Message Helper
+  const toast = document.getElementById('auth-toast');
+  const toastMsg = document.getElementById('auth-toast-msg');
+  let toastTimer = null;
+
+  function showToast(message, duration = 3200) {
+    if (!toast || !toastMsg) return;
+    toastMsg.textContent = message;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => {
+      toast.classList.remove('show');
+    }, duration);
+  }
+
+  // 7. Confetti Sparkles Effect
+  function triggerGoldenConfetti() {
+    if (typeof confetti === 'function') {
+      confetti({
+        particleCount: 55,
+        spread: 60,
+        origin: { y: 0.65 },
+        colors: ['#F59E0B', '#FEF08A', '#C4A77D', '#D97706', '#FAF7F2']
+      });
+    }
+  }
+
+  // 8. One-Click Sign In & Google Continue
+  const btnSignIn = document.getElementById('btn-submit-signin');
+  const btnSignUp = document.getElementById('btn-submit-signup');
+  const btnGoogle = document.getElementById('btn-google-login');
+  const forgotLink = document.getElementById('auth-forgot-link');
+  const emailInput = document.getElementById('auth-email-input');
+
+  function proceedToDashboard(successMessage) {
+    triggerGoldenConfetti();
+    showToast(successMessage, 2200);
+    setTimeout(() => {
+      window.location.href = 'dashboard.html';
+    }, 950);
+  }
+
+  btnSignIn?.addEventListener('click', (e) => {
+    e.preventDefault();
+    const emailVal = emailInput?.value?.trim();
+    if (emailVal && !emailVal.includes('@')) {
+      showToast('Please enter a valid email address');
+      emailInput.focus();
+      return;
+    }
+    proceedToDashboard(currentLanguage === 'hi' ? 'स्वागतम्! डैशबोर्ड में प्रवेश कर रहे हैं...' : 'Welcome back, Chopda! Entering your sanctuary...');
+  });
+
+  btnGoogle?.addEventListener('click', (e) => {
+    e.preventDefault();
+    proceedToDashboard(currentLanguage === 'hi' ? 'गूगल से प्रमाणित! स्वागतम्...' : 'Signed in with Google! Entering sanctuary...');
+  });
+
+  btnSignUp?.addEventListener('click', (e) => {
+    e.preventDefault();
+    triggerGoldenConfetti();
+    showToast(currentLanguage === 'hi' ? 'ओटीपी कोड आपके ईमेल पर भेजा गया है!' : 'OTP verification sent! Proceeding to setup...', 2000);
+    setTimeout(() => {
+      window.location.href = 'assessment.html';
+    }, 1000);
+  });
+
+  forgotLink?.addEventListener('click', (e) => {
+    e.preventDefault();
+    const emailVal = emailInput?.value?.trim() || 'your email';
+    showToast(`Password reset link sent to ${emailVal}!`, 3500);
+  });
+
+  // 9. Switcher Links
+  const switchToSignup = document.getElementById('switch-to-signup');
+  const switchToSignin = document.getElementById('switch-to-signin');
+  const titleText = document.getElementById('auth-title-text');
+  const subtitleText = document.getElementById('auth-subtitle-text');
+
+  switchToSignup?.addEventListener('click', () => {
+    if (titleText) titleText.textContent = currentLanguage === 'hi' ? 'नया खाता बनाएं' : 'Create your Ardya Account';
+    if (subtitleText) subtitleText.innerHTML = currentLanguage === 'hi' ? 'अपनी प्रकृति जानने के लिए साइन अप करें' : 'Sign up to discover your Prakriti & connect with Vaidyas';
+    btnSignUp?.focus();
+    showToast('Switched to Sign Up mode');
+  });
+
+  switchToSignin?.addEventListener('click', () => {
+    if (titleText) titleText.textContent = currentLanguage === 'hi' ? 'अर्द्य वेद में आपका स्वागत है' : 'Welcome to Ardya Veda';
+    if (subtitleText) subtitleText.innerHTML = currentLanguage === 'hi' ? 'अपना ईमेल और पासवर्ड दर्ज करें, फिर साइन इन करें' : 'Enter your email and password, then Sign In';
+    emailInput?.focus();
+    showToast('Switched to Sign In mode');
+  });
+});

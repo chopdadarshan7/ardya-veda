@@ -170,9 +170,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  // Login action -> Member Dashboard
+  // Login action -> Swagatam Diwali Auth Page
   document.getElementById('login-modal-btn')?.addEventListener('click', () => {
-    window.location.href = 'dashboard.html';
+    window.location.href = 'login.html';
   });
 
   // Sangha question clicks
